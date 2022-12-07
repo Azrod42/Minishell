@@ -6,4 +6,3 @@ git merge [name]
 
 regarder ça si pb:
 "https://www.youtube.com/watch?v=THsj6g_kG10"
-

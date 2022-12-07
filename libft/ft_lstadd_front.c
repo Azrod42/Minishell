@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tsorabel <tsorabel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:46:39 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:39:03 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/24 13:27:29 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include"libft.h"
 
-int	main()//int argc, char **argv)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_data dta;
-
-	dta.exit = 0;
-	while (!dta.exit)
+	if (lst && new)
 	{
-		get_prompt(&dta);
-		redirect(&dta);
+		new[0].next = *lst;
+		*lst = new;
 	}
-	ft_exit(&dta);
-	return (0);
 }

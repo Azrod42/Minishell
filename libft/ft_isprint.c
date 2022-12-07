@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:45:14 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:38:33 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/10 09:38:34 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include"libft.h"
 
-# define USER "tsorabel$> "
-
-# include"../libft/libft.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-typedef struct s_data
+int	ft_isprint(int c)
 {
-	char	**prompt;
-	int		exit;
-}	t_data;
-
-int		get_prompt(t_data *dta);
-void	ft_exit(t_data *dta);
-void	redirect(t_data *dta);
-
-#endif
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
+}

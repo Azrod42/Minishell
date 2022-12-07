@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:45:14 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/12 17:48:21 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/17 18:43:04 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include"libft.h"
 
-# define USER "tsorabel$> "
-
-# include"../libft/libft.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-typedef struct s_data
+size_t	ft_strlen_ptf(const char *s)
 {
-	char	**prompt;
-	int		exit;
-}	t_data;
+	size_t	i;
 
-int		get_prompt(t_data *dta);
-void	ft_exit(t_data *dta);
-void	redirect(t_data *dta);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
-#endif
+size_t	ft_putstr_fd_ptf(char *s, int fd)
+{
+	if (!s)
+		return (0);
+	write(fd, s, ft_strlen_ptf(s));
+	return (ft_strlen_ptf(s));
+}

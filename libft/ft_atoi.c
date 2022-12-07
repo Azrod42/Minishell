@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:45:14 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:35:56 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/10 09:35:59 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include"libft.h"
 
-# define USER "tsorabel$> "
-
-# include"../libft/libft.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-typedef struct s_data
+int	ft_atoi(const char *str)
 {
-	char	**prompt;
-	int		exit;
-}	t_data;
+	int	i;
+	int	neg;
+	int	result;
 
-int		get_prompt(t_data *dta);
-void	ft_exit(t_data *dta);
-void	redirect(t_data *dta);
-
-#endif
+	i = 0;
+	neg = 1;
+	result = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-')
+	{
+		neg = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + (str[i] - 48);
+		i++;
+	}
+	return (result * neg);
+}

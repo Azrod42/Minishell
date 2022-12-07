@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:46:39 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:45:06 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/10 12:48:58 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include "libft.h"
 
-int	main()//int argc, char **argv)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_data dta;
+	size_t	i;
+	size_t	j;
 
-	dta.exit = 0;
-	while (!dta.exit)
+	i = 0;
+	if (!big && len == 0)
+		return (0);
+	if (!little[i])
+		return (((char *)big));
+	while (big[i] && i <= len)
 	{
-		get_prompt(&dta);
-		redirect(&dta);
+		j = 0;
+		if (big[i] == little[j])
+		{
+			while (big[i + j] == little[j] && little[j] && i + j < len)
+					j++;
+			if (!little[j])
+				return (&((char *)big)[i]);
+		}
+		i++;
 	}
-	ft_exit(&dta);
-	return (0);
+	return (NULL);
 }

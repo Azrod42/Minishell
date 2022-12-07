@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:45:14 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:40:45 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/10 09:40:46 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include"libft.h"
 
-# define USER "tsorabel$> "
-
-# include"../libft/libft.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-typedef struct s_data
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	**prompt;
-	int		exit;
-}	t_data;
+	size_t	i;
+	char	*c;
+	char	*d;
 
-int		get_prompt(t_data *dta);
-void	ft_exit(t_data *dta);
-void	redirect(t_data *dta);
-
-#endif
+	i = -1;
+	c = dest;
+	d = (char *)src;
+	if ((!dest && !src) || n == 0)
+		return (dest);
+	if (dest < src)
+	{
+		while (++i < n)
+			*(c++) = *(d++);
+	}
+	else
+	{
+		c = c + (n - 1);
+		d = d + (n - 1);
+		while (++i < n)
+			*(c--) = *(d--);
+	}
+	return (dest);
+}

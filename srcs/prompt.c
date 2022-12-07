@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:45:14 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/12/07 18:29:54 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include"../include/minishell.h"
 
-# define USER "tsorabel$> "
-
-# include"../libft/libft.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-typedef struct s_data
+int	get_prompt(t_data *dta)
 {
-	char	**prompt;
-	int		exit;
-}	t_data;
+	char	*prompt;
 
-int		get_prompt(t_data *dta);
-void	ft_exit(t_data *dta);
-void	redirect(t_data *dta);
-
-#endif
+	prompt = readline(USER);
+	add_history(prompt);
+	dta->prompt = ft_split(prompt,' ');
+	free(prompt);
+	return (0);
+}

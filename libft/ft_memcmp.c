@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tsorabel <marvin@42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:46:39 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/09 08:55:38 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/09 08:55:39 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include"libft.h"
 
-int	main()//int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_data dta;
+	size_t	i;
 
-	dta.exit = 0;
-	while (!dta.exit)
-	{
-		get_prompt(&dta);
-		redirect(&dta);
-	}
-	ft_exit(&dta);
+	i = -1;
+	while (++i < n)
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 	return (0);
 }

@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tsorabel <marvin@42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:46:39 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/09 08:55:32 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/09 21:33:46 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include"libft.h"
 
-int	main()//int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_data dta;
+	size_t	i;
+	char	*s1;
 
-	dta.exit = 0;
-	while (!dta.exit)
+	i = -1;
+	s1 = (char *)s;
+	if (c >= 256)
+		c -= 256;
+	while (++i < n)
 	{
-		get_prompt(&dta);
-		redirect(&dta);
+		if ((unsigned char)s1[i] == (unsigned char)c)
+			return (&s1[i]);
 	}
-	ft_exit(&dta);
-	return (0);
+	return (NULL);
 }

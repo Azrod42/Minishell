@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:45:14 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:44:22 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/10 13:13:37 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include"libft.h"
 
-# define USER "tsorabel$> "
-
-# include"../libft/libft.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-typedef struct s_data
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char	**prompt;
-	int		exit;
-}	t_data;
+	size_t	i;
+	size_t	j;
 
-int		get_prompt(t_data *dta);
-void	ft_exit(t_data *dta);
-void	redirect(t_data *dta);
-
-#endif
+	i = 0;
+	j = 0;
+	if (size == 0)
+		return (ft_strlen((char *)src));
+	while (dst[i] && i < size)
+		i++;
+	if (i == size && dst[i] != 0)
+		return (size + (ft_strlen(src)));
+	while ((i + j) < (size - 1) && src[j])
+	{
+		dst[i + j] = src[j];
+		j++;
+	}
+	dst[i + j] = 0;
+	return (i + ft_strlen(src));
+}

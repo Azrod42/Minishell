@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:45:14 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:44:31 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/11/10 09:44:32 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include"libft.h"
 
-# define USER "tsorabel$> "
-
-# include"../libft/libft.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-typedef struct s_data
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char	**prompt;
-	int		exit;
-}	t_data;
+	size_t	i;
 
-int		get_prompt(t_data *dta);
-void	ft_exit(t_data *dta);
-void	redirect(t_data *dta);
-
-#endif
+	i = -1;
+	if (!dst || size < 1)
+		return (ft_strlen((char *)src));
+	if (size)
+		while (++i < size - 1 && src[i])
+			dst[i] = src[i];
+	dst[i] = '\0';
+	i = 0;
+	while (src[i])
+		i++;
+	return (i);
+}
