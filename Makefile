@@ -32,8 +32,11 @@ fclean: clean
 norm:
 	norminette ${SRCS} ${INCLUDE}
 
-git add:
-	git init
-	git add ${SRCS} ${INCLUDE} Makefile
+git_add:
+	git add ${SRCS} ${INCLUDE} Makefile misc/*
+
+git_push:
+	git commit -md
+	git push origin master
 
 re: fclean all
