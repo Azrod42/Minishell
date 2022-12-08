@@ -62,10 +62,10 @@ git_add:
 
 git_push:
 	${_STATUS8}	
-	git commit -m "Autopush Makefile"
+	@git commit -m "Autopush Makefile"
 	${_DONE}
 	${_STATUS9}	
-	git push origin master
+	@git push origin master
 	${_DONE}
 
 git_master: git_add git_push
