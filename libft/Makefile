@@ -70,9 +70,9 @@ INCS	= .
 	@${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
 
 $(NAME): ${OBJS}
-	@echo "${_BOLD}${_UNDER}${_BLUE}Making libft${_END}"
+	@echo "${_BOLD}${_BLUE}Making libft${_END}"
 	@${LIBC} $(NAME) $(OBJS)
-	@echo "${_BOLD}✅${_UNDER}${_IGREEN} Done${_END}"
+	@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
 
 all: $(NAME)
 
@@ -81,6 +81,7 @@ bonus: $(NAME) $(OBJS_B)
     
 fclean: clean
 	@$(RM) $(NAME) $(bonus)
+	@sleep 0.5
 
 clean:
 	@$(RM) -f $(OBJS) $(OBJS_B)
