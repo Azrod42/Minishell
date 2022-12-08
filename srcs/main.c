@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 22:13:22 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/08 09:08:05 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	main()//int argc, char **argv)
 		redirect(&dta);
 	}
 	ft_exit(&dta);
-	return (0);
+	return(0);
 }

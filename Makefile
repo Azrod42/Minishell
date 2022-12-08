@@ -55,10 +55,13 @@ norm:
 
 git_add:
 	git add ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/*
+	git status
 
 git_push:
-	git commit -md
+	git commit -m "Autopush Makefile"
 	git push origin master
+
+git_master: git_add git_push
 
 re: fclean all
 
