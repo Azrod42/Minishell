@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/08 18:44:57 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/08 21:16:27 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	add_list(t_data *dta, int i)
 		ft_lstadd_back(&dta->list_arg, &list);
 }
 
-int	check_arg(t_data *dta)
+int	pars_equal(t_data *dta)
 {
 	size_t	i;
 	char	*tmp;
@@ -63,6 +63,19 @@ int	check_arg(t_data *dta)
 			tmp = dta->t_prompt;
 			dta->t_prompt = ft_strjoin("", &dta->t_prompt[i]);
 		}	
+	}
+	return (0);
+}
+
+int	check_equal(t_data *dta)
+{
+	size_t	i;
+
+	i = -1;
+	while (dta->t_prompt[++i])
+	{
+		if (dta->t_prompt[i] == 0)
+			return (1);
 	}
 	return (0);
 }

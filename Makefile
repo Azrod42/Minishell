@@ -59,7 +59,7 @@ git_add:
 	${_STATUS7}	
 	@git add ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/*
 	${_DONE}
-	@git status | grep modified
+	@git status | grep modif
 
 git_push:
 	${_STATUS8}	
