@@ -62,10 +62,10 @@ git_add:
 
 git_push:
 	${_STATUS8}	
-	@git commit -m "Autopush Makefile" | grep bonjouryapas
+	@git commit -m "Autopush Makefile"
 	${_DONE}
 	${_STATUS9}	
-	@git push origin master | grep bonjouryapas
+	@git push origin master
 	${_DONE}
 
 git_master: git_add git_push
@@ -146,6 +146,6 @@ _STATUS3=@echo "${_BOLD}${_BLUE}Removing *.o ${LIBFTNAME}${_END}" && sleep 0.5
 _STATUS4=@echo "${_BOLD}${_BLUE}fclean ${LIBFTNAME}${_END}" && sleep 0.5
 _STATUS5=@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${LIBFTPATH}${_END}" && sleep 0.5
 _STATUS6=@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${_END}" && sleep 0.5
-_STATUS7=@echo "${_BOLD}${_BLUE}git add : ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/* ${_END}" && sleep 0.5
-_STATUS8=@echo "${_BOLD}${_BLUE}git commit ...${_END}" && sleep 0.5
-_STATUS9=@echo "${_BOLD}${_BLUE}git push ...${_END}" && sleep 0.5
+_STATUS7=@echo "${_BOLD}${_BLUE}GIT ADD : ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/* ${_END}" && sleep 0.5
+_STATUS8=@echo "${_BOLD}${_BLUE}GIT COMMIT ...${_END}" && sleep 0.5
+_STATUS9=@echo "${_BOLD}${_BLUE}GIT PUSH ...${_END}" && sleep 0.5
