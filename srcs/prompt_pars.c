@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/08 21:16:27 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/08 22:43:48 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,24 @@ void	add_list(t_data *dta, int i)
 
 	i++;
 	j = 0;
-	while (dta->t_prompt[i + j] != ' ')
+	while (dta->t_prompt[i + j] != ' ' && dta->t_prompt[i + j])
 		j++;
-	lst.data = malloc(sizeof(char) * j);
-	ft_strlcat(lst.data, &dta->t_prompt[i], j - 1);
+	lst.data = malloc(sizeof(char) * j + 1);
+	ft_strlcat(lst.data, &dta->t_prompt[i], j + 1);
+	printf("%d\n%s\n", j, lst.data);
 	j = 0;
-	while (dta->t_prompt[i - j] != ' ' && i - j != 0)
+	i -= 1;
+	while (dta->t_prompt[i - j] != ' ' && i - j > 0 && dta->t_prompt[i + j])
 		j++;
-	lst.flag = malloc(sizeof(char) * j);
-	ft_strlcat(lst.flag, &dta->t_prompt[i - j], j - 1);
+	lst.flag = malloc(sizeof(char) * j + 1);
+	ft_strlcat(lst.flag, &dta->t_prompt[i - j], j + 1);
+	printf("%d\n%s\n", j, lst.flag);
 	list.content = &lst;
-	if (dta->list_arg == NULL)
+	if (dta->list_arg->content == NULL)
+	{
+		ft_printf("onion");
 		dta->list_arg = ft_lstnew(&lst);
+	}
 	else
 		ft_lstadd_back(&dta->list_arg, &list);
 }
@@ -41,28 +47,23 @@ int	pars_equal(t_data *dta)
 	size_t	i;
 	char	*tmp;
 
-	i = -1;
-	while (dta->t_prompt[++i] != '=')
-		;
+	i = 0;
+	while (dta->t_prompt[i] != '=')
+		i++;
 	if (ft_strlen(&dta->t_prompt[i]) > 0)
 	{
 		if (dta->t_prompt[i - 1] != ' ' && dta->t_prompt[i + 1] != ' ')
 			add_list(dta, i);
-		if (dta->t_prompt[i - 1] == ' ' && dta->t_prompt[i + 1] != ' ')
+		if ((dta->t_prompt[i - 1] == ' ' && dta->t_prompt[i + 1] != ' ')
+			|| (dta->t_prompt[i - 1] != ' ' && dta->t_prompt[i + 1] == ' '))
 		{
+			i++;
 			while (dta->t_prompt[i] == ' ')
 				i++;
 			tmp = dta->t_prompt;
 			dta->t_prompt = ft_strjoin("", &dta->t_prompt[i]);
 			free(tmp);
 		}
-		if (dta->t_prompt[i - 1] != ' ' && dta->t_prompt[i + 1] == ' ')
-		{
-			while (dta->t_prompt[i] == ' ')
-				i++;
-			tmp = dta->t_prompt;
-			dta->t_prompt = ft_strjoin("", &dta->t_prompt[i]);
-		}	
 	}
 	return (0);
 }
@@ -74,7 +75,7 @@ int	check_equal(t_data *dta)
 	i = -1;
 	while (dta->t_prompt[++i])
 	{
-		if (dta->t_prompt[i] == 0)
+		if (dta->t_prompt[i] == '=')
 			return (1);
 	}
 	return (0);

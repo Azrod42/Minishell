@@ -1,3 +1,5 @@
+.DEFAULT_GOAL := all
+
 NAME = minishell
 
 LIBFTNAME = libft.a
@@ -75,6 +77,10 @@ re: fclean all
 
 ree: mclean all
 	@./${NAME}
+
+reee:
+	@./${NAME}
+
 
 
 
