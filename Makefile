@@ -60,7 +60,6 @@ git_add:
 	@git add ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/*
 	${_DONE}
 	@git status | grep modified
-	@git status | grep "new file" 
 
 git_push:
 	${_STATUS8}	
@@ -76,7 +75,6 @@ re: fclean all
 
 ree: mclean all
 	@./${NAME}
-
 
 
 
