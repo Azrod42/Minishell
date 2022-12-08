@@ -6,7 +6,8 @@ LIBFTPATH = ./libft/
 SRCS = srcs/main.c \
 		srcs/prompt.c \
 		srcs/redirect.c \
-		srcs/ft_exit.c
+		srcs/ft_exit.c \
+		srcs/prompt_pars.c \
 
 INCLUDE = include/minishell.h \
 
@@ -59,6 +60,7 @@ git_add:
 	@git add ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/*
 	${_DONE}
 	@git status | grep modified
+	@git status | grep "new file" 
 
 git_push:
 	${_STATUS8}	

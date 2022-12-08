@@ -48,8 +48,8 @@ SRCS	=	ft_atoi.c \
 			ft_swap.c \
 			ft_convert_base.c \
 			ft_putstr_fd_ptf.c \
-			ft_strrchr_ptf.c
-SRCS_B	=   ft_lstadd_back.c \
+			ft_strrchr_ptf.c \
+			ft_lstadd_back.c \
 			ft_lstadd_front.c \
 			ft_lstclear.c \
 			ft_lstdelone.c \

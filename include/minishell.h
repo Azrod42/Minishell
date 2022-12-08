@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/07 18:45:14 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:23:19 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,23 @@
 
 typedef struct s_data
 {
+	char	*t_prompt;
 	char	**prompt;
+	t_list	*list_arg;
 	int		exit;
 }	t_data;
+
+typedef struct s_lst
+{
+	char	*flag;
+	char	*data;
+}	t_lst;
 
 int		get_prompt(t_data *dta);
 void	ft_exit(t_data *dta);
 void	redirect(t_data *dta);
+int		check_arg(t_data *dta);
+void	free_tab(char **str);
+void	reset_data(t_data *dta);
 
 #endif

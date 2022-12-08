@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/08 10:45:05 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:13:33 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,22 @@
 
 int	get_prompt(t_data *dta)
 {
-	char	*prompt;
+	char	*temp;
 
-	prompt = readline(USER);
-	dta->prompt = ft_split(prompt, ' ');
-	free(prompt);
+	dta->t_prompt = readline(USER);
+	if (dta->t_prompt[0] == '\0')
+	{
+		dta->prompt = ft_split("DEL STR", ' ');
+		return (0);
+	}
+	if (!check_arg(dta))
+	{
+		temp = dta->t_prompt;
+		dta->t_prompt = ft_strjoin("    ", dta->t_prompt);
+		free(temp);
+		dta->prompt = ft_split(dta->t_prompt, ' ');
+	}
+	else
+		printf("");
 	return (0);
 }
