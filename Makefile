@@ -22,36 +22,37 @@ all: $(NAME)
 
 ${NAME}: ${OBJS}
 	@make -C ${LIBFTPATH}
-	@echo "${_BOLD}${_BLUE}Moving libft.a to ${INCS}/${_END}" && sleep 0.5
+	${_STATUS1}
 	@mv $(LIBFTPATH)${LIBFTNAME} ${LIBFTNAME}
-	@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
-	@echo "${_BOLD}${_BLUE}Making ${NAME}${_END}" && sleep 0.5
+	${_DONE}
+	${_STATUS2}
 	@${CC} ${FLAGS} -lreadline ${OBJS} ${LIBFTNAME} -o ${NAME}
-	@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
-	@echo "${_BOLD}${_RED}${_L0}\n${_L1}\n${_L2}\n${_L3}\n${_L4}\n${_L5}\n${_L6}\n${_L0}\n${_L7}\n${_L0}\n${_END}"
-	@echo "${_BOLD}${_RED}\nUsage : ./minishell${_END}"
+	${_DONE}
+	${_PRINTART1}
+	${_USAGE}
 
 clean:
-	@echo "${_BOLD}${_BLUE}Removing *.o ${LIBFTNAME}${_END}" && sleep 0.5
+	${_STATUS3}
 	@rm -rf *.o
-	@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
+	${_DONE}
 
 fclean: clean
-	@echo "${_BOLD}${_BLUE}fclean ${LIBFTNAME}${_END}" && sleep 0.5
+	${_STATUS4}
 	@make fclean -C ${LIBFTPATH}
-	@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
-	@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${LIBFTPATH}${_END}" && sleep 0.5
+	${_DONE}
+	${_STATUS5}
 	@rm -rf $(OBJS) $(LIBFTNAME) $(NAME)
-	@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
+	${_DONE}
 	@sleep 0.5
 
 mclean: clean
-	@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${_END}" && sleep 0.5
+	${_STATUS6}	
 	@rm -rf $(OBJS) $(LIBFTNAME) $(NAME)
-	@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
+	${_DONE}
 
 norm:
-	norminette ${SRCS} ${INCLUDE}
+	${_PRINTART2}
+	@norminette ${SRCS} ${INCLUDE}
 
 git_add:
 	git add ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/*
@@ -66,10 +67,20 @@ git_master: git_add git_push
 re: fclean all
 
 ree: mclean all
+	@./${NAME}
+
+
+
+
+
+
+
+
+
+
 
 
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 # This is a minimal set of ANSI/VT100 color codes
 _END=$'\x1b[0m
 _BOLD=$'\x1b[1m
@@ -95,7 +106,9 @@ _IBLUE=$'\x1b[44m
 _IPURPLE=$'\x1b[45m
 _ICYAN=$'\x1b[46m
 _IWHITE=$'\x1b[47m
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+_PRINTART1=@echo "${_BOLD}${_RED}${_L0}\n${_L1}\n${_L2}\n${_L3}\n${_L4}\n${_L5}\n${_L6}\n${_L0}\n${_L7}\n${_L0}\n${_END}"
 _L0=$'|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|'
 _L1=$'| ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     |
 _L2=$'| ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     |
@@ -104,3 +117,26 @@ _L4=$'| ██║╚██╔╝██║██║██║╚██╗██║
 _L5=$'| ██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗|
 _L6=$'| ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝|
 _L7=$'|               l|f|a|n|t|i|n|e| |&| |t|s|o|r|a|b|e|l|               |
+
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+_PRINTART2=@echo "${_BOLD}${_RED}${_L08}\n${_L09}\n${_L10}\n${_L11}\n${_L12}\n${_L13}\n${_L14}\n${_L08}\n${_END}"
+_L08=$'|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|'
+_L09=$'| ███╗   ██╗ ██████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗███████╗████████╗████████╗███████╗ |
+_L10=$'| ████╗  ██║██╔═══██╗██╔══██╗████╗ ████║██║████╗  ██║██╔════╝╚══██╔══╝╚══██╔══╝██╔════╝ |
+_L11=$'| ██╔██╗ ██║██║   ██║██████╔╝██╔████╔██║██║██╔██╗ ██║█████╗     ██║      ██║   █████╗   |
+_L12=$'| ██║╚██╗██║██║   ██║██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══╝     ██║      ██║   ██╔══╝   |
+_L13=$'| ██║ ╚████║╚██████╔╝██║  ██║██║ ╚═╝ ██║██║██║ ╚████║███████╗   ██║      ██║   ███████╗ |
+_L14=$'| ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝ |
+
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+_USAGE=@echo "${_BOLD}${_RED}\nUsage : ./minishell${_END}"
+
+_DONE=@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
+_STATUS1=@echo "${_BOLD}${_BLUE}Moving libft.a to ${INCS}/${_END}" && sleep 0.5
+_STATUS2=@echo "${_BOLD}${_BLUE}Making ${NAME}${_END}" && sleep 0.5
+_STATUS3=@echo "${_BOLD}${_BLUE}Removing *.o ${LIBFTNAME}${_END}" && sleep 0.5
+_STATUS4=@echo "${_BOLD}${_BLUE}fclean ${LIBFTNAME}${_END}" && sleep 0.5
+_STATUS5=@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${LIBFTPATH}${_END}" && sleep 0.5
+_STATUS6=@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${_END}" && sleep 0.5
