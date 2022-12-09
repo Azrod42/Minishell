@@ -6,13 +6,13 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 15:24:02 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:48:34 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../include/minishell.h"
 
-int	check_space(t_data *dta)
+int	check_only_space(t_data *dta)
 {
 	size_t	i;
 
@@ -28,7 +28,7 @@ int	get_prompt(t_data *dta)
 	dta->t_prompt = readline(USER);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
-	if (!check_space(dta))
+	if (!check_only_space(dta))
 		dta->t_prompt[0] = '\0';
 	if (dta->t_prompt[0] == '\0')
 	{

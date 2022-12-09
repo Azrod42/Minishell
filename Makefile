@@ -6,8 +6,8 @@ LIBFTPATH = ./libft/
 SRCS = srcs/main.c \
 		srcs/prompt.c \
 		srcs/redirect.c \
-		srcs/ft_exit.c \
-		srcs/pars_equal.c \
+		srcs/exit/ft_exit.c \
+		srcs/pars/pars_equal.c \
 
 INCLUDE = include/minishell.h \
 
