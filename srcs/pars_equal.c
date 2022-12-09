@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt_pars.c                                      :+:      :+:    :+:   */
+/*   pars_equal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 12:32:10 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:24:26 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../include/minishell.h"
-
-void	free_lst(t_lst **lst)
-{
-	size_t	i;
-
-	i = -1;
-	if (lst)
-	{
-		while (lst[++i])
-			if (lst[i] != NULL)
-				free(lst[i]);
-	}
-	free(lst);
-}
 
 void	addtab_arg(t_data *dta, t_lst *lst)
 {
@@ -73,6 +59,8 @@ void	add_list(t_data *dta, int i)
 	lst->flag = malloc(sizeof(char) * j + 1);
 	ft_strlcat(lst->flag, &dta->t_prompt[i - j + 1], j + 1);
 	addtab_arg(dta, lst);
+	ft_memset(dta->t_prompt, ' ', ft_strlen(lst->data)
+		+ ft_strlen(lst->flag) + 2);
 }
 
 t_lst	**pars_equal(t_data *dta)

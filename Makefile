@@ -1,5 +1,3 @@
-.DEFAULT_GOAL := all
-
 NAME = minishell
 
 LIBFTNAME = libft.a
@@ -82,16 +80,6 @@ reee:
 	@./${NAME}
 
 
-
-
-
-
-
-
-
-
-
-
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # This is a minimal set of ANSI/VT100 color codes
 _END=$'\x1b[0m
@@ -155,3 +143,5 @@ _STATUS6=@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${_END}" &
 _STATUS7=@echo "${_BOLD}${_BLUE}GIT ADD : ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/* ${_END}" && sleep 0.5
 _STATUS8=@echo "${_BOLD}${_BLUE}GIT COMMIT ...${_END}" && sleep 0.5
 _STATUS9=@echo "${_BOLD}${_BLUE}GIT PUSH ...${_END}" && sleep 0.5
+
+

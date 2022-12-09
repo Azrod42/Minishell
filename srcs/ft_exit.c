@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/08 17:14:28 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:57:29 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ void	free_tab(char **str)
 	free(str);
 }
 
+void	free_lst(t_lst **lst, t_data *dta)
+{
+	size_t	i;
+
+	i = -1;
+	if (dta->nb_arg != 0)
+	{
+		while (++i < dta->nb_arg)
+		{
+			free(lst[i]->data);
+			free(lst[i]->flag);
+			free(lst[i]);
+		}
+		free(lst);
+	}
+}
+
 void	reset_data(t_data *dta)
 {
 	if (dta->prompt != NULL)
@@ -36,7 +53,7 @@ void	reset_data(t_data *dta)
 
 void	ft_exit(t_data *dta)
 {
-	free_tab(dta->prompt);
-	system("leaks minishell");
+	free_lst(dta->d_arg, dta);
+	// system("leaks minishell");
 	exit(0);
 }

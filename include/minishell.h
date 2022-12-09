@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 10:59:04 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:05:16 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include"../libft/libft.h"
 # include <stdio.h>
 # include <readline/readline.h>
-# include <readline/history.h>
+//# include <readline/history.h>
 
 typedef struct s_lst
 {
