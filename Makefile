@@ -9,7 +9,7 @@ SRCS = srcs/main.c \
 		srcs/prompt.c \
 		srcs/redirect.c \
 		srcs/ft_exit.c \
-		srcs/prompt_pars.c \
+		srcs/pars_equal.c \
 
 INCLUDE = include/minishell.h \
 
