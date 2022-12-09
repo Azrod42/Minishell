@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 14:05:16 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:57:28 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int		check_equal(t_data *dta);
 void	free_tab(char **str);
 void	reset_data(t_data *dta);
 t_lst	**pars_equal(t_data *dta);
+void	replace_arg(t_data *dta);
 
 #endif

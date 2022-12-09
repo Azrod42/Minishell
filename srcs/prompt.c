@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 16:48:34 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:33:08 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	get_prompt(t_data *dta)
 		dta->prompt = ft_split("DEL STR", ' ');
 		return (0);
 	}
+	replace_arg(dta);
 	dta->prompt = ft_split(dta->t_prompt, ' ');
 	return (0);
 }
