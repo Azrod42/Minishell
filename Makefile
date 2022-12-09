@@ -8,6 +8,7 @@ SRCS = srcs/main.c \
 		srcs/redirect.c \
 		srcs/exit/ft_exit.c \
 		srcs/pars/pars_equal.c \
+		srcs/pars/pars_replace_equal.c \
 
 INCLUDE = include/minishell.h \
 
