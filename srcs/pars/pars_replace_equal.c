@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 22:58:56 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/10 00:09:20 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,14 @@ size_t	get_len_replace(t_data *dta)
 	j = 0;
 	while (dta->t_prompt[++i + j])
 	{
-		printf("%c", dta->t_prompt[i + j]);
 		if (dta->t_prompt[i + j] == '$')
 		{
 			while (dta->t_prompt[i + j] != ' ' && dta->t_prompt[i + j] != '\0')
 			{
-				printf("%c", dta->t_prompt[i + j]);
 				j++;
 			}
 		}
 	}
-	printf("\n");
 	return (i);
 }
 
@@ -66,37 +63,45 @@ void	replace_arg(t_data *dta)
 	size_t	j;
 	size_t	k;
 	size_t	l;
+	size_t	m;
 	char	*str;
 
 	i = -1;
-	printf("%zu\n", get_len_replace(dta));
+	m = 0;
 	if (dta->nb_arg != 0)
 	{
-		str = malloc(sizeof(char) * get_len_replace(dta));
+		str = malloc(sizeof(char) * ft_strlen(dta->t_prompt));
 		while (dta->t_prompt[++i])
 		{
 			j = 0;
+			printf("%c", dta->t_prompt[i]);
 			if (dta->t_prompt[i] == '$')
 			{
 				k = -1;
-				l = -1;
 				while (dta->t_prompt[i + j + 1] != ' ' && dta->t_prompt[i + j + 1])
 					j++;
 				printf("=%zu\n", j);
 				while (++k < dta->nb_arg)
 				{
+					l = -1;
 					printf("%s\n", ft_strnstr_len(&dta->t_prompt[i + 1], dta->d_arg[k]->flag, j));
 					if (ft_strnstr_len(&dta->t_prompt[i + 1], dta->d_arg[k]->flag, j) != NULL)
 					{
 						printf("find\n");
 						while (dta->d_arg[k]->data[++l])
-							str[i + l] =  dta->d_arg[k]->data[l];
+						{
+							str[m] =  dta->d_arg[k]->data[l];
+							m++;
+						}
+						i +=  j;
 					}
 				}
-				i += j;
 			}
 			else
-				str[i] = dta->t_prompt[i];
+			{
+				str[m] = dta->t_prompt[i];
+				m++;
+			}
 		}
 		printf("%s\n",str);
 		free(dta->t_prompt);
