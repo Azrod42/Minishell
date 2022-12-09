@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 17:10:58 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:13:07 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	ft_exit(t_data *dta)
 	free_lst(dta->d_arg, dta);
 	exit(0);
 }
+
 	// system("leaks minishell");
