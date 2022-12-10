@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/10 00:09:20 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:18:55 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	replace_arg(t_data *dta)
 
 	i = -1;
 	m = 0;
+	printf("start-replace\n");
 	if (dta->nb_arg != 0)
 	{
 		str = malloc(sizeof(char) * ft_strlen(dta->t_prompt));
@@ -84,7 +85,7 @@ void	replace_arg(t_data *dta)
 				while (++k < dta->nb_arg)
 				{
 					l = -1;
-					printf("%s\n", ft_strnstr_len(&dta->t_prompt[i + 1], dta->d_arg[k]->flag, j));
+					printf("//%s\n", ft_strnstr_len(&dta->t_prompt[i + 1], dta->d_arg[k]->flag, j));
 					if (ft_strnstr_len(&dta->t_prompt[i + 1], dta->d_arg[k]->flag, j) != NULL)
 					{
 						printf("find\n");
@@ -93,9 +94,9 @@ void	replace_arg(t_data *dta)
 							str[m] =  dta->d_arg[k]->data[l];
 							m++;
 						}
-						i +=  j;
 					}
 				}
+				i +=  j;
 			}
 			else
 			{
