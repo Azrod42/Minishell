@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/10 13:06:21 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:13:30 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ size_t	get_len_replace(t_data *dta)
 	return (i);
 }
 
+// size_t	replace_arg_2(t_data *dta)
+// {
+	
+// }
+
 void	replace_arg(t_data *dta)
 {
 	size_t	i;
@@ -68,28 +73,24 @@ void	replace_arg(t_data *dta)
 
 	i = -1;
 	m = 0;
-	// printf("start-replace\n");
 	if (dta->nb_arg != 0)
 	{
 		str = malloc(sizeof(char) * ft_strlen(dta->t_prompt));
 		while (dta->t_prompt[++i])
 		{
 			j = 0;
-			// printf("%c", dta->t_prompt[i]);
 			if (dta->t_prompt[i] == '$' && dta->t_prompt[i + 1] != '$')
 			{
 				k = -1;
 				while (dta->t_prompt[i + j + 1] != ' ' && dta->t_prompt
 					[i + j + 1] != '$' && dta->t_prompt[i + j + 1])
 					j++;
-				// printf("=%zu\n", j);
 				while (++k < dta->nb_arg)
 				{
 					l = -1;
-					// printf("//%s\n", ft_strnstr_len(&dta->t_prompt[i + 1], dta->d_arg[k]->flag, j));
-					if (ft_strnstr_len(&dta->t_prompt[i + 1], dta->d_arg[k]->flag, j) != NULL)
+					if (ft_strnstr_len(&dta->t_prompt[i + 1],
+							dta->d_arg[k]->flag, j) != NULL)
 					{
-						// printf("find\n");
 						while (dta->d_arg[k]->data[++l])
 						{
 							str[m] =  dta->d_arg[k]->data[l];
@@ -110,3 +111,6 @@ void	replace_arg(t_data *dta)
 		dta->t_prompt = str;
 	}
 }
+
+//a gerer le cas d'un $arg=test
+//$$arg doit etre egale a $arr
