@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/10 14:13:30 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,58 +57,56 @@ size_t	get_len_replace(t_data *dta)
 	return (i);
 }
 
-// size_t	replace_arg_2(t_data *dta)
-// {
-	
-// }
+size_t	replace_arg_2(t_data *dta, size_t i, size_t j, size_t *m)
+{
+	size_t	k;
+	size_t	l;
+
+	k = -1;
+	while (dta->t_prompt[i + j + 1] != ' ' && dta->t_prompt
+		[i + j + 1] != '$' && dta->t_prompt[i + j + 1])
+		j++;
+	while (++k < dta->nb_arg)
+	{
+		l = -1;
+		if (ft_strnstr_len(&dta->t_prompt[i + 1],
+				dta->d_arg[k]->flag, j) != NULL)
+		{
+			while (dta->d_arg[k]->data[++l])
+			{
+				dta->temp_str_replace_arg[*m] = dta->d_arg[k]->data[l];
+				*m += 1;
+			}
+		}
+	}
+	return (j);
+}
 
 void	replace_arg(t_data *dta)
 {
 	size_t	i;
 	size_t	j;
-	size_t	k;
-	size_t	l;
 	size_t	m;
-	char	*str;
 
 	i = -1;
 	m = 0;
 	if (dta->nb_arg != 0)
 	{
-		str = malloc(sizeof(char) * ft_strlen(dta->t_prompt));
+		dta->temp_str_replace_arg = malloc(sizeof(char)
+				* ft_strlen(dta->t_prompt));
 		while (dta->t_prompt[++i])
 		{
 			j = 0;
 			if (dta->t_prompt[i] == '$' && dta->t_prompt[i + 1] != '$')
-			{
-				k = -1;
-				while (dta->t_prompt[i + j + 1] != ' ' && dta->t_prompt
-					[i + j + 1] != '$' && dta->t_prompt[i + j + 1])
-					j++;
-				while (++k < dta->nb_arg)
-				{
-					l = -1;
-					if (ft_strnstr_len(&dta->t_prompt[i + 1],
-							dta->d_arg[k]->flag, j) != NULL)
-					{
-						while (dta->d_arg[k]->data[++l])
-						{
-							str[m] =  dta->d_arg[k]->data[l];
-							m++;
-						}
-					}
-				}
-				i +=  j;
-			}
+				i += replace_arg_2(dta, i, j, &m);
 			else
 			{
-				str[m] = dta->t_prompt[i];
+				dta->temp_str_replace_arg[m] = dta->t_prompt[i];
 				m++;
 			}
 		}
-		printf("%s\n",str);
 		free(dta->t_prompt);
-		dta->t_prompt = str;
+		dta->t_prompt = dta->temp_str_replace_arg;
 	}
 }
 

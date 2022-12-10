@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 17:57:28 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:19:11 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_data
 	size_t	nb_arg;
 	char	*t_prompt;
 	char	**prompt;
+	char	*temp_str_replace_arg;
 	int		exit;
 }	t_data;
 

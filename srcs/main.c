@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 17:09:13 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/10 15:37:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(void)
 	i = -1;
 	dta.exit = 0;
 	dta.nb_arg = 0;
+	printf("\e[1;1H\e[2J");
 	while (!dta.exit)
 	{
 		get_prompt(&dta);
