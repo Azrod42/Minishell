@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/10 14:24:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:46:48 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,4 @@ void	replace_arg(t_data *dta)
 	}
 }
 
-//a gerer le cas d'un $arg=test
-//$$arg doit etre egale a $arr
+//a gerer le cas d'un $arg=test >>>>>> $$arg doit etre = a $arr

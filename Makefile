@@ -8,6 +8,7 @@ SRCS = srcs/main.c \
 		srcs/redirect.c \
 		srcs/exit/ft_exit.c \
 		srcs/pars/pars_equal.c \
+		srcs/pars/pars_quote.c \
 		srcs/pars/pars_replace_equal.c \
 
 INCLUDE = include/minishell.h \
@@ -75,6 +76,7 @@ git_master: git_add git_push
 re: fclean all
 
 ree: mclean all
+	@sleep 2
 	@./${NAME}
 
 reee:
