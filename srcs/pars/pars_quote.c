@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 17:36:04 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 18:56:34 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	replace_in_quote(t_data *dta)
 	i = -1;
 	while (dta->t_prompt[++i])
 	{
-		while (dta->t_prompt[i] != '\"' && dta->t_prompt[i] && dta->t_prompt[i] != '\'')
+		while (dta->t_prompt[i] != '\"'
+			&& dta->t_prompt[i] && dta->t_prompt[i] != '\'')
 			i++;
 		if (dta->t_prompt[i] == '\'')
 		{

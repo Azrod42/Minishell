@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 15:42:28 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:00:10 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,13 @@ void	replace_arg(t_data *dta);
 void	replace_in_quote(t_data *dta);
 void	replace_in_simple_quote(t_data *dta);
 void	replace_special_char(t_data *dta);
+void	replace_not_in_db(t_data *dta);
 void	remove_quote(t_data *dta);
 t_lst	**pars_equal(t_data *dta);
 void	redirect(t_data *dta);
 char	*ft_strnstr_len(const char *big, const char *little, size_t len);
+char	*strstr_el(const char *big, const char *little,
+			size_t len, size_t ilen);
 
 //exit
 void	ft_exit(t_data *dta);
