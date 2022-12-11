@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 11:41:17 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:28:15 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	get_len_replace(t_data *dta)
 	{
 		if (dta->t_prompt[i + j] == '$')
 		{
-			while (!is_sep(dta->t_prompt[i + j])
+			while (!is_sep(dta->t_prompt[i + j] * -1)
 				&& dta->t_prompt[i + j] != '\0')
 			{
 				j++;
@@ -41,7 +41,7 @@ size_t	replace_arg_2(t_data *dta, size_t i, size_t j, size_t *m)
 	size_t	l;
 
 	k = -1;
-	while (!is_sep(dta->t_prompt[i + j + 1]) && dta->t_prompt
+	while (!is_sep(dta->t_prompt[i + j + 1] * -1) && dta->t_prompt
 		[i + j + 1] != '$' && dta->t_prompt[i + j + 1])
 		j++;
 	while (++k < dta->nb_arg)
@@ -72,7 +72,7 @@ void	replace_arg(t_data *dta)
 	{
 		dta->temp_str_replace_arg = malloc(sizeof(char)
 				* ft_strlen(dta->t_prompt) + 5000);
-		ft_bzero(dta->temp_str_replace_arg, ft_strlen(dta->t_prompt) + 4990);
+		ft_bzero(dta->temp_str_replace_arg, ft_strlen(dta->t_prompt) + 4900);
 		while (dta->t_prompt[++i])
 		{
 			j = 0;
@@ -90,3 +90,5 @@ void	replace_arg(t_data *dta)
 }
 
 //a gerer le cas d'un $arg=test >>>>>> $$arg doit etre = a $arr
+//echo "arguments" "c'est ok" 'oui c"est ok' 'la c"est oui' "$ARG" '$ARG' "test$ARG de $ARGde"
+//echo "test$ARG de $ARGde"

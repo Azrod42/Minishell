@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/10 15:37:49 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 16:04:50 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(void)
 		redirect(&dta);
 		reset_data(&dta);
 	}
+	i = -1;
 	while (++i < dta.nb_arg)
 		ft_printf("ARG[%d] = FLAG=%s CONTENT=%s\n",
 			i, dta.d_arg[i]->flag, dta.d_arg[i]->data);
