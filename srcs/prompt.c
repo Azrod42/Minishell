@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 10:08:46 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 13:55:16 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int	check_only_space(t_data *dta)
 int	get_prompt(t_data *dta)
 {
 	dta->t_prompt = readline(USER);
+	replace_in_quote(dta);
+	replace_in_simple_quote(dta);
+	remove_quote(dta);
 	replace_arg(dta);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);

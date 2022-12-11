@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 10:01:51 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 12:54:23 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ void	add_list(t_data *dta, int i)
 	i++;
 	j = 0;
 	lst = malloc(sizeof(t_lst) * 1);
-	while (!is_sep(dta->t_prompt[i + j]) && dta->t_prompt[i + j])
+	while (dta->t_prompt[i + j] != ' ' && dta->t_prompt[i + j])
 		j++;
 	lst->data = malloc(sizeof(char) * j + 1);
-	ft_strlcat(lst->data, &dta->t_prompt[i], j + 1);
+	ft_memcpy(lst->data, &dta->t_prompt[i], j + 1);
 	j = 0;
 	i -= 2;
-	while (!is_sep(dta->t_prompt[i - j]) && i - j >= 0)
+	while (dta->t_prompt[i - j] != ' ' && i - j >= 0)
 		j++;
 	lst->flag = malloc(sizeof(char) * j + 1);
 	ft_strlcat(lst->flag, &dta->t_prompt[i - j + 1], j + 1);
 	addtab_arg(dta, lst);
 	ft_memset(dta->t_prompt, ' ', ft_strlen(lst->data)
-		+ ft_strlen(lst->flag) + 2);
+		+ ft_strlen(lst->flag) + 1);
 }
 
 t_lst	**pars_equal(t_data *dta)

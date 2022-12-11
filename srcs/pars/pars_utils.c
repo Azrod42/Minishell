@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 09:29:30 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 10:10:41 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/12/11 13:30:26 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/12/11 13:56:34 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,24 @@ int	is_wspace(char c)
 	return (0);
 }
 
-int is_sep(char c)
+int	is_sep(char c)
 {
 	if (c == '\n' || c == ' ')
 		return (1);
 	return (0);
+}
+
+size_t	nb_charinstr(char *str, char c)
+{
+	size_t	i;
+	size_t	j;
+
+	i = -1;
+	j = 0;
+	while (str[++i])
+		if (str[i] == c)
+			j++;
+	return (j);
 }
 
 char	*ft_strnstr_len(const char *big, const char *little, size_t len)

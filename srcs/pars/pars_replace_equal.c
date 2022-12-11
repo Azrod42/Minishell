@@ -6,36 +6,13 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 10:04:21 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 11:41:17 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-char	*ft_strnstr_len(const char *big, const char *little, size_t len)
-{
-	size_t	i;
-	size_t	j;
 
-	i = 0;
-	if (!big && len == 0)
-		return (0);
-	if (!little[i])
-		return (((char *)big));
-	while (big[i] && i <= len)
-	{
-		j = 0;
-		if (big[i] == little[j])
-		{
-			while (big[i + j] == little[j] && little[j] && i + j < len)
-					j++;
-			if (!little[j] && len == j)
-				return (&((char *)big)[i]);
-		}
-		i++;
-	}
-	return (NULL);
-}
 
 size_t	get_len_replace(t_data *dta)
 {
@@ -94,7 +71,8 @@ void	replace_arg(t_data *dta)
 	if (dta->nb_arg != 0)
 	{
 		dta->temp_str_replace_arg = malloc(sizeof(char)
-				* ft_strlen(dta->t_prompt));
+				* ft_strlen(dta->t_prompt) + 5000);
+		ft_bzero(dta->temp_str_replace_arg, ft_strlen(dta->t_prompt) + 4990);
 		while (dta->t_prompt[++i])
 		{
 			j = 0;
