@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/09 17:08:03 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 10:01:51 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	add_list(t_data *dta, int i)
 	i++;
 	j = 0;
 	lst = malloc(sizeof(t_lst) * 1);
-	while (dta->t_prompt[i + j] != ' ' && dta->t_prompt[i + j])
+	while (!is_sep(dta->t_prompt[i + j]) && dta->t_prompt[i + j])
 		j++;
 	lst->data = malloc(sizeof(char) * j + 1);
 	ft_strlcat(lst->data, &dta->t_prompt[i], j + 1);
 	j = 0;
 	i -= 2;
-	while (dta->t_prompt[i - j] != ' ' && i - j >= 0)
+	while (!is_sep(dta->t_prompt[i - j]) && i - j >= 0)
 		j++;
 	lst->flag = malloc(sizeof(char) * j + 1);
 	ft_strlcat(lst->flag, &dta->t_prompt[i - j + 1], j + 1);
@@ -73,13 +73,13 @@ t_lst	**pars_equal(t_data *dta)
 		i++;
 	if (ft_strlen(&dta->t_prompt[i]) > 0)
 	{
-		if (dta->t_prompt[i - 1] != ' ' && dta->t_prompt[i + 1] != ' ')
+		if (!is_sep(dta->t_prompt[i - 1]) && !is_sep(dta->t_prompt[i + 1]))
 			add_list(dta, i);
-		if ((dta->t_prompt[i - 1] == ' ' && dta->t_prompt[i + 1] != ' ')
-			|| (dta->t_prompt[i - 1] != ' ' && dta->t_prompt[i + 1] == ' '))
+		if ((is_sep(dta->t_prompt[i - 1]) && !is_sep(dta->t_prompt[i + 1]))
+			|| (!is_sep(dta->t_prompt[i - 1]) && is_sep(dta->t_prompt[i + 1])))
 		{
 			i++;
-			while (dta->t_prompt[i] == ' ')
+			while (is_sep(dta->t_prompt[i]))
 				i++;
 			tmp = dta->t_prompt;
 			dta->t_prompt = ft_strjoin("", &dta->t_prompt[i]);
@@ -101,3 +101,5 @@ int	check_equal(t_data *dta)
 	}
 	return (0);
 }
+
+//gerer le cas de + de 1 = ext ARG===test >>>> test not foud

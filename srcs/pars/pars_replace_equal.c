@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/10 17:46:48 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 10:04:21 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ size_t	get_len_replace(t_data *dta)
 	{
 		if (dta->t_prompt[i + j] == '$')
 		{
-			while (dta->t_prompt[i + j] != ' ' && dta->t_prompt[i + j] != '\0')
+			while (!is_sep(dta->t_prompt[i + j])
+				&& dta->t_prompt[i + j] != '\0')
 			{
 				j++;
 			}
@@ -63,7 +64,7 @@ size_t	replace_arg_2(t_data *dta, size_t i, size_t j, size_t *m)
 	size_t	l;
 
 	k = -1;
-	while (dta->t_prompt[i + j + 1] != ' ' && dta->t_prompt
+	while (!is_sep(dta->t_prompt[i + j + 1]) && dta->t_prompt
 		[i + j + 1] != '$' && dta->t_prompt[i + j + 1])
 		j++;
 	while (++k < dta->nb_arg)

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/10 17:39:02 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 10:10:54 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ typedef struct s_data
 int		get_prompt(t_data *dta);
 
 //pars
+int		is_wspace(char c);
+int		is_sep(char c);
 int		check_equal(t_data *dta);
 void	replace_arg(t_data *dta);
 t_lst	**pars_equal(t_data *dta);
 void	redirect(t_data *dta);
+char	*ft_strnstr_len(const char *big, const char *little, size_t len);
 
 //exit
 void	ft_exit(t_data *dta);

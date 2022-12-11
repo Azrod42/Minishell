@@ -7,6 +7,7 @@ SRCS = srcs/main.c \
 		srcs/prompt.c \
 		srcs/redirect.c \
 		srcs/exit/ft_exit.c \
+		srcs/pars/pars_utils.c \
 		srcs/pars/pars_equal.c \
 		srcs/pars/pars_quote.c \
 		srcs/pars/pars_replace_equal.c \
@@ -76,7 +77,7 @@ git_master: git_add git_push
 re: fclean all
 
 ree: mclean all
-	@sleep 2
+	@sleep 1
 	@./${NAME}
 
 reee:

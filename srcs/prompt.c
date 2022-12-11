@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/10 17:45:31 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/11 10:08:46 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_only_space(t_data *dta)
 
 	i = -1;
 	while (dta->t_prompt[++i])
-		if (dta->t_prompt[i] != ' ')
+		if (!is_sep(dta->t_prompt[i]))
 			return (1);
 	return (0);
 }
