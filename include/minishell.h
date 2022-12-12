@@ -6,14 +6,14 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 19:00:10 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:03:10 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# define USER "tsorabel$> "
+# define USER "\033[0;36mminichibre$> \033[0;37m"
 
 # include"../libft/libft.h"
 # include <stdio.h>

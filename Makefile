@@ -75,6 +75,10 @@ git_push:
 
 git_master: git_add git_push
 
+nbline:
+	@echo "Nombre de ligne :"
+	@cat srcs/**/*.c include/minishell.h srcs/*.c | wc -l 
+
 re: fclean all
 
 ree: mclean all
@@ -148,4 +152,3 @@ _STATUS6=@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${_END}" &
 _STATUS7=@echo "${_BOLD}${_BLUE}GIT ADD : ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/* ${_END}" && sleep 0.5
 _STATUS8=@echo "${_BOLD}${_BLUE}GIT COMMIT ...${_END}" && sleep 0.5
 _STATUS9=@echo "${_BOLD}${_BLUE}GIT PUSH ...${_END}" && sleep 0.5
-

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 13:30:26 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 19:05:00 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:32:57 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*strstr_el(const char *big, const char *little,
 		{
 			while (big[i + j] == little[j] && little[j] && i + j < len)
 					j++;
-			if (!little[j] && ilen == j)
+			if (!little[j] && ilen + 1 == j)
 				return (&((char *)big)[i]);
 		}
 		i++;

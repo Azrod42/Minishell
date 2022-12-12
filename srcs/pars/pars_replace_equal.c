@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 19:01:23 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:27:01 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	replace_not_in_db(t_data *dta)
 			else
 				while (++i < dta->nb_arg)
 					if (strstr_el(&dta->t_prompt[j], dta->d_arg[i]->flag,
-							ft_strlen(dta->d_arg[i]->flag), len) == NULL)
+							ft_strlen(dta->d_arg[i]->flag), len) != NULL)
 						dta->t_prompt[j - 1] = dta->t_prompt[j - 1] * -1;
 		}
 	}

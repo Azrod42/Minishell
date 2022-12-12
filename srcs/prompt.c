@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 18:54:16 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:29:08 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,6 @@ int	get_prompt(t_data *dta)
 	replace_special_char(dta);
 	return (0);
 }
+
+//int i = 0;
+//ft_printf("DEBUG[%d]: %s\n", i += 1, dta->t_prompt);
