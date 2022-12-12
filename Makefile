@@ -12,6 +12,11 @@ SRCS = srcs/main.c \
 		srcs/pars/pars_quote.c \
 		srcs/pars/pars_single_quote.c \
 		srcs/pars/pars_replace_equal.c \
+		srcs/executor/hub_exec.c \
+		srcs/executor/chains.c \
+		srcs/executor/split_for_cmd.c \
+		srcs/executor/split_for_cmd2.c \
+		srcs/pars/take_env.c \
 
 INCLUDE = include/minishell.h \
 

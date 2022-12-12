@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 13:21:27 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:14:01 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	geprompt_t(t_data *dta)
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')
 	{
-		dta->prompt = ft_split("EMPTY LINE", ' ');
+		dta->prompt = NULL;
 		return (0);
 	}
 	dta->prompt = ft_split(dta->prompt_t, ' ');
