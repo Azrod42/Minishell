@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 16:35:41 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:49:52 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	check_only_space(t_data *dta)
 int	geprompt_t(t_data *dta)
 {
 	dta->prompt_t = readline(USER);
-	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
-	dta->prompt_t[ft_strlen(dta->prompt_t) + 1] = '\0';
+	check_end_pipe(dta);
+	replace_pipe(dta);
 	add_historic(dta);
 	replace_in_quote(dta);
 	replace_in_simple_quote(dta);
@@ -40,7 +40,7 @@ int	geprompt_t(t_data *dta)
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')
 	{
-		dta->prompt = ft_split("EMPTY LINE", ' ');
+		dta->prompt = NULL;
 		return (0);
 	}
 	dta->prompt = ft_split(dta->prompt_t, ' ');

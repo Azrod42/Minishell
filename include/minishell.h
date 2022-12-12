@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 15:44:40 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:27:20 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int		is_wspace(char c);
 int		is_sep(char c);
 size_t	nb_charinstr(char *str, char c);
 int		check_equal(t_data *dta);
+void	check_end_pipe(t_data *dta);
+void	replace_pipe(t_data *dta);
 void	replace_arg(t_data *dta);
 void	replace_in_quote(t_data *dta);
 void	replace_in_simple_quote(t_data *dta);
