@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 12:47:31 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:44:40 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_data
 	char	*prompt_t;
 	char	*temp_str_replace_arg;
 	char	**prompt;
+	char	**historique;
+	size_t	nb_arg_hist;
 	int		exit;
 }	t_data;
 
@@ -50,6 +52,8 @@ void	replace_in_simple_quote(t_data *dta);
 void	replace_special_char(t_data *dta);
 void	replace_not_in_db(t_data *dta);
 void	remove_quote(t_data *dta);
+void	add_historic(t_data *dta);
+void	print_historic(t_data *dta);
 t_lst	**pars_equal(t_data *dta);
 void	redirect(t_data *dta);
 char	*ft_strnstr_len(const char *big, const char *little, size_t len);

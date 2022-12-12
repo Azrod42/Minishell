@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 13:21:27 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:35:41 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	geprompt_t(t_data *dta)
 	dta->prompt_t = readline(USER);
 	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
 	dta->prompt_t[ft_strlen(dta->prompt_t) + 1] = '\0';
+	add_historic(dta);
 	replace_in_quote(dta);
 	replace_in_simple_quote(dta);
 	remove_quote(dta);
@@ -49,3 +50,5 @@ int	geprompt_t(t_data *dta)
 
 //int i = 0;
 //ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
+
+	//print_historic(dta);
