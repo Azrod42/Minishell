@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/11 17:17:51 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:47:31 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ void	replace_in_simple_quote(t_data *dta)
 
 	nbquote = 0;
 	i = 0;
-	while (dta->t_prompt[++i])
-		if (dta->t_prompt[i] == '\'')
+	while (dta->prompt_t[++i])
+		if (dta->prompt_t[i] == '\'')
 			nbquote++;
 	i = 0;
 	while (nbquote > 1)
 	{
-		while (dta->t_prompt[i] != '\'' && dta->t_prompt[i])
+		while (dta->prompt_t[i] != '\'' && dta->prompt_t[i])
 			i++;
-		while (dta->t_prompt[++i] != '\'' && dta->t_prompt[i])
-			if (is_sep(dta->t_prompt[i]) || dta->t_prompt[i] == '\"'
-				|| dta->t_prompt[i] == '$')
-				dta->t_prompt[i] = dta->t_prompt[i] * -1;
+		while (dta->prompt_t[++i] != '\'' && dta->prompt_t[i])
+			if (is_sep(dta->prompt_t[i]) || dta->prompt_t[i] == '\"'
+				|| dta->prompt_t[i] == '$')
+				dta->prompt_t[i] = dta->prompt_t[i] * -1;
 		nbquote -= 2;
 		i++;
 	}

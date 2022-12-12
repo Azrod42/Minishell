@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:33:07 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:47:31 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@ void	add_list(t_data *dta, int i)
 	i++;
 	j = 0;
 	lst = malloc(sizeof(t_lst) * 1);
-	while (dta->t_prompt[i + j] != ' ' && dta->t_prompt[i + j])
+	while (dta->prompt_t[i + j] != ' ' && dta->prompt_t[i + j])
 		j++;
 	lst->data = malloc(sizeof(char) * j + 1);
-	ft_memcpy(lst->data, &dta->t_prompt[i], j + 1);
+	ft_memcpy(lst->data, &dta->prompt_t[i], j + 1);
 	j = 0;
 	i -= 2;
-	while (dta->t_prompt[i - j] != ' ' && i - j >= 0)
+	while (dta->prompt_t[i - j] != ' ' && i - j >= 0)
 		j++;
 	lst->flag = malloc(sizeof(char) * j + 1);
-	ft_strlcat(lst->flag, &dta->t_prompt[i - j + 1], j + 1);
+	ft_strlcat(lst->flag, &dta->prompt_t[i - j + 1], j + 1);
 	addtab_arg(dta, lst);
-	ft_memset(dta->t_prompt, ' ', ft_strlen(lst->data)
+	ft_memset(dta->prompt_t, ' ', ft_strlen(lst->data)
 		+ ft_strlen(lst->flag) + 1);
 }
 
@@ -69,20 +69,20 @@ t_lst	**pars_equal(t_data *dta)
 	char	*tmp;
 
 	i = 0;
-	while (dta->t_prompt[i] != '=')
+	while (dta->prompt_t[i] != '=')
 		i++;
-	if (ft_strlen(&dta->t_prompt[i]) > 0)
+	if (ft_strlen(&dta->prompt_t[i]) > 0)
 	{
-		if (!is_sep(dta->t_prompt[i - 1]) && !is_sep(dta->t_prompt[i + 1]))
+		if (!is_sep(dta->prompt_t[i - 1]) && !is_sep(dta->prompt_t[i + 1]))
 			add_list(dta, i);
-		if ((is_sep(dta->t_prompt[i - 1]) && !is_sep(dta->t_prompt[i + 1]))
-			|| (!is_sep(dta->t_prompt[i - 1]) && is_sep(dta->t_prompt[i + 1])))
+		if ((is_sep(dta->prompt_t[i - 1]) && !is_sep(dta->prompt_t[i + 1]))
+			|| (!is_sep(dta->prompt_t[i - 1]) && is_sep(dta->prompt_t[i + 1])))
 		{
 			i++;
-			while (is_sep(dta->t_prompt[i]))
+			while (is_sep(dta->prompt_t[i]))
 				i++;
-			tmp = dta->t_prompt;
-			dta->t_prompt = ft_strjoin("", &dta->t_prompt[i]);
+			tmp = dta->prompt_t;
+			dta->prompt_t = ft_strjoin("", &dta->prompt_t[i]);
 			free(tmp);
 		}
 	}
@@ -94,9 +94,9 @@ int	check_equal(t_data *dta)
 	size_t	i;
 
 	i = -1;
-	while (dta->t_prompt[++i])
+	while (dta->prompt_t[++i])
 	{
-		if (dta->t_prompt[i] == '=')
+		if (dta->prompt_t[i] == '=')
 			return (1);
 	}
 	return (0);

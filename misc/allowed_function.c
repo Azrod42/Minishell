@@ -1,4 +1,3 @@
-
 readline 
 rl_clear_history
 rl_on_new_line

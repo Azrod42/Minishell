@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:27:01 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:47:31 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,23 @@ void	replace_not_in_db(t_data *dta)
 
 	j = -1;
 	len = 0;
-	while (dta->t_prompt[++j])
+	while (dta->prompt_t[++j])
 	{
-		if (dta->t_prompt[j] == '$')
+		if (dta->prompt_t[j] == '$')
 		{
 			i = -1;
 			len = 0;
 			j++;
-			while (!is_sep(dta->t_prompt[j + len]) && !is_sep(dta->t_prompt
-					[j + len] * -1) && dta->t_prompt[j + len])
+			while (!is_sep(dta->prompt_t[j + len]) && !is_sep(dta->prompt_t
+					[j + len] * -1) && dta->prompt_t[j + len])
 				len++;
 			if (dta->nb_arg == 0)
-				dta->t_prompt[j - 1] = dta->t_prompt[j - 1] * -1;
+				dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
 			else
 				while (++i < dta->nb_arg)
-					if (strstr_el(&dta->t_prompt[j], dta->d_arg[i]->flag,
+					if (strstr_el(&dta->prompt_t[j], dta->d_arg[i]->flag,
 							ft_strlen(dta->d_arg[i]->flag), len) != NULL)
-						dta->t_prompt[j - 1] = dta->t_prompt[j - 1] * -1;
+						dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
 		}
 	}
 }
@@ -48,12 +48,12 @@ size_t	get_len_replace(t_data *dta)
 
 	i = -1;
 	j = 0;
-	while (dta->t_prompt[++i + j])
+	while (dta->prompt_t[++i + j])
 	{
-		if (dta->t_prompt[i + j] == '$')
+		if (dta->prompt_t[i + j] == '$')
 		{
-			while (!is_sep(dta->t_prompt[i + j] * -1)
-				&& dta->t_prompt[i + j] != '\0')
+			while (!is_sep(dta->prompt_t[i + j] * -1)
+				&& dta->prompt_t[i + j] != '\0')
 			{
 				j++;
 			}
@@ -68,14 +68,14 @@ size_t	replace_arg_2(t_data *dta, size_t i, size_t j, size_t *m)
 	size_t	l;
 
 	k = -1;
-	while (!is_sep(dta->t_prompt[i + j + 1] * -1)
-		&& !is_sep(dta->t_prompt[i + j + 1]) && dta->t_prompt
-		[i + j + 1] != '$' && dta->t_prompt[i + j + 1])
+	while (!is_sep(dta->prompt_t[i + j + 1] * -1)
+		&& !is_sep(dta->prompt_t[i + j + 1]) && dta->prompt_t
+		[i + j + 1] != '$' && dta->prompt_t[i + j + 1])
 		j++;
 	while (++k < dta->nb_arg)
 	{
 		l = -1;
-		if (ft_strnstr_len(&dta->t_prompt[i + 1],
+		if (ft_strnstr_len(&dta->prompt_t[i + 1],
 				dta->d_arg[k]->flag, j) != NULL)
 		{
 			while (dta->d_arg[k]->data[++l])
@@ -99,21 +99,21 @@ void	replace_arg(t_data *dta)
 	if (dta->nb_arg != 0)
 	{
 		dta->temp_str_replace_arg = malloc(sizeof(char)
-				* ft_strlen(dta->t_prompt) + 5000);
-		ft_bzero(dta->temp_str_replace_arg, ft_strlen(dta->t_prompt) + 4900);
-		while (dta->t_prompt[++i])
+				* ft_strlen(dta->prompt_t) + 5000);
+		ft_bzero(dta->temp_str_replace_arg, ft_strlen(dta->prompt_t) + 4900);
+		while (dta->prompt_t[++i])
 		{
 			j = 0;
-			if (dta->t_prompt[i] == '$' && dta->t_prompt[i + 1] != '$')
+			if (dta->prompt_t[i] == '$' && dta->prompt_t[i + 1] != '$')
 				i += replace_arg_2(dta, i, j, &m);
 			else
 			{
-				dta->temp_str_replace_arg[m] = dta->t_prompt[i];
+				dta->temp_str_replace_arg[m] = dta->prompt_t[i];
 				m++;
 			}
 		}
-		free(dta->t_prompt);
-		dta->t_prompt = dta->temp_str_replace_arg;
+		free(dta->prompt_t);
+		dta->prompt_t = dta->temp_str_replace_arg;
 	}
 }
 

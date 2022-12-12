@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:36:42 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:52:42 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 void	redirect(t_data *dta)
 {
-	if (dta->t_prompt[0] != '\0')
+	size_t	i;
+	i = -1;
+	if (dta->prompt_t[0] != '\0')
 	{
+		while (dta->prompt[++i] != NULL)
+			ft_printf("%s~~", dta->prompt[i]);
+		ft_printf("\n");
 		if (strstr_el(dta->prompt[0], "exit",
 				ft_strlen(dta->prompt[0]), 3) != NULL)
 			dta->exit = 1;
@@ -26,8 +31,3 @@ void	redirect(t_data *dta)
 			ft_printf("%s : commande not found\n", dta->prompt[0]);
 	}
 }
-	// size_t	i;
-	// i = -1;
-		// while (dta->prompt[++i] != NULL)
-		// 	ft_printf("%s~~", dta->prompt[i]);
-		// ft_printf("\;
