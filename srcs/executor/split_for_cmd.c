@@ -6,7 +6,7 @@
 /*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:14:43 by lfantine          #+#    #+#             */
-/*   Updated: 2022/12/12 19:09:56 by lfantine         ###   ########.fr       */
+/*   Updated: 2022/12/12 19:19:24 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	nb_elem_cmd(t_data *dta, int start)
 	i = 0;
 	while (dta->prompt[start + i] && is_elem_cut(dta->prompt[start + i]) == 0)
 	{
-		ft_putstr_fd(dta->prompt[start + i], 1);
 		i++;
 	}
 	return (i);
@@ -66,8 +65,6 @@ int	crt_command(t_data *dta, t_chain *chain, int start, int place)
 	new_cmd->cmd[i] = NULL;
 	new_cmd->cmd[0] = replace_cmd_path(new_cmd->cmd[0], dta);
 	chain->allcmd[place] = new_cmd;
-	printf("len = %d\n", len);
-	print_tab(new_cmd);
 	return (len);
 }
 
@@ -91,6 +88,7 @@ int	make_allcmd(t_chain *chain, t_data *dta)
 		if (temp == -1)
 			break ;
 		idx += temp;
+		idx++;
 		i++;
 	}
 	chain->allcmd[i] = NULL;

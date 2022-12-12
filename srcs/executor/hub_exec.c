@@ -6,7 +6,7 @@
 /*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:12:10 by lfantine          #+#    #+#             */
-/*   Updated: 2022/12/12 19:03:50 by lfantine         ###   ########.fr       */
+/*   Updated: 2022/12/12 19:19:40 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ int	hub_exec(t_data *dta)
 	}
 	if (make_allcmd(&chain, dta) == -1)
 		return (-1);
-	// int	k = 0;
-	// while (chain.allcmd[k])
-	// {
-	// 	printf("element %d\n", k);
-	// 	print_tab(chain.allcmd[k]);
-	// 	k++;
-	// }
+	int	k = 0;
+	while (chain.allcmd[k])
+	{
+		printf("element %d\n", k);
+		print_tab(chain.allcmd[k]);
+		k++;
+	}
 	// make_chains(&chain, dta);
 	return (0);
 }
