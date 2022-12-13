@@ -7,6 +7,7 @@ SRCS = srcs/main.c \
 		srcs/prompt.c \
 		srcs/redirect.c \
 		srcs/exit/ft_exit.c \
+		srcs/exit/error_pars_pipe.c \
 		srcs/pars/pars_utils.c \
 		srcs/pars/pars_equal.c \
 		srcs/pars/pars_quote.c \
@@ -25,7 +26,7 @@ INCLUDE = include/minishell.h \
 
 OBJS	= $(SRCS:.c=.o)
 DEBUG = -g -O0
-FLAGS =-Wall -Werror -Wextra 
+FLAGS =-Wall -Werror -Wextra -g 
 INCS	= .
 
 .c.o :

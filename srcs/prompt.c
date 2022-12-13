@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 11:45:16 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:23:17 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	check_only_space(t_data *dta)
 
 int	geprompt_t(t_data *dta)
 {
+	dta->exit_actual = 0;
 	dta->prompt_t = readline(USER);
 	check_end_pipe(dta);
 	replace_pipe(dta);

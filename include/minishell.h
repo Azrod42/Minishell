@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 11:35:23 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:33:00 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ typedef struct s_data
 	char	**historique;
 	size_t	nb_arg_hist;
 	size_t	nb_pipe;
+	int		exit_multi_pipe;
 	char	*pipe_str;
 	char	**env;
 	int		exit;
+	int		exit_actual;
 }	t_data;
 
 typedef struct s_cmd
@@ -88,6 +90,7 @@ int		hub_env(t_data *dta, char **env_brut);
 void	ft_exit(t_data *dta);
 void	free_tab(char **str);
 void	reset_data(t_data *dta);
+void	check_err(t_data *dta);
 
 //executor
 int		hub_exec(t_data *dta);

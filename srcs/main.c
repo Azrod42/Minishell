@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 11:38:25 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:52:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv, char **env)
 
 	dta.exit = 0;
 	dta.nb_arg = 0;
-	dta.nb_pipe = 0;
 	dta.nb_arg_hist = 0;
 	if (hub_env(&dta, env) == -1)
 		exit(1);
@@ -26,6 +25,7 @@ int	main(int argc, char **argv, char **env)
 	while (!dta.exit)
 	{
 		geprompt_t(&dta);
+		check_err(&dta);
 		redirect(&dta);
 		reset_data(&dta);
 	}
