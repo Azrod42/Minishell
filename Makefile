@@ -87,7 +87,7 @@ git_master: git_add git_push
 
 nbline:
 	@echo "Nombre de ligne :"
-	@cat srcs/**/*.c include/minishell.h srcs/*.c | wc -l 
+	@cat ${SRCS} include/minishell.h | wc -l 
 
 re: fclean all
 
