@@ -6,7 +6,7 @@
 /*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 18:44:16 by lfantine         ###   ########.fr       */
+/*   Updated: 2022/12/13 09:36:36 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ int		make_chains(t_chain *chain, t_data *dta);
 int		make_allcmd(t_chain *chain, t_data *dta);
 char	*replace_cmd_path(char *old_p, t_data *dta);
 void	print_tab(t_cmd *cmd);
+void	free_allcmd(t_chain *chain);
 
 #endif

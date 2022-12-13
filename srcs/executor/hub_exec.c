@@ -6,7 +6,7 @@
 /*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:12:10 by lfantine          #+#    #+#             */
-/*   Updated: 2022/12/12 19:19:40 by lfantine         ###   ########.fr       */
+/*   Updated: 2022/12/13 10:40:06 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,8 @@ int	hub_exec(t_data *dta)
 		k++;
 	}
 	// make_chains(&chain, dta);
+	free_allcmd(&chain);
+	free_tab(dta->env);
+	dta->exit = 1;
 	return (0);
 }
