@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 10:57:35 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:35:23 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,24 @@ typedef struct s_data
 	size_t	nb_arg_hist;
 	size_t	nb_pipe;
 	char	*pipe_str;
+	char	**env;
 	int		exit;
 }	t_data;
+
+typedef struct s_cmd
+{
+	char	*path;
+	char	**cmd;
+}	t_cmd;
+
+typedef struct s_chain
+{
+	char	*infile;
+	char	*outfile;
+	int		fd[2];
+	t_cmd	**allcmd;
+	int		pos;
+}	t_chain;
 
 //prompt
 int		geprompt_t(t_data *dta);
@@ -66,10 +82,19 @@ void	redirect(t_data *dta);
 char	*ft_strnstr_len(const char *big, const char *little, size_t len);
 char	*strstr_el(const char *big, const char *little,
 			size_t len, size_t ilen);
+int		hub_env(t_data *dta, char **env_brut);
 
 //exit
 void	ft_exit(t_data *dta);
 void	free_tab(char **str);
 void	reset_data(t_data *dta);
+
+//executor
+int		hub_exec(t_data *dta);
+int		make_chains(t_chain *chain, t_data *dta);
+int		make_allcmd(t_chain *chain, t_data *dta);
+char	*replace_cmd_path(char *old_p, t_data *dta);
+void	print_tab(t_cmd *cmd);
+void	free_allcmd(t_chain *chain);
 
 #endif

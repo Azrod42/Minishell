@@ -6,19 +6,22 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 09:40:02 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:38:25 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../include/minishell.h"
 
-int	main(void)
+int	main(int argc, char **argv, char **env)
 {
 	t_data	dta;
+
 	dta.exit = 0;
 	dta.nb_arg = 0;
 	dta.nb_pipe = 0;
 	dta.nb_arg_hist = 0;
+	if (hub_env(&dta, env) == -1)
+		exit(1);
 	printf("\e[1;1H\e[2J");
 	while (!dta.exit)
 	{
@@ -27,5 +30,7 @@ int	main(void)
 		reset_data(&dta);
 	}
 	ft_exit(&dta);
+	(void)argc;
+	(void)argv;
 	return (0);
 }

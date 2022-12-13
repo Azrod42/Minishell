@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 11:00:27 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:39:36 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ void	redirect(t_data *dta)
 				ft_strlen(dta->prompt[0]), 3) != NULL)
 			print_arg(dta);
 		else
-			ft_printf("%s : commande not found\n", dta->prompt[0]);
+			hub_exec(dta);
 	}
 }
-	// size_t	i;
-	// i = -1;
-	// 	while (dta->prompt[++i] != NULL)
-	// 		ft_printf("%s~~", dta->prompt[i]);
-	// 	ft_printf("\n");
