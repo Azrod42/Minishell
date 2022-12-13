@@ -22,6 +22,8 @@ SRCS = srcs/main.c \
 		srcs/executor/split_for_cmd.c \
 		srcs/executor/split_for_cmd2.c \
 		srcs/pars/take_env.c \
+		srcs/executor/hub_command.c \
+		srcs/executor/truc_utils.c \
 
 INCLUDE = include/minishell.h \
 

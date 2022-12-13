@@ -6,7 +6,7 @@
 /*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:14:43 by lfantine          #+#    #+#             */
-/*   Updated: 2022/12/13 10:55:46 by lfantine         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:21:34 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	crt_command(t_data *dta, t_chain *chain, int start, int place)
 	i = 0;
 	len = nb_elem_cmd(dta, start);
 	new_cmd = malloc(sizeof(t_cmd));
+	new_cmd->infile = NULL;
+	new_cmd->outfile = NULL;
 	new_cmd->cmd = malloc(sizeof (char *) * (len + 1));
 	while (i < len)
 	{

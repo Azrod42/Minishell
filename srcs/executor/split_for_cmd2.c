@@ -6,7 +6,7 @@
 /*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:14:36 by lfantine          #+#    #+#             */
-/*   Updated: 2022/12/13 10:55:38 by lfantine         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:42:35 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,24 @@ void	free_allcmd(t_chain *chain)
 	}
 	free(chain->allcmd[i]);
 	free(chain->allcmd);
+}
+
+void	printf_state(t_chain *chain)
+{
+	int	k;
+
+	k = 0;
+	while (chain->allcmd[k])
+	{
+		printf("element %d || infile '%s' || outfile '%s'\n",
+			k, chain->allcmd[k]->infile, chain->allcmd[k]->outfile);
+		print_tab(chain->allcmd[k]);
+		k++;
+	}
+}
+
+int	ret_p_error(void)
+{
+	printf("parse error\n");
+	return (-1);
 }

@@ -13,3 +13,8 @@ Error to check :
 	- si programme en arriere plan ne peut pas exit le shell
 	- 
 }
+
+mech cmd :
+{
+	
+}

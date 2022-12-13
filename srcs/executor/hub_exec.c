@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hub_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:12:10 by lfantine          #+#    #+#             */
-/*   Updated: 2022/12/13 12:40:31 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:16:13 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,10 @@ int	is_char_tab(char **line, char c)
 	return (-1);
 }
 
-int	take_file(t_chain *chain, char **line)
-{
-	int	i;
-
-	i = is_char_tab(line, '<');
-	if (i > -1)
-	{
-		chain->infile = line[i];
-		if (access(chain->infile, R_OK) == -1)
-		{
-			perror(chain->infile);
-			return (-1);
-		}
-	}
-	i = is_char_tab(line, '>');
-	if (i > -1)
-		chain->outfile = line[i];
-	return (0);
-}
-
 void	print_tab(t_cmd *cmd)
 {
 	int	i;
-	
+
 	i = 0;
 	while (cmd->cmd[i])
 	{
@@ -71,12 +51,8 @@ int	hub_exec(t_data *dta)
 	t_chain	chain;
 
 	i = 0;
-	chain.infile = NULL;
-	chain.outfile = NULL;
 	if (dta->prompt == NULL)
 		return (0);
-	if (take_file(&chain, dta->prompt) == -1)
-		return (-1);
 	if (pipe(chain.fd) == -1)
 	{
 		perror("pipe");
@@ -84,14 +60,12 @@ int	hub_exec(t_data *dta)
 	}
 	if (make_allcmd(&chain, dta) == -1)
 		return (-1);
-	// int	k = 0;
-	// while (chain.allcmd[k])
-	// {
-	// 	printf("element %d\n", k);
-	// 	print_tab(chain.allcmd[k]);
-	// 	k++;
-	// }
-	// make_chains(&chain, dta);
+	if (change_command(&chain, 0, 0, 0) == -1)
+	{
+		free_allcmd(&chain);
+		return (-1);
+	}
+	make_chains(&chain, dta);
 	free_allcmd(&chain);
 	return (0);
 }

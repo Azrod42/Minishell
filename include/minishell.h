@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 17:43:48 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:23:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include"../libft/libft.h"
 # include <stdio.h>
 # include <readline/readline.h>
+# include <sys/wait.h>
+# include <errno.h>
+# include <fcntl.h>
 //# include <readline/history.h>
 
 typedef struct s_lst
@@ -41,23 +44,25 @@ typedef struct s_data
 	int		exit_multi_pipe;
 	char	*pipe_str;
 	char	**env;
+	char	**brut_env;
 	int		exit;
 	int		exit_actual;
 }	t_data;
 
 typedef struct s_cmd
 {
+	char	*infile;
+	char	*outfile;
 	char	*path;
 	char	**cmd;
 }	t_cmd;
 
 typedef struct s_chain
 {
-	char	*infile;
-	char	*outfile;
 	int		fd[2];
 	t_cmd	**allcmd;
 	int		pos;
+	int		n_cmd;
 }	t_chain;
 
 //prompt
@@ -101,5 +106,10 @@ int		make_allcmd(t_chain *chain, t_data *dta);
 char	*replace_cmd_path(char *old_p, t_data *dta);
 void	print_tab(t_cmd *cmd);
 void	free_allcmd(t_chain *chain);
+int		change_command(t_chain *chain, int i, int len, int j);
+void	printf_state(t_chain *chain);
+int		cmd_central(t_chain *chain, int pos, t_data *dta);
+int		ret_p_error(void);
+int		mess_error(char *s1, char *s2);
 
 #endif
