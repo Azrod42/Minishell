@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hub_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:12:10 by lfantine          #+#    #+#             */
-/*   Updated: 2022/12/13 10:40:06 by lfantine         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:42:13 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,5 @@ int	hub_exec(t_data *dta)
 	// make_chains(&chain, dta);
 	free_allcmd(&chain);
 	free_tab(dta->env);
-	dta->exit = 1;
 	return (0);
 }

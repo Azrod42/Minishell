@@ -14,7 +14,7 @@ SRCS = srcs/main.c \
 		srcs/pars/pars_replace_equal.c \
 		srcs/pars/pars_pipe.c \
 		srcs/pars/pars_existing_arg.c \
-		srcs/pars/pars_historic.c
+		srcs/pars/pars_historic.c \
 		srcs/executor/hub_exec.c \
 		srcs/executor/chains.c \
 		srcs/executor/split_for_cmd.c \
