@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 16:33:00 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:33:09 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_lst
 
 typedef struct s_data
 {
+	char	*nickname;
 	t_lst	**d_arg;
 	size_t	nb_arg;
 	char	*prompt_t;
@@ -61,6 +62,7 @@ typedef struct s_chain
 
 //prompt
 int		geprompt_t(t_data *dta);
+void	get_nickname(t_data *dta, char **env);
 
 //pars
 int		is_wspace(char c);
