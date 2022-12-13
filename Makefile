@@ -12,17 +12,14 @@ SRCS = srcs/main.c \
 		srcs/pars/pars_quote.c \
 		srcs/pars/pars_single_quote.c \
 		srcs/pars/pars_replace_equal.c \
-<<<<<<< HEAD
 		srcs/pars/pars_pipe.c \
 		srcs/pars/pars_existing_arg.c \
 		srcs/pars/pars_historic.c
-=======
 		srcs/executor/hub_exec.c \
 		srcs/executor/chains.c \
 		srcs/executor/split_for_cmd.c \
 		srcs/executor/split_for_cmd2.c \
 		srcs/pars/take_env.c \
->>>>>>> origin/loan_recup
 
 INCLUDE = include/minishell.h \
 
