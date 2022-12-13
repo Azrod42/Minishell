@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   truc_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 17:40:02 by lfantine         ###   ########.fr       */
+/*   Created: 2022/12/13 17:55:28 by lfantine          #+#    #+#             */
+/*   Updated: 2022/12/13 18:16:31 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int	mess_error(char *s1, char *s2)
 {
-	t_data	dta;
-
-	dta.exit = 0;
-	dta.nb_arg = 0;
-	dta.nb_pipe = 0;
-	dta.nb_arg_hist = 0;
-	if (hub_env(&dta, env) == -1)
-		exit(1);
-	dta.brut_env = env;
-	printf("\e[1;1H\e[2J");
-	while (!dta.exit)
-	{
-		geprompt_t(&dta);
-		redirect(&dta);
-		reset_data(&dta);
-	}
-	ft_exit(&dta);
-	(void)argc;
-	(void)argv;
+	printf("\033[0;31m Error: %s \033[0;33m%s\n\033[0;37m", s1, s2);
 	return (0);
 }
