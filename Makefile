@@ -9,6 +9,7 @@ SRCS = srcs/main.c \
 		srcs/exit/ft_exit.c \
 		srcs/exit/error_pars_pipe.c \
 		srcs/pars/pars_utils.c \
+		srcs/pars/print_tab.c \
 		srcs/pars/pars_nickname.c \
 		srcs/pars/pars_equal.c \
 		srcs/pars/pars_quote.c \

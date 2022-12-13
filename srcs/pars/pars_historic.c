@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:03:15 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 16:25:09 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 20:51:29 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	add_historic(t_data *dta)
 	i = dta->nb_arg_hist;
 	new = malloc(sizeof(char) * (ft_strlen(dta->prompt_t) + 2));
 	ft_strlcat(new, dta->prompt_t, ft_strlen(dta->prompt_t) + 1);
+	new[ft_strlen(dta->prompt_t) + 1] = '\0';
 	if (dta->nb_arg_hist != 0)
 	{
 		n_lst = malloc(sizeof(char *) * (i + 2));

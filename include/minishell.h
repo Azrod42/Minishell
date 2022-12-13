@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 18:23:49 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 20:09:52 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_chain
 //prompt
 int		geprompt_t(t_data *dta);
 void	get_nickname(t_data *dta, char **env);
+void	print_char_tab_t(char **tab);
 
 //pars
 int		is_wspace(char c);

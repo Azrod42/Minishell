@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 12:47:31 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 20:04:19 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,10 @@ size_t	get_len_remove_quote(t_data *dta)
 void	remove_quote(t_data *dta)
 {
 	int		i;
-	int		j;
 	int		k;
 	char	*new;
 
 	i = -1;
-	j = 0;
 	k = 0;
 	new = malloc(sizeof(char) * (ft_strlen(dta->prompt_t)
 				- get_len_remove_quote(dta)));

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 16:56:12 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 20:42:08 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	add_after_pipe(t_data *dta)
 		}
 		free(str);
 	}
+	ft_printf("yes\n");
 }
 
 int	check_last_char(char *str, char c)

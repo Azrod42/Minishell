@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hub_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:12:10 by lfantine          #+#    #+#             */
-/*   Updated: 2022/12/13 18:16:13 by lfantine         ###   ########.fr       */
+/*   Updated: 2022/12/13 20:05:17 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ void	print_tab(t_cmd *cmd)
 
 int	hub_exec(t_data *dta)
 {
-	int		i;
 	t_chain	chain;
 
-	i = 0;
 	if (dta->prompt == NULL)
 		return (0);
 	if (pipe(chain.fd) == -1)
