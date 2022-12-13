@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lfantine <lfantine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 11:38:46 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:51:38 by lfantine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	ft_exit(t_data *dta)
 	free_lst(dta->d_arg, dta);
 	if (dta->historique != NULL)
 		free_tab_len(dta->historique, dta->nb_arg_hist);
+	free_tab(dta->env);
 	system("leaks minishell");
 	exit(0);
 }
