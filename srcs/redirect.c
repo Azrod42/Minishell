@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 13:55:57 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:26:18 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ void	redirect(t_data *dta)
 				ft_strlen(dta->prompt[0]), 3) != NULL)
 			print_arg(dta);
 		else if (dta->exit == 0)
-		{
-			ft_printf("\033[0;31mminishell :");
-			ft_printf(" command not found :");
-			ft_printf("\033[0;33m %s\033[0;37m\n", dta->prompt[0]);
 			hub_exec(dta);
-		}
 	}
 }
