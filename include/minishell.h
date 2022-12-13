@@ -6,14 +6,14 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 17:33:09 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:43:48 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# define USER "\033[0;36mminichibre$> \033[0;37m"
+# define USER "\033[0;36mminishell$> \033[0;37m"
 # define MAXI 2147483647
 
 # include"../libft/libft.h"
