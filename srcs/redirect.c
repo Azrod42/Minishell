@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 18:49:49 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:00:27 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	redirect(t_data *dta)
 		else if (strstr_el(dta->prompt[0], "history",
 				ft_strlen(dta->prompt[0]), 6) != NULL)
 			print_historic(dta);
+		else if (strstr_el(dta->prompt[0], "parg",
+				ft_strlen(dta->prompt[0]), 3) != NULL)
+			print_arg(dta);
 		else
 			ft_printf("%s : commande not found\n", dta->prompt[0]);
 	}

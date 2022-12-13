@@ -6,3 +6,6 @@
 -ft_exit //gestion de la sortie du shell sans leaks;
 
 +tout les leaks sont gere sur la branch master
+
+faire la gestion des erreurs des pipes;
+faire la gestion des replace d'arg;

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 18:49:52 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 09:35:07 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	geprompt_t(t_data *dta)
 	remove_quote(dta);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
+	replace_existing_arg(dta);
 	replace_not_in_db(dta);
 	replace_arg(dta);
 	if (!check_only_space(dta))

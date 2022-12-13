@@ -13,6 +13,7 @@ SRCS = srcs/main.c \
 		srcs/pars/pars_single_quote.c \
 		srcs/pars/pars_replace_equal.c \
 		srcs/pars/pars_pipe.c \
+		srcs/pars/pars_existing_arg.c \
 		srcs/pars/pars_historic.c
 
 INCLUDE = include/minishell.h \

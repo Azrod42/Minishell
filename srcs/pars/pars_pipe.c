@@ -6,11 +6,27 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 18:49:51 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/13 09:00:17 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
+
+char	*pipe_prompt(t_data *dta)
+{
+	char	*old;
+
+	if (dta->nb_pipe == 0)
+		dta->pipe_str = ft_strdup("\033[0;32mpipe>\033[0;37m");
+	else
+	{
+		old = dta->pipe_str;
+		dta->pipe_str = ft_strjoin("\033[0;32mpipe ", dta->pipe_str);
+		free(old);
+	}
+	dta->nb_pipe++;
+	return (dta->pipe_str);
+}
 
 void	add_after_pipe(t_data *dta)
 {
@@ -20,14 +36,13 @@ void	add_after_pipe(t_data *dta)
 
 	while (1)
 	{
-		str = readline("\033[0;32mpipe>\033[0;37m");
+		str = readline(pipe_prompt(dta));
 		i = -1;
 		while (str[++i])
 		{
 			if (!is_sep(str[i]))
 			{
 				temp = ft_strjoin(dta->prompt_t, str);
-				printf("=%s\n", temp);
 				free(dta->prompt_t);
 				dta->prompt_t = temp;
 				free(str);
@@ -56,6 +71,7 @@ void	check_end_pipe(t_data *dta)
 		return ;
 	while (check_last_char(dta->prompt_t, '|'))
 		add_after_pipe(dta);
+	dta->nb_pipe = 0;
 }
 
 void	replace_pipe(t_data *dta)
