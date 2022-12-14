@@ -19,9 +19,6 @@ void	redirect(t_data *dta)
 		if (strstr_el(dta->prompt[0], "exit",
 				ft_strlen(dta->prompt[0]), 3) != NULL)
 			dta->exit = 1;
-		else if (strstr_el(dta->prompt[0], "clear",
-				ft_strlen(dta->prompt[0]), 4) != NULL)
-			ft_putstr_fd("\e[1;1H\e[2J", 1);
 		else if (strstr_el(dta->prompt[0], "history",
 				ft_strlen(dta->prompt[0]), 6) != NULL)
 			print_historic(dta);
