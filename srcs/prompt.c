@@ -25,10 +25,16 @@ int	check_only_space(t_data *dta)
 
 int	geprompt_t(t_data *dta)
 {
+	int i = 0;
 	dta->exit_actual = 0;
 	dta->prompt_t = readline(dta->nickname);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	check_end_pipe(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
+	space_spe_char(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_pipe(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	add_historic(dta);
 	replace_in_quote(dta);
 	replace_in_simple_quote(dta);

@@ -73,6 +73,8 @@ void	print_char_tab_t(char **tab);
 //pars
 int		is_wspace(char c);
 int		is_sep(char c);
+int		is_to_space(char c);
+void	space_spe_char(t_data *dta);
 size_t	nb_charinstr(char *str, char c);
 int		check_equal(t_data *dta);
 void	check_end_pipe(t_data *dta);
