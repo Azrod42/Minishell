@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,30 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	handle_sig(int signum, siginfo_t *info, void *ptr)
 {
-	t_data	dta;
-	struct sigaction sa;
-
-	init_dta(&dta, env, argc, argv);
-	ft_memset(&sa, 0, sizeof(struct sigaction));
-	sa.sa_sigaction = handle_sig;
-	sa.sa_flags = SA_SIGINFO;
-	sigaction(SIGINT, &sa, NULL);
-	while (!dta.exit)
-	{
-		geprompt_t(&dta);
-		check_err(&dta);
-		redirect(&dta);
-		reset_data(&dta);
-	}
-	ft_exit(&dta);
-	(void)argc;
-	(void)argv;
-	return (0);
+	(void)signum;
+	(void)info;
+	(void)ptr;
+	ft_printf("ET NON TU VA FAIRE QUOI C'EST PAS BIEN D'EXIT COMME CA");
 }
 
-		// if (dta.prompt != NULL)
-		// 	print_char_tab_t(dta.prompt);

@@ -37,9 +37,7 @@ void	add_historic(t_data *dta)
 	char	**n_lst;
 
 	i = dta->nb_arg_hist;
-	new = malloc(sizeof(char) * (ft_strlen(dta->prompt_t) + 2));
-	ft_strlcat(new, dta->prompt_t, ft_strlen(dta->prompt_t) + 1);
-	new[ft_strlen(dta->prompt_t) + 1] = '\0';
+	new = ft_strdup(dta->prompt_t);
 	if (dta->nb_arg_hist != 0)
 	{
 		n_lst = malloc(sizeof(char *) * (i + 2));

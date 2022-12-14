@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_dta.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,28 +12,16 @@
 
 #include"../include/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	init_dta(t_data *dta, char **env, int argc, char **argv)
 {
-	t_data	dta;
-	struct sigaction sa;
-
-	init_dta(&dta, env, argc, argv);
-	ft_memset(&sa, 0, sizeof(struct sigaction));
-	sa.sa_sigaction = handle_sig;
-	sa.sa_flags = SA_SIGINFO;
-	sigaction(SIGINT, &sa, NULL);
-	while (!dta.exit)
-	{
-		geprompt_t(&dta);
-		check_err(&dta);
-		redirect(&dta);
-		reset_data(&dta);
-	}
-	ft_exit(&dta);
 	(void)argc;
 	(void)argv;
-	return (0);
+	dta->exit = 0;
+	dta->nb_arg = 0;
+	dta->nb_arg_hist = 0;
+	dta->pipe_str = ft_strdup("init");
+	if (hub_env(dta, env) == -1)
+		exit(1);
+	dta->brut_env = env;
+	get_nickname(dta, env);
 }
-
-		// if (dta.prompt != NULL)
-		// 	print_char_tab_t(dta.prompt);

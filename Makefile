@@ -4,6 +4,7 @@ LIBFTNAME = libft.a
 LIBFTPATH = ./libft/
 
 SRCS = srcs/main.c \
+		srcs/init_dta.c \
 		srcs/prompt.c \
 		srcs/redirect.c \
 		srcs/exit/ft_exit.c \
@@ -21,6 +22,7 @@ SRCS = srcs/main.c \
 		srcs/pars/pars_historic.c \
 		srcs/pars/pars_space_spe_char.c \
 		srcs/pars/take_env.c \
+		srcs/signal/handle_signal.c \
 		srcs/executor/hub_exec.c \
 		srcs/executor/chains.c \
 		srcs/executor/split_for_cmd.c \

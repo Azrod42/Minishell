@@ -25,20 +25,37 @@ int	check_only_space(t_data *dta)
 
 int	geprompt_t(t_data *dta)
 {
+	int i = 0;
 	dta->exit_actual = 0;
 	dta->prompt_t = readline(dta->nickname);
+	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	check_end_pipe(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	space_spe_char(dta);
-	replace_pipe(dta);
-	add_historic(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
+	if (nb_charinstr(dta->prompt_t, '|') != 0)
+		replace_pipe(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
+	//add_historic(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_in_quote(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_in_simple_quote(dta);
-	remove_quote(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
+	if (nb_charinstr(dta->prompt_t, '\"') != 0 &&
+		nb_charinstr(dta->prompt_t, '\'') != 0 )
+		remove_quote(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_existing_arg(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_not_in_db(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_arg(dta);
+	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')

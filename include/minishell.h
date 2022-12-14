@@ -17,8 +17,9 @@
 # define MAXINT 2147483647
 
 # include"../libft/libft.h"
-# include <stdio.h>
 # include <readline/readline.h>
+# include <stdio.h>
+# include <signal.h>
 # include <sys/wait.h>
 # include <errno.h>
 # include <fcntl.h>
@@ -66,6 +67,7 @@ typedef struct s_chain
 }	t_chain;
 
 //prompt
+void	init_dta(t_data *dta, char **env, int argc, char **argv);
 int		geprompt_t(t_data *dta);
 void	get_nickname(t_data *dta, char **env);
 void	print_char_tab_t(char **tab);
@@ -103,6 +105,9 @@ void	ft_exit(t_data *dta);
 void	free_tab(char **str);
 void	reset_data(t_data *dta);
 void	check_err(t_data *dta);
+
+//signal
+void	handle_sig(int signum, siginfo_t *info, void *ptr);
 
 //executor
 int		hub_exec(t_data *dta);
