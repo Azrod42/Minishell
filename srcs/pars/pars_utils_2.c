@@ -26,7 +26,7 @@ int	check_last_char(char *str, char c)
 
 int	is_to_space(char c)
 {
-	if (c == '<' || c = '>')
+	if (c == '<' || c == '>')
 		return (1);
 	return (0);
 }
