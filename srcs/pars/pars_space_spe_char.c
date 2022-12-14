@@ -12,8 +12,6 @@
 
 #include"../../include/minishell.h"
 
-
-
 size_t	nb_char_to_add(t_data *dta)
 {
 	char	*str;

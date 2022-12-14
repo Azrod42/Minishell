@@ -28,9 +28,6 @@ int	main(int argc, char **argv, char **env)
 	{
 		geprompt_t(&dta);
 		check_err(&dta);
-		ft_printf("======FIN_DU_PARS=======\n");
-		print_char_tab_t(dta.prompt);
-		ft_printf("======FIN_DU_PARS=======\n");
 		redirect(&dta);
 		reset_data(&dta);
 	}
@@ -39,3 +36,5 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	return (0);
 }
+
+//print_char_tab_t(dta.prompt);
