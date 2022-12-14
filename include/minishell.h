@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 20:09:52 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:35:51 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	replace_arg(t_data *dta);
 void	replace_in_quote(t_data *dta);
 void	replace_in_simple_quote(t_data *dta);
 void	replace_special_char(t_data *dta);
+void	replace_special_char_in_arg(t_data *dta);
 void	replace_not_in_db(t_data *dta);
 void	replace_existing_arg(t_data *dta);
 void	remove_quote(t_data *dta);

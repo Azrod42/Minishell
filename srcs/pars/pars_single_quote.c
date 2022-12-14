@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 12:47:31 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:34:54 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,22 @@ void	replace_in_simple_quote(t_data *dta)
 				dta->prompt_t[i] = dta->prompt_t[i] * -1;
 		nbquote -= 2;
 		i++;
+	}
+}
+
+
+void	replace_special_char_in_arg(t_data *dta)
+{
+	size_t	i;
+	size_t	arg;
+
+	arg = -1;
+	while (++arg < dta->nb_arg)
+	{
+		i = -1;
+		while (dta->d_arg[arg]->data[++i])
+			if (dta->d_arg[arg]->data[i] < 0)
+				dta->d_arg[arg]->data[i] = dta->d_arg[arg]->data[i] * -1;
 	}
 }
 
