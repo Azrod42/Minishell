@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/14 15:35:51 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:44:39 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 # define USER "\033[0;36mminishell$> \033[0;37m"
-# define MAXI 2147483647
+# define MAXINT 2147483647
 
 # include"../libft/libft.h"
 # include <stdio.h>
@@ -76,6 +76,7 @@ int		is_sep(char c);
 size_t	nb_charinstr(char *str, char c);
 int		check_equal(t_data *dta);
 void	check_end_pipe(t_data *dta);
+int		check_last_char(char *str, char c);
 void	replace_pipe(t_data *dta);
 void	replace_arg(t_data *dta);
 void	replace_in_quote(t_data *dta);

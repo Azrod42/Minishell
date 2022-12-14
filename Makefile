@@ -9,6 +9,7 @@ SRCS = srcs/main.c \
 		srcs/exit/ft_exit.c \
 		srcs/exit/error_pars_pipe.c \
 		srcs/pars/pars_utils.c \
+		srcs/pars/pars_utils_2.c \
 		srcs/pars/print_tab.c \
 		srcs/pars/pars_nickname.c \
 		srcs/pars/pars_equal.c \
@@ -18,11 +19,11 @@ SRCS = srcs/main.c \
 		srcs/pars/pars_pipe.c \
 		srcs/pars/pars_existing_arg.c \
 		srcs/pars/pars_historic.c \
+		srcs/pars/take_env.c \
 		srcs/executor/hub_exec.c \
 		srcs/executor/chains.c \
 		srcs/executor/split_for_cmd.c \
 		srcs/executor/split_for_cmd2.c \
-		srcs/pars/take_env.c \
 		srcs/executor/hub_command.c \
 		srcs/executor/truc_utils.c \
 

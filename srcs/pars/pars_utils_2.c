@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   pars_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:03:15 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 20:51:29 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/12/11 13:30:26 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/12/12 10:32:57 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-void	print_char_tab_t(char **tab)
+int	check_last_char(char *str, char c)
 {
 	size_t	i;
 
-	i = -1;
-	while (tab[++i])
-		printf("%s_", tab[i]);
-	printf("\n");
+	i = ft_strlen(str) - 1;
+	while (is_sep(str[i]))
+		i--;
+	if (str[i] == c)
+		return (1);
+	return (0);
 }

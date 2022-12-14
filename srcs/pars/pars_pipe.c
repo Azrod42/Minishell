@@ -70,18 +70,6 @@ void	add_after_pipe(t_data *dta)
 	ft_printf("yes\n");
 }
 
-int	check_last_char(char *str, char c)
-{
-	size_t	i;
-
-	i = ft_strlen(str) - 1;
-	while (is_sep(str[i]))
-		i--;
-	if (str[i] == c)
-		return (1);
-	return (0);
-}
-
 void	replace_pipe(t_data *dta)
 {
 	int		i;

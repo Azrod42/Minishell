@@ -36,7 +36,6 @@ void	replace_in_simple_quote(t_data *dta)
 	}
 }
 
-
 void	replace_special_char_in_arg(t_data *dta)
 {
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 20:53:11 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:48:09 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ int	main(int argc, char **argv, char **env)
 	if (hub_env(&dta, env) == -1)
 		exit(1);
 	dta.brut_env = env;
-	//printf("\e[1;1H\e[2J");
 	while (!dta.exit)
 	{
 		geprompt_t(&dta);
 		check_err(&dta);
-		//print_char_tab_t(dta.prompt);
 		redirect(&dta);
 		reset_data(&dta);
 	}
@@ -38,3 +36,5 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	return (0);
 }
+
+//print_char_tab_t(dta.prompt);
