@@ -32,10 +32,13 @@ SRCS = srcs/main.c \
 
 INCLUDE = include/minishell.h \
 
-OBJS	= $(SRCS:.c=.o)
-DEBUG = -g -O0
-FLAGS =-Wall -Werror -Wextra -g 
-INCS	= .
+OBJS		= $(SRCS:.c=.o)
+CC			=gcc 
+DEBUG		=-g -O0
+FLAGS		=-Wall -Werror -Wextra
+LDFLAGS		=-L/Users/$(USER)/.brew/opt/readline/lib
+CPPFLAGS	=-I/Users/$(USER)/.brew/opt/readline/include
+INCS		= .
 
 .c.o :
 	@${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
@@ -48,7 +51,7 @@ ${NAME}: ${OBJS}
 	@mv $(LIBFTPATH)${LIBFTNAME} ${LIBFTNAME}
 	${_DONE}
 	${_STATUS2}
-	@${CC} ${FLAGS} -lreadline ${OBJS} ${LIBFTNAME} -o ${NAME}
+	${CC}${FLAGS} ${CPPFLAGS} ${LDFLAGS} -lreadline ${OBJS} ${LIBFTNAME} -o ${NAME}
 	${_DONE}
 	${_PRINTART1}
 	${_USAGE}

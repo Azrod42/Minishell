@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 12:47:31 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/15 09:11:41 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	check_equal(t_data *dta)
 	i = -1;
 	while (dta->prompt_t[++i])
 	{
+		if (is_sep(dta->prompt_t[i]))
+			return (0);
 		if (dta->prompt_t[i] == '=')
 			return (1);
 	}

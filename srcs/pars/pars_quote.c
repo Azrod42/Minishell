@@ -18,6 +18,8 @@ void	replace_in_quote(t_data *dta)
 	int	i;
 
 	nbquote = nb_charinstr(dta->prompt_t, '\"');
+	if (nbquote == 0)
+		return ;
 	i = -1;
 	while (dta->prompt_t[++i] && nbquote > 1)
 	{

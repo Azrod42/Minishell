@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/14 15:48:09 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/15 09:30:38 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	t_data	dta;
-	struct sigaction sa;
+	t_data				dta;
+	struct sigaction	sa;
+	struct termios		terminal;
 
 	init_dta(&dta, env, argc, argv);
-	ft_memset(&sa, 0, sizeof(struct sigaction));
-	sa.sa_sigaction = handle_sig;
-	sa.sa_flags = SA_SIGINFO;
-	sigaction(SIGINT, &sa, NULL);
+	init_signal(&dta, &sa, &terminal);
 	while (!dta.exit)
 	{
 		geprompt_t(&dta);

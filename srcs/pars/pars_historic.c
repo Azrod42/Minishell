@@ -54,4 +54,5 @@ void	add_historic(t_data *dta)
 	}
 	else
 		init_historic(dta, new);
+	dta->prompt_t[dta->secure_len] = '\0';
 }

@@ -68,7 +68,7 @@ void	reset_data(t_data *dta)
 void	ft_exit(t_data *dta)
 {
 	free_lst(dta->d_arg, dta);
-	if (dta->historique != NULL)
+	if (dta->nb_arg_hist != 0)
 		free_tab_len(dta->historique, dta->nb_arg_hist);
 	free_tab(dta->env);
 	free(dta->nickname);

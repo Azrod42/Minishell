@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/14 15:44:39 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/15 09:29:08 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 
 # include"../libft/libft.h"
 # include <readline/readline.h>
+# include <readline/history.h>
+# include <editline/readline.h>
 # include <stdio.h>
 # include <signal.h>
 # include <sys/wait.h>
 # include <errno.h>
 # include <fcntl.h>
-//# include <readline/history.h>
+# include <termios.h>
 
 typedef struct s_lst
 {
@@ -37,6 +39,7 @@ typedef struct s_data
 	t_lst	**d_arg;
 	size_t	nb_arg;
 	char	*prompt_t;
+	int		secure_len;
 	char	*temp_str_replace_arg;
 	char	**prompt;
 	char	**historique;
@@ -71,6 +74,7 @@ void	init_dta(t_data *dta, char **env, int argc, char **argv);
 int		geprompt_t(t_data *dta);
 void	get_nickname(t_data *dta, char **env);
 void	print_char_tab_t(char **tab);
+void	rl_replace_line(const char *text, int clear_undo);
 
 //pars
 int		is_wspace(char c);
@@ -107,6 +111,8 @@ void	reset_data(t_data *dta);
 void	check_err(t_data *dta);
 
 //signal
+void	init_signal(t_data *dta, struct sigaction *sa,
+			struct termios *terminal);
 void	handle_sig(int signum, siginfo_t *info, void *ptr);
 
 //executor

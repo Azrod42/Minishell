@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/14 15:35:17 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/15 09:00:33 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,53 +23,49 @@ int	check_only_space(t_data *dta)
 	return (0);
 }
 
-int	geprompt_t(t_data *dta)
+int	geprompt_2(t_data *dta)
 {
-	int i = 0;
-	dta->exit_actual = 0;
-	dta->prompt_t = readline(dta->nickname);
-	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
-	check_end_pipe(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
-	space_spe_char(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
-	if (nb_charinstr(dta->prompt_t, '|') != 0)
-		replace_pipe(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
-	//add_historic(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
-	replace_in_quote(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
-	replace_in_simple_quote(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
-	if (nb_charinstr(dta->prompt_t, '\"') != 0 &&
-		nb_charinstr(dta->prompt_t, '\'') != 0 )
-		remove_quote(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
-	if (check_equal(dta))
-		dta->d_arg = pars_equal(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_existing_arg(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_not_in_db(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	replace_arg(dta);
-	ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')
 	{
 		dta->prompt = NULL;
-		return (0);
+		return (1);
 	}
 	dta->prompt = ft_split(dta->prompt_t, ' ');
 	replace_special_char(dta);
-	replace_special_char_in_arg(dta);
+	return (0);
+}
+
+int	geprompt_t(t_data *dta)
+{
+	dta->exit_actual = 0;
+	dta->prompt_t = readline(dta->nickname);
+	if (dta->prompt_t == NULL)
+		ft_exit(dta);
+	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
+	check_end_pipe(dta);
+	space_spe_char(dta);
+	if (nb_charinstr(dta->prompt_t, '|') != 0)
+		replace_pipe(dta);
+	add_historic(dta);
+	replace_in_quote(dta);
+	replace_in_simple_quote(dta);
+	if (nb_charinstr(dta->prompt_t, '\"') != 0
+		|| nb_charinstr(dta->prompt_t, '\'') != 0)
+		remove_quote(dta);
+	if (check_equal(dta))
+		dta->d_arg = pars_equal(dta);
+	if (geprompt_2(dta) == 1)
+		return (1);
 	return (0);
 }
 
 //int i = 0;
-//ft_printf("DEBUG[%d]: %s\n", i += 1, dta->prompt_t);
+//ft_printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 
 	//print_historic(dta);
+	//replace_special_char_in_arg(dta);

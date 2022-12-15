@@ -74,6 +74,7 @@ void	space_spe_char(t_data *dta)
 		j++;
 	}
 	n[j] = '\0';
+	dta->secure_len = ft_strlen(dta->prompt_t);
 	free(dta->prompt_t);
 	dta->prompt_t = n;
 }
