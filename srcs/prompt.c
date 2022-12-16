@@ -47,6 +47,7 @@ int	geprompt_t(t_data *dta)
 	if (dta->prompt_t == NULL)
 		ft_exit(dta);
 	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
+	replace_tab(dta);
 	check_end_pipe(dta);
 	space_spe_char(dta);
 	if (nb_charinstr(dta->prompt_t, '|') != 0)

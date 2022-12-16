@@ -78,3 +78,13 @@ void	space_spe_char(t_data *dta)
 	free(dta->prompt_t);
 	dta->prompt_t = n;
 }
+
+void	replace_tab(t_data *dta)
+{
+	size_t	i;
+
+	i = -1;
+	while (dta->prompt_t[++i])
+		if (dta->prompt_t[i] == '\t')
+			dta->prompt_t[i] = ' ';
+}

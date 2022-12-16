@@ -94,6 +94,7 @@ void	replace_special_char_in_arg(t_data *dta);
 void	replace_not_in_db(t_data *dta);
 void	replace_existing_arg(t_data *dta);
 void	remove_quote(t_data *dta);
+void	replace_tab(t_data *dta);
 void	add_historic(t_data *dta);
 void	print_historic(t_data *dta);
 void	print_arg(t_data *dta);
