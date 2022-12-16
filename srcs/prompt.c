@@ -25,14 +25,9 @@ int	check_only_space(t_data *dta)
 
 int	geprompt_2(t_data *dta)
 {
-	int	i = 0;
-
 	replace_existing_arg(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_not_in_db(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_arg(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')
@@ -47,8 +42,6 @@ int	geprompt_2(t_data *dta)
 
 int	geprompt_t(t_data *dta)
 {
-	int	i = 0;
-
 	dta->exit_actual = 0;
 	dta->prompt_t = readline(dta->nickname);
 	if (dta->prompt_t == NULL)
@@ -56,25 +49,17 @@ int	geprompt_t(t_data *dta)
 	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
 	replace_tab(dta);
 	check_end_pipe(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	space_spe_char(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (nb_charinstr(dta->prompt_t, '|') != 0)
 		replace_pipe(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	add_historic(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_in_quote(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_in_simple_quote(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (nb_charinstr(dta->prompt_t, '\"') != 0
 		|| nb_charinstr(dta->prompt_t, '\'') != 0)
 		remove_quote(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (geprompt_2(dta) == 1)
 		return (1);
 	return (0);
