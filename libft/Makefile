@@ -67,10 +67,12 @@ FLAGS	= -Wall -Wextra -Werror
 INCS	= .
 
 .c.o :
+	@echo "${_BOLD}${_BLUE}Making libft > ${_END}${_YELLOW}${<:.c=.o}${_END}"
 	@${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
 
-$(NAME): ${OBJS}
-	@echo "${_BOLD}${_BLUE}Making libft${_END}"
+$(NAME): flag_use ${OBJS}
+	@echo "${_BOLD}✅ ${_IGREEN}libft > *.o Done${_END}"
+	@echo "${_BOLD}${_BLUE}=====================================================================${_END}"
 	@${LIBC} $(NAME) $(OBJS)
 	@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
 
@@ -87,6 +89,12 @@ clean:
 	@$(RM) -f $(OBJS) $(OBJS_B)
     
 re: fclean all
+
+flag_use:
+	@echo "${_BOLD}${_BLUE}Making > ${_END}${_YELLOW}libft.a${_END}"
+	@echo "${_BOLD}${_BLUE}======================= LIBFT FLAGS USE =============================${_END}"
+	@echo "${_BOLD}${_BLUE}\t\t    ${_RED} ${FLAGS}${_END}"
+	@echo "${_BOLD}${_BLUE}=====================================================================${_END}"
 
 .PHONY: all bonus clean fclean re .c.o
 

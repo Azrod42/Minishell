@@ -24,6 +24,8 @@ int	main(int argc, char **argv, char **env)
 	{
 		geprompt_t(&dta);
 		check_err(&dta);
+		if (dta.prompt != NULL)
+			print_char_tab_t(dta.prompt);
 		redirect(&dta);
 		reset_data(&dta);
 	}

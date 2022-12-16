@@ -41,17 +41,19 @@ CPPFLAGS	=-I/Users/$(USER)/.brew/opt/readline/include
 INCS		= .
 
 .c.o :
+	@echo "${_BOLD}${_BLUE}Making minishell > ${_END}${_YELLOW}${<:.c=.o}${_END}"
 	@${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
 
 all: $(NAME)
 
-${NAME}: ${OBJS}
+${NAME}: flag_use ${OBJS}
+	@echo "${_BOLD}✅ ${_IGREEN}minishell > *.o Done${_END}"
 	@make -C ${LIBFTPATH}
 	${_STATUS1}
 	@mv $(LIBFTPATH)${LIBFTNAME} ${LIBFTNAME}
 	${_DONE}
 	${_STATUS2}
-	${CC}${FLAGS} ${CPPFLAGS} ${LDFLAGS} -lreadline ${OBJS} ${LIBFTNAME} -o ${NAME}
+	@${CC}${FLAGS} ${CPPFLAGS} ${LDFLAGS} -lreadline ${OBJS} ${LIBFTNAME} -o ${NAME}
 	${_DONE}
 	${_PRINTART1}
 	${_USAGE}
@@ -108,6 +110,13 @@ ree: mclean all
 reee:
 	@./${NAME}
 
+flag_use:
+	@echo "${_BOLD}${_BLUE}============================= FLAGS USE =============================${_END}"
+	@echo "${_BOLD}${_RED}\t\t      ${FLAGS}${_END}"
+	@echo "${_BOLD}${_RED}\t  ${CPPFLAGS}${_END}"
+	@echo "${_BOLD}${_RED}\t    ${LDFLAGS}${_END}"
+	@echo "${_BOLD}${_RED}\t\t           -lreadline${_END}"
+	@echo "${_BOLD}${_BLUE}=====================================================================${_END}"
 
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # This is a minimal set of ANSI/VT100 color codes
@@ -137,7 +146,7 @@ _ICYAN=$'\x1b[46m
 _IWHITE=$'\x1b[47m
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-_PRINTART1=@echo "${_BOLD}${_RED}${_L0}\n${_L1}\n${_L2}\n${_L3}\n${_L4}\n${_L5}\n${_L6}\n${_L0}\n${_L7}\n${_L0}\n${_END}"
+_PRINTART1=@echo "${_BOLD}${_YELLOW}${_L0}\n${_L1}\n${_L2}\n${_L3}\n${_L4}\n${_L5}\n${_L6}\n${_L0}\n${_L7}\n${_L0}\n${_END}"
 _L0=$'|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|'
 _L1=$'| ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     |
 _L2=$'| ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     |
@@ -163,12 +172,12 @@ _L14=$'| ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝�
 _USAGE=@echo "${_BOLD}${_RED}\nUsage : ./minishell${_END}"
 
 _DONE=@echo "${_BOLD}✅ ${_IGREEN}Done${_END}"
-_STATUS1=@echo "${_BOLD}${_BLUE}Moving libft.a to ${INCS}/${_END}" && sleep 0.5
-_STATUS2=@echo "${_BOLD}${_BLUE}Making ${NAME}${_END}" && sleep 0.5
-_STATUS3=@echo "${_BOLD}${_BLUE}Removing *.o ${LIBFTNAME}${_END}" && sleep 0.5
-_STATUS4=@echo "${_BOLD}${_BLUE}fclean ${LIBFTNAME}${_END}" && sleep 0.5
-_STATUS5=@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${LIBFTPATH}${_END}" && sleep 0.5
-_STATUS6=@echo "${_BOLD}${_BLUE}Removing $(OBJS) $(LIBFTNAME) $(NAME) ${_END}" && sleep 0.5
+_STATUS1=@echo "${_BOLD}${_BLUE}Moving libft.a to > ${_END}${_YELLOW}${INCS}/${_END}" && sleep 0.5
+_STATUS2=@echo "${_BOLD}${_BLUE}Making > ${_END}${_YELLOW} ${NAME}${_END}" && sleep 0.5
+_STATUS3=@echo "${_BOLD}${_BLUE}Removing > ${_END}${_YELLOW}*.o ${LIBFTNAME}${_END}" && sleep 0.5
+_STATUS4=@echo "${_BOLD}${_BLUE}fclean >${_END}${_YELLOW}${LIBFTNAME}${_END}" && sleep 0.5
+_STATUS5=@echo "${_BOLD}${_BLUE}Removing > ${_END}${_RED}$(LIBFTNAME) ${_GREEN}$(NAME) ${_CYAN}${LIBFTPATH}${_YELLOW} $(OBJS)${_END}" && sleep 0.5
+_STATUS6=@echo "${_BOLD}${_BLUE}Removing > ${_END}${_YELLOW} $(OBJS) $(LIBFTNAME) $(NAME) ${_END}" && sleep 0.5
 _STATUS7=@echo "${_BOLD}${_BLUE}GIT ADD : ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/* ${_END}" && sleep 0.5
 _STATUS8=@echo "${_BOLD}${_BLUE}GIT COMMIT ...${_END}" && sleep 0.5
 _STATUS9=@echo "${_BOLD}${_BLUE}GIT PUSH ...${_END}" && sleep 0.5
