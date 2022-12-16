@@ -105,8 +105,6 @@ void	init_triple(t_data *dta)
 
 	i = 0;
 	dta->nb_cmd_p = 0;
-	if (is_background(dta->prompt) == 0)
-		return ;
 	dta->p = malloc(sizeof(char **) * (is_background(dta->prompt) + 2));
 	while (is_background(dta->prompt))
 	{
