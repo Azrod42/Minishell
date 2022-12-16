@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/15 09:00:33 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:43:28 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	geprompt_t(t_data *dta)
 	space_spe_char(dta);
 	if (nb_charinstr(dta->prompt_t, '|') != 0)
 		replace_pipe(dta);
-	add_historic(dta);
+	//add_historic(dta);
 	replace_in_quote(dta);
 	replace_in_simple_quote(dta);
 	if (nb_charinstr(dta->prompt_t, '\"') != 0

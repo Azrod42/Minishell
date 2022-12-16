@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:03:15 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 20:51:29 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:42:35 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_historic(t_data *dta, char *new)
 {
 	dta->historique = malloc(sizeof(char *) * 2);
 	dta->historique[0] = new;
+	dta->historique[1] = NULL;
 	dta->nb_arg_hist = 1;
 }
 

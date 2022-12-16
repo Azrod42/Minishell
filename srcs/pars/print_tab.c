@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:03:15 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 20:51:29 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:04:50 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	print_char_tab_t(char **tab)
 
 	i = -1;
 	while (tab[++i])
-		printf("%s_", tab[i]);
-	printf("\n");
+		ft_printf("%s_", tab[i]);
+	ft_printf("\n");
 }

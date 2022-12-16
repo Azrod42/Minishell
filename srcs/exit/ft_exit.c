@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 17:35:23 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:15:09 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,35 @@ void	free_lst(t_lst **lst, t_data *dta)
 	}
 }
 
+void	free_triple_tab(char ***tab)
+{
+	size_t	i;
+	size_t	j;
+
+	i = -1;
+	if (tab)
+	{
+		while (tab[++i])
+		{
+			j = -1;
+			while (tab[i][++j])
+			{
+				if (tab[i][j] != NULL)
+					free(tab[i][j]);
+			}
+			free(tab[i]);
+		}
+		free(tab);
+	}
+}
+
 void	reset_data(t_data *dta)
 {
-	if (dta->prompt != NULL)
+	(void)dta;
+	if (dta->p)
+		free_triple_tab(dta->p);
+	if (dta->prompt)
 		free_tab(dta->prompt);
-	if (dta->prompt_t)
-		free(dta->prompt_t);
 }
 
 void	ft_exit(t_data *dta)

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/15 09:29:08 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:12:46 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,15 @@ typedef struct s_lst
 typedef struct s_data
 {
 	char	*nickname;
+	char	*empty;
 	t_lst	**d_arg;
 	size_t	nb_arg;
 	char	*prompt_t;
 	int		secure_len;
 	char	*temp_str_replace_arg;
 	char	**prompt;
+	char	***p;
+	int		nb_cmd_p;
 	char	**historique;
 	size_t	nb_arg_hist;
 	size_t	nb_pipe;
@@ -75,6 +78,8 @@ int		geprompt_t(t_data *dta);
 void	get_nickname(t_data *dta, char **env);
 void	print_char_tab_t(char **tab);
 void	rl_replace_line(const char *text, int clear_undo);
+void	init_triple(t_data *dta);
+void	print_t_tab(char ***tab);
 
 //pars
 int		is_wspace(char c);
