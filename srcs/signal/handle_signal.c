@@ -33,6 +33,7 @@ void	handle_sig(int signum, siginfo_t *info, void *ptr)
 void	init_signal(t_data *dta, struct sigaction *sa, struct termios *terminal)
 {
 	(void)dta;
+	(void)terminal;
 	ft_memset(sa, 0, sizeof(struct sigaction));
 	sa->sa_sigaction = handle_sig;
 	sa->sa_flags = SA_SIGINFO;

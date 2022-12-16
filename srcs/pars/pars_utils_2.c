@@ -24,6 +24,25 @@ int	check_last_char(char *str, char c)
 	return (0);
 }
 
+int	is_sep_mix(char c)
+{
+	if (c == '>' || c == '<')
+		return (1);
+	return (0);
+}
+
+int	check_fst_c(char *str)
+{
+	size_t	i;
+
+	i = -1;
+	while (is_sep(str[++i]))
+		;
+	if (str[i] != '\0')
+		return (str[i]);
+	return (0);
+}
+
 int	is_to_space(char c)
 {
 	if (c == '<' || c == '>')

@@ -64,8 +64,8 @@ int	geprompt_t(t_data *dta)
 	return (0);
 }
 
-//int i = 0;
-//ft_printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
+// int i = 0;
+// printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 
 	//print_historic(dta);
 	//replace_special_char_in_arg(dta);

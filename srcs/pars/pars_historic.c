@@ -27,26 +27,25 @@ void	print_historic(t_data *dta)
 	arg = -1;
 	i = 0;
 	while (++arg < dta->nb_arg_hist)
-		printf("[%05zu]: %s\n", i += 1, dta->historique[arg]);
+		printf("[%04zu]: %s\n", i += 1, dta->historique[arg]);
 }
 
 void	add_historic(t_data *dta)
 {
 	size_t	i;
 	char	*new;
+	char	*new2;
 	char	**n_lst;
 
 	i = dta->nb_arg_hist;
 	new = ft_strdup(dta->prompt_t);
+	new2 = ft_strdup(dta->prompt_t);
 	if (dta->nb_arg_hist != 0)
 	{
 		n_lst = malloc(sizeof(char *) * (i + 2));
-		i = 0;
-		while (i < dta->nb_arg_hist)
-		{
+		i = -1;
+		while (++i < dta->nb_arg_hist)
 			n_lst[i] = dta->historique[i];
-			i++;
-		}
 		n_lst[i] = new;
 		free(dta->historique);
 		dta->historique = n_lst;
@@ -54,5 +53,6 @@ void	add_historic(t_data *dta)
 	}
 	else
 		init_historic(dta, new);
-	dta->prompt_t[dta->secure_len] = '\0';
+	free(dta->prompt_t);
+	dta->prompt_t = new2;
 }
