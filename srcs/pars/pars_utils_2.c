@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 13:30:26 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:32:57 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 11:17:36 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	check_last_char(char *str, char c)
 	return (0);
 }
 
-int	is_sep_mix(char c)
+int	is_to_space(char c)
 {
-	if (c == '>' || c == '<')
+	if (c == '<' || c == '>' || c == '&')
 		return (1);
 	return (0);
 }
@@ -43,9 +43,17 @@ int	check_fst_c(char *str)
 	return (0);
 }
 
-int	is_to_space(char c)
+void	print_t_tab(char ***tab)
 {
-	if (c == '<' || c == '>')
-		return (1);
-	return (0);
+	size_t	i;
+	size_t	j;
+
+	i = -1;
+	while (tab[++i])
+	{
+		j = -1;
+		while (tab[i][++j])
+			ft_printf("%s~", tab[i][j]);
+		ft_printf("\n");
+	}
 }

@@ -16,15 +16,15 @@ PATH, ou sur un chemin relatif ou absolu).
 • Implémenter les pipes (caractère |). La sortie de chaque commande de la pipeline est connectée à l’entrée de la commande suivante grâce à un pipe.
 //• Gérer les variables d’environnement (un $ suivi d’une séquence de caractères) qui doivent être substituées par leur contenu.
 • Gérer $? qui doit être substitué par le statut de sortie de la dernière pipeline exécutée au premier plan.
-• Gérer ctrl-C, ctrl-D et ctrl-\ qui doivent fonctionner comme dans bash.
+//• Gérer ctrl-C, ctrl-D et ctrl-\ qui doivent fonctionner comme dans bash.
 
-En mode interactif :
+//En mode interactif :
 
-◦ ctrl-C affiche un nouveau prompt sur une nouvelle ligne.
-◦ ctrl-D quitte le shell.
-◦ ctrl-\ ne fait rien.
+//◦ ctrl-C affiche un nouveau prompt sur une nouvelle ligne.
+//◦ ctrl-D quitte le shell.
+//◦ ctrl-\ ne fait rien.
 
-Votre shell doit implémenter les builtins suivantes :
+//Votre shell doit implémenter les builtins suivantes :
 
 ◦ echo et l’option -n
 ◦ cd uniquement avec un chemin relatif ou absolu

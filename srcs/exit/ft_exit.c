@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/16 21:40:19 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 09:16:29 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	free_triple_tab(char ***tab)
 void	reset_data(t_data *dta)
 {
 	(void)dta;
-	if (dta->p)
+	if (dta->p != NULL && dta->prompt != NULL)
 		free_triple_tab(dta->p);
 	if (dta->prompt != NULL)
 		free_tab(dta->prompt);

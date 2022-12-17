@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_space_<_>_<<_>>.c                             :+:      :+:    :+:   */
+/*   pars_space_spe_char.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 20:42:08 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 09:31:38 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 size_t	nb_char_to_add(t_data *dta)
 {
-	char	*str;
 	size_t	i;
 	size_t	j;
 
 	i = -1;
 	j = 0;
-	str = dta->prompt_t;
-	while (str[++i])
+	while (dta->prompt_t[++i])
 	{
-		if (str[i] == '>' || str[i] == '<')
+		if (is_to_space(dta->prompt_t[i]))
 		{
-			if (str[i + 1] == '>' || str[i + 1] == '<')
+			if (is_to_space(dta->prompt_t[i + 1]))
 				i++;
 			j += 2;
 		}

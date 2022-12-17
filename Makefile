@@ -29,7 +29,7 @@ SRCS = srcs/main.c \
 		srcs/executor/split_for_cmd2.c \
 		srcs/executor/hub_command.c \
 		srcs/executor/truc_utils.c \
-		srcs/fork/init_triple_tab.c \
+		srcs/trash/init_triple_tab.c \
 
 INCLUDE = include/minishell.h \
 

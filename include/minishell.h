@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/16 15:12:46 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 11:15:09 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 # include"../libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <editline/readline.h>
 # include <stdio.h>
-# include <signal.h>
+# include <sys/types.h>
 # include <sys/wait.h>
+# include <unistd.h>
+# include <signal.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <termios.h>
@@ -90,6 +91,7 @@ size_t	nb_charinstr(char *str, char c);
 int		check_equal(t_data *dta);
 void	check_end_pipe(t_data *dta);
 int		check_last_char(char *str, char c);
+int		check_only_space(t_data *dta);
 void	replace_pipe(t_data *dta);
 void	replace_arg(t_data *dta);
 void	replace_in_quote(t_data *dta);
