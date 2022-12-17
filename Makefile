@@ -8,6 +8,8 @@ SRCS = srcs/main.c \
 		srcs/prompt.c \
 		srcs/redirect.c \
 		srcs/exit/ft_exit.c \
+		srcs/exit/ft_free.c \
+		srcs/exit/utils_exit.c \
 		srcs/exit/error_pars_pipe.c \
 		srcs/pars/pars_utils.c \
 		srcs/pars/pars_utils_2.c \

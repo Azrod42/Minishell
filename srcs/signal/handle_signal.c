@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/15 09:34:16 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:57:10 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	handle_sig(int signum, siginfo_t *info, void *ptr)
 	{
 		printf("\n");
 		rl_on_new_line();
-		rl_replace_line("", 0);
+		rl_replace_line("", 1);
 		rl_redisplay();
 	}
 	if (signum == SIGQUIT)
@@ -33,7 +33,6 @@ void	handle_sig(int signum, siginfo_t *info, void *ptr)
 void	init_signal(t_data *dta, struct sigaction *sa, struct termios *terminal)
 {
 	(void)dta;
-	(void)terminal;
 	ft_memset(sa, 0, sizeof(struct sigaction));
 	sa->sa_sigaction = handle_sig;
 	sa->sa_flags = SA_SIGINFO;

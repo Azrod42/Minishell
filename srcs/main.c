@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 11:19:18 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:39:06 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv, char **env)
 		if (dta.prompt != NULL)
 		{
 			check_err(&dta);
-			print_char_tab_t(dta.prompt);
 			redirect(&dta);
 		}
 		reset_data(&dta);
@@ -35,9 +34,6 @@ int	main(int argc, char **argv, char **env)
 	return (0);
 }
 
-		// if (dta.prompt != NULL)
 		// 	print_char_tab_t(dta.prompt);
-
-
 			//init_triple(&dta);
 			//print_t_tab(dta.p);

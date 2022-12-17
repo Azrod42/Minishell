@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 09:53:58 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 10:01:32 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:40:45 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,11 @@ char	**dup_tab(t_data *dta)
 	return (new);
 }
 
-char	**no_fork(t_data	*dta)
+char	**no_fork(t_data	*dta, int i)
 {
-	size_t	i;
 	size_t	j;
 	char	**new;
 
-	i = -1;
 	j = 0;
 	while (dta->prompt[++i])
 		if (dta->prompt[i][0] != ('E' * -1))
@@ -109,6 +107,6 @@ void	init_triple(t_data *dta)
 		i++;
 		dta->nb_cmd_p++;
 	}
-	dta->p[i] = no_fork(dta);
+	dta->p[i] = no_fork(dta, -1);
 	dta->p[i + 1] = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 13:30:26 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 11:17:36 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:17:11 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_last_char(char *str, char c)
 
 int	is_to_space(char c)
 {
-	if (c == '<' || c == '>' || c == '&')
+	if (c == '<' || c == '>' || c == '|')
 		return (1);
 	return (0);
 }

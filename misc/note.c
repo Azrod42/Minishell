@@ -6,13 +6,13 @@ recup le infile :
 }
 
 
-Error to check :
-{
-	- debut et fin avec '|'
-	- cmd colle au '|' ex : "cat test.txt|wc -l"
-	- si programme en arriere plan ne peut pas exit le shell
-	- 
-}
+// Error to check :
+// {
+// 	- debut et fin avec '|'
+// 	- cmd colle au '|' ex : "cat test.txt|wc -l"
+// 	- si programme en arriere plan ne peut pas exit le shell
+// 	- 
+// }
 
 mech cmd :
 {

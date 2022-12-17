@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 11:15:09 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:03:50 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,11 @@ int		hub_env(t_data *dta, char **env_brut);
 
 //exit
 void	ft_exit(t_data *dta);
+void	print_error(char *err_type, char *err);
 void	free_tab(char **str);
+void	free_triple_tab(char ***tab);
+void	free_lst(t_lst **lst, t_data *dta);
+void	free_tab_len(char **str, size_t nb_arg);
 void	reset_data(t_data *dta);
 void	check_err(t_data *dta);
 
