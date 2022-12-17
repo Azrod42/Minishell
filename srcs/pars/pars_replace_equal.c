@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/12 12:47:31 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:33:05 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ size_t	replace_arg_2(t_data *dta, size_t i, size_t *m)
 				dta->temp_str_replace_arg[*m] = dta->d_arg[k]->data[l];
 				*m += 1;
 			}
+			return (j);
 		}
 	}
 	return (j);
