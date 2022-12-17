@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 17:11:48 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:46:45 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,9 @@ int	check_only_space(t_data *dta)
 
 int	geprompt_2(t_data *dta)
 {
-	int i = 0;
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_existing_arg(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_not_in_db(dta);
 	replace_arg(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')
