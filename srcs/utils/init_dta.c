@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 23:36:51 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:38:32 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ void	put_env_in_arg(t_data *dta)
 	{
 		new = malloc(sizeof(t_lst) * 1);
 		if (size_to_char(lst->content, '=') != -1)
-			new->flag = malloc(sizeof(char) *
-					(size_to_char(lst->content, '=') + 1));
+			new->flag = malloc(sizeof(char)
+					* (size_to_char(lst->content, '=') + 1));
 		ft_strlcpy(new->flag, lst->content,
 			size_to_char(lst->content, '=') + 1);
 		new->flag[size_to_char(lst->content, '=')] = '\0';
