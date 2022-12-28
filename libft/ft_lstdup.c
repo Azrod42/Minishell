@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_lstdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:03:15 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/22 17:01:06 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:39:22 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/12/26 13:13:04 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include"libft.h"
 
-void	print_char_tab_t(char **tab)
+t_list	*ft_lstdup(t_list *aux)
 {
-	size_t	i;
+	t_list	*new_lst;
+	t_list	*tempo;
+	t_list	*lst;
 
-	i = -1;
-	while (tab[++i])
-		ft_printf("%s_", tab[i]);
-	ft_printf("\n");
+	new_lst = 0;
+	lst = aux;
+	while (lst)
+	{
+		tempo = ft_lstnew(lst->content);
+		if (!tempo)
+			return (0);
+		ft_lstadd_back(&new_lst, tempo);
+		lst = lst->next;
+	}
+	return (new_lst);
 }

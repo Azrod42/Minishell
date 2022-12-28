@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:03:15 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/22 17:01:06 by tsorabel         ###   ########.fr       */
+/*   Created: 2022/11/10 09:42:03 by tsorabel          #+#    #+#             */
+/*   Updated: 2022/12/28 21:53:47 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "libft.h"
 
-void	print_char_tab_t(char **tab)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-	size_t	i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-	i = -1;
-	while (tab[++i])
-		ft_printf("%s_", tab[i]);
-	ft_printf("\n");
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	if (*s1 == 0 || *s2 == 0)
+		return (*s1 - *s2);
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
 }

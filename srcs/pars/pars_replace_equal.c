@@ -6,20 +6,18 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 17:33:05 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:07:35 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-void	replace_not_in_db(t_data *dta)
+void	replace_not_in_db(t_data *dta, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	size_t	len;
 
 	j = -1;
-	len = 0;
 	while (dta->prompt_t[++j])
 	{
 		if (dta->prompt_t[j] == '$')
@@ -35,7 +33,8 @@ void	replace_not_in_db(t_data *dta)
 			else
 				while (++i < dta->nb_arg)
 					if (strstr_el(&dta->prompt_t[j], dta->d_arg[i]->flag,
-							ft_strlen(dta->d_arg[i]->flag), len) != NULL)
+							ft_strlen(dta->d_arg[i]->flag), len) != NULL
+						&& strstr_el(&dta->prompt_t[j], "$?", 1, len) != NULL)
 						dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
 		}
 	}
@@ -91,6 +90,17 @@ size_t	replace_arg_2(t_data *dta, size_t i, size_t *m)
 	return (j);
 }
 
+size_t	replace_arg_3(t_data *dta, size_t *m)
+{
+	char	*num;
+
+	num = ft_itoa(g_exit_status);
+	ft_strlcat(dta->temp_str_replace_arg, num, 250000);
+	*m = *m + ft_strlen(num);
+	free(num);
+	return (1);
+}
+
 void	replace_arg(t_data *dta)
 {
 	size_t	i;
@@ -105,13 +115,12 @@ void	replace_arg(t_data *dta)
 		ft_bzero(dta->temp_str_replace_arg, ft_strlen(dta->prompt_t) + 8000);
 		while (dta->prompt_t[++i])
 		{
-			if (dta->prompt_t[i] == '$')
+			if (dta->prompt_t[i] == '$' && dta->prompt_t[i + 1] != '?')
 				i += replace_arg_2(dta, i, &m);
+			else if (dta->prompt_t[i] == '$' && dta->prompt_t[i + 1] == '?')
+				i += replace_arg_3(dta, &m);
 			else
-			{
-				dta->temp_str_replace_arg[m] = dta->prompt_t[i];
-				m++;
-			}
+				dta->temp_str_replace_arg[m++] = dta->prompt_t[i];
 		}
 		free(dta->prompt_t);
 		dta->prompt_t = ft_strdup(dta->temp_str_replace_arg);

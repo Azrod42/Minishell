@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:47:48 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 16:36:15 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/26 17:48:18 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_first_pipe(t_data *dta)
 	if (dta->prompt[0][i] == '|' && dta->exit_actual == 0)
 	{
 		dta->exit_actual = 1;
-		print_error("syntax error near", "|");
+		mess_error(258, "syntax error near", "|");
 		return (1);
 	}
 	return (0);
@@ -52,7 +52,7 @@ void	check_err_pipe(t_data *dta)
 			if (dta->prompt[arg][i] == '|' && dta->exit_actual == 0)
 			{
 				dta->exit_actual = 1;
-				print_error("syntax error near", "|");
+				mess_error(258, "syntax error near", "|");
 			}
 		}
 	}
@@ -71,7 +71,7 @@ void	check_err_before_pipe(t_data *dta)
 				prompt[arg + 1][0]) || is_to_space(dta->prompt[arg - 1][0])))
 		{
 			dta->exit_actual = 1;
-			print_error("syntax error near", dta->prompt[arg]);
+			mess_error(258, "syntax error near", dta->prompt[arg]);
 		}
 	}
 }

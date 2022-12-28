@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 17:46:45 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:20:15 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_only_space(t_data *dta)
 int	geprompt_2(t_data *dta)
 {
 	replace_existing_arg(dta);
-	replace_not_in_db(dta);
+	replace_not_in_db(dta, 0);
 	replace_arg(dta);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';
@@ -40,7 +40,7 @@ int	geprompt_2(t_data *dta)
 	return (0);
 }
 
-int	geprompt_t(t_data *dta)
+int	get_prompt_t(t_data *dta)
 {
 	dta->exit_actual = 0;
 	dta->prompt_t = readline(dta->nickname);
@@ -48,11 +48,19 @@ int	geprompt_t(t_data *dta)
 		ft_exit(dta);
 	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
 	replace_tab(dta);
-	check_end_pipe(dta);
 	space_spe_char(dta);
+	check_is_hdoc(dta);
+	if (dta->keys != NULL && dta->exit_actual == 0)
+		reconstruct_prompt(dta, -1, 0, 0);
+	check_end_pipe(dta);
 	if (nb_charinstr(dta->prompt_t, '|') != 0)
 		replace_pipe(dta);
-	add_historic(dta);
+	space_spe_char(dta);
+	check_is_hdoc(dta);
+	if (dta->keys != NULL && dta->exit_actual == 0)
+		reconstruct_prompt(dta, -1, 0, 0);
+	if (dta->prompt_t[0] && check_only_space(dta))
+		add_historic(dta);
 	replace_in_quote(dta);
 	replace_in_simple_quote(dta);
 	if (nb_charinstr(dta->prompt_t, '\"') != 0

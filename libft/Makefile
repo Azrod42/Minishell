@@ -28,6 +28,7 @@ SRCS	=	ft_atoi.c \
 			ft_strlen.c \
 			ft_strmapi.c \
 			ft_strncmp.c \
+			ft_strcmp.c \
 			ft_strnstr.c \
 			ft_strrchr.c \
 			ft_strtrim.c \
@@ -51,7 +52,10 @@ SRCS	=	ft_atoi.c \
 			ft_strrchr_ptf.c \
 			ft_lstadd_back.c \
 			ft_lstadd_front.c \
+			ft_lst_sort.c \
 			ft_lstclear.c \
+			ft_lstdup.c \
+			ft_new_node.c \
 			ft_lstdelone.c \
 			ft_lstiter.c \
 			ft_lstlast.c \

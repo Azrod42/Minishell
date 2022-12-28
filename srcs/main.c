@@ -6,27 +6,36 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 16:39:06 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:59:55 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../include/minishell.h"
 
+int	g_exit_status;
+
 int	main(int argc, char **argv, char **env)
 {
 	t_data				dta;
+	t_list				*envl;
 	struct sigaction	sa;
 	struct termios		terminal;
 
 	init_dta(&dta, env, argc, argv);
-	init_signal(&dta, &sa, &terminal);
+	init_env_list(&dta, &envl, env);
+	check_path(&dta);
+	update_shlvl(&dta);
 	while (!dta.exit)
-	{	
-		geprompt_t(&dta);
+	{
+		init_signal(&dta, &sa, &terminal);
+		get_prompt_t(&dta);
 		if (dta.prompt != NULL)
 		{
 			check_err(&dta);
+			init_triple(&dta);
+			rm_pipe_t_tab(dta.p);
 			redirect(&dta);
+			unlink(".hd_tempo");
 		}
 		reset_data(&dta);
 	}
@@ -34,6 +43,4 @@ int	main(int argc, char **argv, char **env)
 	return (0);
 }
 
-		// 	print_char_tab_t(dta.prompt);
-			//init_triple(&dta);
-			//print_t_tab(dta.p);
+// print_t_tab(dta.p);

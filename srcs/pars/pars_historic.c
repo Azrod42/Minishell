@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:03:15 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/16 18:42:35 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:51:02 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	add_historic(t_data *dta)
 		while (++i < dta->nb_arg_hist)
 			n_lst[i] = dta->historique[i];
 		n_lst[i] = new;
+		n_lst[i + 1] = NULL;
 		free(dta->historique);
 		dta->historique = n_lst;
 		dta->nb_arg_hist += 1;

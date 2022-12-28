@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/15 09:11:41 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:13:04 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	add_list(t_data *dta, int i)
 t_lst	**pars_equal(t_data *dta)
 {
 	size_t	i;
-	char	*tmp;
+	char	*tempo;
 
 	i = 0;
 	while (dta->prompt_t[i] != '=')
@@ -81,9 +81,9 @@ t_lst	**pars_equal(t_data *dta)
 			i++;
 			while (is_sep(dta->prompt_t[i]))
 				i++;
-			tmp = dta->prompt_t;
+			tempo = dta->prompt_t;
 			dta->prompt_t = ft_strjoin("", &dta->prompt_t[i]);
-			free(tmp);
+			free(tempo);
 		}
 	}
 	return (dta->d_arg);

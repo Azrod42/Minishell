@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/17 16:03:50 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:51:30 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <signal.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <dirent.h>
 # include <termios.h>
 
 typedef struct s_lst
@@ -34,8 +35,29 @@ typedef struct s_lst
 	char	*data;
 }	t_lst;
 
+typedef struct s_arg
+{
+	int		*quotes;
+	char	**arg;
+}	t_arg;
+
 typedef struct s_data
 {
+	int		fd[2][2];
+	int		status;
+	int		is_in;
+	int		is_out;
+	int		fd_in;
+	int		fd_out;
+	char	**actual;
+	char	**keys;
+	int		is_hdoc;
+	char	**dup_env;
+	t_list	**env_list;
+	int		path_ok;
+	char	**path_split;
+	char	*cmd_path;
+	int		back_stdout;
 	char	*nickname;
 	char	*empty;
 	t_lst	**d_arg;
@@ -56,49 +78,48 @@ typedef struct s_data
 	int		exit;
 	int		exit_actual;
 }	t_data;
-
-typedef struct s_cmd
-{
-	char	*infile;
-	char	*outfile;
-	char	*path;
-	char	**cmd;
-}	t_cmd;
-
-typedef struct s_chain
-{
-	int		fd[2];
-	t_cmd	**allcmd;
-	int		pos;
-	int		n_cmd;
-}	t_chain;
-
+extern int	g_exit_status;
 //prompt
 void	init_dta(t_data *dta, char **env, int argc, char **argv);
-int		geprompt_t(t_data *dta);
+int		get_prompt_t(t_data *dta);
 void	get_nickname(t_data *dta, char **env);
 void	print_char_tab_t(char **tab);
 void	rl_replace_line(const char *text, int clear_undo);
 void	init_triple(t_data *dta);
+char	**tab_dup(char **tab);
 void	print_t_tab(char ***tab);
+
+//buildin
+void	pwd(t_data *dta);
+void	unset(t_data *dta, int j);
+void	export(t_data *dta);
+void	env(t_data *dta, int is_export);
+void	echo(t_data *dta);
+void	cd(t_data *dta);
+void	run_minishell(t_data *dta);
+void	exec_cmd(t_data *dta);
+void	unset_from_list(t_data *dta, char **var, int size_var);
 
 //pars
 int		is_wspace(char c);
 int		is_sep(char c);
 int		is_to_space(char c);
+int		is_redirect(char c);
 void	space_spe_char(t_data *dta);
 size_t	nb_charinstr(char *str, char c);
 int		check_equal(t_data *dta);
 void	check_end_pipe(t_data *dta);
 int		check_last_char(char *str, char c);
+void	check_is_hdoc(t_data *dta);
 int		check_only_space(t_data *dta);
 void	replace_pipe(t_data *dta);
+void	addtab_arg(t_data *dta, t_lst *lst);
 void	replace_arg(t_data *dta);
 void	replace_in_quote(t_data *dta);
 void	replace_in_simple_quote(t_data *dta);
 void	replace_special_char(t_data *dta);
 void	replace_special_char_in_arg(t_data *dta);
-void	replace_not_in_db(t_data *dta);
+void	replace_not_in_db(t_data *dta, size_t len);
 void	replace_existing_arg(t_data *dta);
 void	remove_quote(t_data *dta);
 void	replace_tab(t_data *dta);
@@ -108,36 +129,47 @@ void	print_arg(t_data *dta);
 t_lst	**pars_equal(t_data *dta);
 void	redirect(t_data *dta);
 char	*ft_strnstr_len(const char *big, const char *little, size_t len);
+void	init_env_list(t_data *dta, t_list **envp, char **env);
+void	reconstruct_prompt(t_data *dta, int i, int j, int arg);
+char	**list_to_tab(t_list *lst);
+void	ft_lst_free(t_list *lst);
+char	*ft_getenv(const char *str, t_data *dta);
 char	*strstr_el(const char *big, const char *little,
 			size_t len, size_t ilen);
 int		hub_env(t_data *dta, char **env_brut);
+int		tab_len(char **tab);
 
 //exit
 void	ft_exit(t_data *dta);
-void	print_error(char *err_type, char *err);
 void	free_tab(char **str);
 void	free_triple_tab(char ***tab);
 void	free_lst(t_lst **lst, t_data *dta);
+void	free_keys(t_data *dta);
 void	free_tab_len(char **str, size_t nb_arg);
 void	reset_data(t_data *dta);
 void	check_err(t_data *dta);
 
 //signal
+void	take_sig_if_alt(t_data *dta);
 void	init_signal(t_data *dta, struct sigaction *sa,
 			struct termios *terminal);
 void	handle_sig(int signum, siginfo_t *info, void *ptr);
 
-//executor
-int		hub_exec(t_data *dta);
-int		make_chains(t_chain *chain, t_data *dta);
-int		make_allcmd(t_chain *chain, t_data *dta);
-char	*replace_cmd_path(char *old_p, t_data *dta);
-void	print_tab(t_cmd *cmd);
-void	free_allcmd(t_chain *chain);
-int		change_command(t_chain *chain, int i, int len, int j);
-void	printf_state(t_chain *chain);
-int		cmd_central(t_chain *chain, int pos, t_data *dta);
-int		ret_p_error(void);
-int		mess_error(char *s1, char *s2);
-
+//execut
+void	update_env_var(t_data *dta, char *var, char *value);
+void	run_cmd_whith_pipe(t_data *dta);
+int		mess_error(int err, char *s1, char *s2);
+void	r_redirection(t_data *dta, int i);		
+void	check_redirs(t_data *dta);
+int		get_cmd_path(t_data *dta);
+int		is_builtin(t_data *dta);
+void	execute_cmd(t_data *dta);
+void	exec_hdoc(t_data *dta);
+int		get_path(t_data *dta);
+void	rm_pipe_t_tab(char ***tab);
+//main
+void	check_path(t_data *dta);
+void	dup_env(t_data *dta, char **env);
+void	put_env_in_arg(t_data *dta, char **env);
+void	update_shlvl(t_data *dta);
 #endif

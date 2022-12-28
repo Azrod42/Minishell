@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:46:40 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/08 18:41:15 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/22 12:27:10 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char				*ft_strdup(const char *s);
 
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+int					ft_strcmp(const char *str1, const char *str2);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
 char				*ft_itoa(int n);
@@ -69,10 +70,13 @@ void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
 t_list				*ft_lstnew(void *content);
+t_list				*ft_new_node(void *cont, size_t size);
 void				ft_lstadd_front(t_list **lst, t_list *news);
 t_list				*ft_lstlast(t_list *lst);
+void				ft_lst_sort(t_list **lst, int (*cmp)());
 void				ft_lstadd_back(t_list **lst, t_list *news);
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
+t_list				*ft_lstdup(t_list *aux);
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 int					ft_lstsize(t_list *lst);

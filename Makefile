@@ -4,15 +4,17 @@ LIBFTNAME = libft.a
 LIBFTPATH = ./libft/
 
 SRCS = srcs/main.c \
-		srcs/init_dta.c \
+		srcs/utils/init_dta.c \
 		srcs/prompt.c \
 		srcs/redirect.c \
-		srcs/exit/ft_exit.c \
+		srcs/exe/buildin/ft_exit.c \
 		srcs/exit/ft_free.c \
-		srcs/exit/utils_exit.c \
 		srcs/exit/error_pars_pipe.c \
-		srcs/pars/pars_utils.c \
-		srcs/pars/pars_utils_2.c \
+		srcs/utils/pars_utils.c \
+		srcs/utils/pars_utils_2.c \
+		srcs/utils/pars_utils_3.c \
+		srcs/utils/execute_utils.c \
+		srcs/utils/main_utils.c \
 		srcs/pars/print_tab.c \
 		srcs/pars/pars_nickname.c \
 		srcs/pars/pars_equal.c \
@@ -20,25 +22,33 @@ SRCS = srcs/main.c \
 		srcs/pars/pars_single_quote.c \
 		srcs/pars/pars_replace_equal.c \
 		srcs/pars/pars_pipe.c \
+		srcs/pars/pars_getenv.c \
+		srcs/pars/pars_hdoc.c \
+		srcs/pars/pars_lst_to_tab.c \
 		srcs/pars/pars_existing_arg.c \
 		srcs/pars/pars_historic.c \
 		srcs/pars/pars_space_spe_char.c \
 		srcs/pars/take_env.c \
+		srcs/pars/init_triple_tab.c \
 		srcs/signal/handle_signal.c \
-		srcs/executor/hub_exec.c \
-		srcs/executor/chains.c \
-		srcs/executor/split_for_cmd.c \
-		srcs/executor/split_for_cmd2.c \
-		srcs/executor/hub_command.c \
-		srcs/executor/truc_utils.c \
-		srcs/trash/init_triple_tab.c \
+		srcs/exe/execute_pipe.c \
+		srcs/exe/execute_redir.c \
+		srcs/exe/rd_cmd.c \
+		srcs/exe/r_redirection.c \
+		srcs/exe/buildin/ft_cd.c \
+		srcs/exe/buildin/ft_echo.c \
+		srcs/exe/buildin/ft_env.c \
+		srcs/exe/buildin/ft_export.c \
+		srcs/exe/buildin/ft_minishell.c \
+		srcs/exe/buildin/ft_pwd.c \
+		srcs/exe/buildin/ft_unset.c \
 
 INCLUDE = include/minishell.h \
 
 OBJS		= $(SRCS:.c=.o)
 CC			=gcc 
 DEBUG		=-g -O0
-FLAGS		=-Wall -Werror -Wextra
+FLAGS		=-Wall -Werror -Wextra -g
 LDFLAGS		=-L/Users/$(USER)/.brew/opt/readline/lib
 CPPFLAGS	=-I/Users/$(USER)/.brew/opt/readline/include
 INCS		= .
@@ -65,6 +75,7 @@ clean:
 	${_STATUS3}
 	@rm -rf *.o
 	${_DONE}
+	@sleep 0.5
 
 fclean: clean
 	${_STATUS4}
@@ -73,7 +84,7 @@ fclean: clean
 	${_STATUS5}
 	@rm -rf $(OBJS) $(LIBFTNAME) $(NAME)
 	${_DONE}
-	@sleep 0.5
+	@sleep 1
 
 mclean: clean
 	${_STATUS6}	

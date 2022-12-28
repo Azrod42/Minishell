@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   pars_lst_to_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:03:15 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/22 17:01:06 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:02:32 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-void	print_char_tab_t(char **tab)
+char	**list_to_tab(t_list *lst)
 {
-	size_t	i;
+	int		i;
+	char	**tab;
+	t_list	*aux;
 
-	i = -1;
-	while (tab[++i])
-		ft_printf("%s_", tab[i]);
-	ft_printf("\n");
+	i = 0;
+	aux = lst;
+	tab = malloc(sizeof(char *) * (ft_lstsize(lst) + 1));
+	while (aux)
+	{
+		tab[i] = ft_strdup(aux->content);
+		aux = aux->next;
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
 }
