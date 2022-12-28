@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 22:51:30 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:24:15 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,6 @@ void	rm_pipe_t_tab(char ***tab);
 //main
 void	check_path(t_data *dta);
 void	dup_env(t_data *dta, char **env);
-void	put_env_in_arg(t_data *dta, char **env);
+void	put_env_in_arg(t_data *dta);
 void	update_shlvl(t_data *dta);
 #endif

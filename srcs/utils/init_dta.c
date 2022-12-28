@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 22:50:50 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:36:51 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,20 +83,24 @@ int	size_to_char(char *str, char c)
 	return (i);
 }
 
-void	put_env_in_arg(t_data *dta,  char **env)
+void	put_env_in_arg(t_data *dta)
 {
-	int		i;
 	t_lst	*new;
+	t_list	*lst;
 
-	i = -1;
-	while (env[++i])
+	lst = *dta->env_list;
+	while (lst)
 	{
 		new = malloc(sizeof(t_lst) * 1);
-		if (size_to_char(env[i], '=') != -1)
-			new->flag = malloc(sizeof(char) * (size_to_char(env[i], '=') + 1));
-		ft_strlcpy(new->flag, env[i], size_to_char(env[i], '=') + 1);
-		new->flag[size_to_char(env[i], '=')] = '\0';
-		new->data = ft_strdup(&env[i][size_to_char(env[i], '=') + 1]);
+		if (size_to_char(lst->content, '=') != -1)
+			new->flag = malloc(sizeof(char) *
+					(size_to_char(lst->content, '=') + 1));
+		ft_strlcpy(new->flag, lst->content,
+			size_to_char(lst->content, '=') + 1);
+		new->flag[size_to_char(lst->content, '=')] = '\0';
+		new->data = ft_strdup(&lst->content
+			[size_to_char(lst->content, '=') + 1]);
 		addtab_arg(dta, new);
+		lst = lst->next;
 	}
 }

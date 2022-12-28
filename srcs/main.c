@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 19:59:55 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:37:32 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv, char **env)
 	while (!dta.exit)
 	{
 		init_signal(&dta, &sa, &terminal);
+		put_env_in_arg(&dta);
 		get_prompt_t(&dta);
 		if (dta.prompt != NULL)
 		{

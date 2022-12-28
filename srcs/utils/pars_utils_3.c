@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 22:49:16 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:14:22 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,4 @@ void	init_env_list(t_data *dta, t_list **envp, char **env)
 		i++;
 	}
 	dta->env_list = envp;
-	put_env_in_arg(dta, env);
 }
