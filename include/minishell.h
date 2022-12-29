@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 23:24:15 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:49:10 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,13 @@ typedef struct s_data
 	int		exit;
 	int		exit_actual;
 }	t_data;
+
 extern int	g_exit_status;
+
 //prompt
 void	init_dta(t_data *dta, char **env, int argc, char **argv);
 int		get_prompt_t(t_data *dta);
+int		geprompt_2(t_data *dta);
 void	get_nickname(t_data *dta, char **env);
 void	print_char_tab_t(char **tab);
 void	rl_replace_line(const char *text, int clear_undo);

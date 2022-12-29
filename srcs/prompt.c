@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 22:20:15 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:49:40 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,6 @@ int	check_only_space(t_data *dta)
 	while (dta->prompt_t[++i])
 		if (!is_sep(dta->prompt_t[i]))
 			return (1);
-	return (0);
-}
-
-int	geprompt_2(t_data *dta)
-{
-	replace_existing_arg(dta);
-	replace_not_in_db(dta, 0);
-	replace_arg(dta);
-	if (!check_only_space(dta))
-		dta->prompt_t[0] = '\0';
-	if (dta->prompt_t[0] == '\0')
-	{
-		dta->prompt = NULL;
-		return (1);
-	}
-	dta->prompt = ft_split(dta->prompt_t, ' ');
-	replace_special_char(dta);
 	return (0);
 }
 
@@ -62,14 +45,31 @@ int	get_prompt_t(t_data *dta)
 	if (dta->prompt_t[0] && check_only_space(dta))
 		add_historic(dta);
 	replace_in_quote(dta);
+	if (geprompt_2(dta) == 1)
+		return (1);
+	return (0);
+}
+
+int	geprompt_2(t_data *dta)
+{
 	replace_in_simple_quote(dta);
 	if (nb_charinstr(dta->prompt_t, '\"') != 0
 		|| nb_charinstr(dta->prompt_t, '\'') != 0)
 		remove_quote(dta);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
-	if (geprompt_2(dta) == 1)
+	replace_existing_arg(dta);
+	replace_not_in_db(dta, 0);
+	replace_arg(dta);
+	if (!check_only_space(dta))
+		dta->prompt_t[0] = '\0';
+	if (dta->prompt_t[0] == '\0')
+	{
+		dta->prompt = NULL;
 		return (1);
+	}
+	dta->prompt = ft_split(dta->prompt_t, ' ');
+	replace_special_char(dta);
 	return (0);
 }
 

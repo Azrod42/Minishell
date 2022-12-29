@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 16:31:46 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:02:56 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	free_tab(char **str)
 			if (str[i] != NULL)
 				free(str[i]);
 	}
-	free(str);
+	if (str)
+		free(str);
 }
 
 void	free_tab_len(char **str, size_t nb_arg)
@@ -73,9 +74,11 @@ void	free_triple_tab(char ***tab)
 				if (tab[i][j] != NULL)
 					free(tab[i][j]);
 			}
-			free(tab[i]);
+			if (tab[i] != NULL)
+				free(tab[i]);
 		}
-		free(tab);
+		if (tab != NULL)
+			free(tab);
 	}
 }
 
