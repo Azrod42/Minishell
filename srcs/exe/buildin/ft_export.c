@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 17:00:41 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:12:05 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,19 @@ void	export_actual(t_data *dta, char **actual, int j)
 	}
 }
 
+int	check_eq_export(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == '=')
+			return (1);
+	}
+	return (0);
+}
+
 void	export(t_data *dta)
 {
 	char	**actual;
@@ -68,7 +81,7 @@ void	export(t_data *dta)
 	j = 1;
 	while (dta->actual[j])
 	{
-		if (ft_strlen(dta->actual[j]) != 0)
+		if (ft_strlen(dta->actual[j]) != 0 && check_eq_export(dta->actual[1]))
 		{	
 			actual = ft_split(dta->actual[j], '=');
 			if (actual)
@@ -76,7 +89,7 @@ void	export(t_data *dta)
 			free_tab(actual);
 		}
 		else
-			mess_error(-1, "`':", " not a valid identifier");
+			mess_error(-1, "not a valid identifier", "");
 		j++;
 	}
 	free_tab(dta->dup_env);
