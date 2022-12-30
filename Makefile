@@ -13,6 +13,7 @@ SRCS = srcs/main.c \
 		srcs/utils/pars_utils.c \
 		srcs/utils/pars_utils_2.c \
 		srcs/utils/pars_utils_3.c \
+		srcs/utils/pars_utils_4.c \
 		srcs/utils/execute_utils.c \
 		srcs/utils/main_utils.c \
 		srcs/pars/print_tab.c \

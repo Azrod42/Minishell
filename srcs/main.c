@@ -6,13 +6,21 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 23:37:32 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:05:07 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../include/minishell.h"
 
 int	g_exit_status;
+
+void	main_aux(t_data *dta)
+{
+	check_err(dta);
+	init_triple(dta);
+	rm_pipe_t_tab(dta->p);
+	redirect(dta);
+}
 
 int	main(int argc, char **argv, char **env)
 {
@@ -31,13 +39,7 @@ int	main(int argc, char **argv, char **env)
 		put_env_in_arg(&dta);
 		get_prompt_t(&dta);
 		if (dta.prompt != NULL)
-		{
-			check_err(&dta);
-			init_triple(&dta);
-			rm_pipe_t_tab(dta.p);
-			redirect(&dta);
-			unlink(".hd_tempo");
-		}
+			main_aux(&dta);
 		reset_data(&dta);
 	}
 	ft_exit(&dta);
