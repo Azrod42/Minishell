@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 11:53:35 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:41:18 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,29 @@ void	handler2(int sigtype)
 	}
 }
 
-void	take_sig_if_alt(t_data *dta)
+void	take_sig_if_alt(int sig)
 {
-	(void)dta;
+	if (sig == SIGINT)
+		g_exit_status = 130;
 	signal(SIGINT, handler2);
 	signal(SIGQUIT, handler2);
+}
+
+void	handle_sig_alt(int signum, siginfo_t *info, void *ptr)
+{
+	if (signum == SIGINT)
+	{
+		write(2, "\n", 1);
+		g_exit_status = 130;
+	}
+	if (signum == SIGQUIT)
+	{
+		write(2, "Quit: 3\n", 8);
+		g_exit_status = 131;
+	}
+	(void)signum;
+	(void)info;
+	(void)ptr;
 }
 
 void	handle_sig(int signum, siginfo_t *info, void *ptr)

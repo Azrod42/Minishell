@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:47:04 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:27:36 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,12 @@ void	reset_data(t_data *dta);
 void	check_err(t_data *dta);
 
 //signal
-void	take_sig_if_alt(t_data *dta);
+void	take_sig_if_alt(int sig);
 void	init_signal(t_data *dta, struct sigaction *sa,
 			struct termios *terminal);
 void	handle_sig(int signum, siginfo_t *info, void *ptr);
+void	handle_sig_alt(int signum, siginfo_t *info, void *ptr);
+void	handler2(int sigtype);
 
 //execut
 void	update_env_var(t_data *dta, char *var, char *value);

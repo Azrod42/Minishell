@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 17:07:35 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:22:26 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ size_t	replace_arg_3(t_data *dta, size_t *m)
 	char	*num;
 
 	num = ft_itoa(g_exit_status);
+	if (dta->status == 130)
+	{
+		free(num);
+		num = ft_strdup("130");
+	}
 	ft_strlcat(dta->temp_str_replace_arg, num, 250000);
 	*m = *m + ft_strlen(num);
 	free(num);

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 18:41:41 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:20:10 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 void	run_cmd_no_pipe(t_data *dta)
 {
-	pid_t	pid;
+	pid_t				pid;
+	struct sigaction	sa;
 
+	sa.sa_sigaction = handle_sig_alt;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGINT, &sa, NULL);
 	pid = fork();
 	if (pid == 0)
 	{
 		check_redirs(dta);
-		take_sig_if_alt(dta);
 		execute_cmd(dta);
 		if (dta->is_out)
 			dup2(dta->back_stdout, STDOUT_FILENO);
@@ -31,12 +34,15 @@ void	run_cmd_no_pipe(t_data *dta)
 	else
 	{
 		waitpid(pid, &dta->status, 0);
-		g_exit_status = WEXITSTATUS(dta->status);
+		if (g_exit_status != 130 && g_exit_status != 131)
+			g_exit_status = WEXITSTATUS(dta->status);
 	}
 }
 
 void	redirect(t_data *dta)
 {
+	if (g_exit_status == 130 || g_exit_status == 131)
+		g_exit_status = 0;
 	if (dta->prompt_t[0] != '\0' && dta->exit_actual == 0)
 	{
 		dta->actual = dta->p[0];

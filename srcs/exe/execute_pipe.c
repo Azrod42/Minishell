@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:24:11 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	run_cmd_whith_pipe(t_data *dta)
 			mess_error(dta, -1, "Pipe ", "error");
 		dta->actual = dta->p[arg];
 		run_cmd_whith_pipe_2(dta, i, &flag, arg);
-		take_sig_if_alt(dta);
 		i++;
 	}
 	kill_last_process(dta, flag);
