@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 09:09:05 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:00:29 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_tab(char **str)
 			if (str[i] != NULL)
 				free(str[i]);
 	}
-	if (str)
+	if (str != NULL)
 		free(str);
 }
 
@@ -50,11 +50,15 @@ void	free_lst(t_lst **lst, t_data *dta)
 	{
 		while (++i < dta->nb_arg)
 		{
-			free(lst[i]->data);
-			free(lst[i]->flag);
-			free(lst[i]);
+			if (lst[i]->data != NULL)
+				free(lst[i]->data);
+			if (lst[i]->flag != NULL)
+				free(lst[i]->flag);
+			if (lst[i] != NULL)
+				free(lst[i]);
 		}
-		free(lst);
+		if (lst != NULL)
+			free(lst);
 	}
 }
 
