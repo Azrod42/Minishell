@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 16:24:11 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:37:12 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	run_cmd_whith_pipe_2(t_data *dta, int i, int *flag, int arg)
 		close(dta->fd[i % 2][0]);
 }
 
-void	kill_last_process(t_data *dta, int flag)
+void	wait_fork(t_data *dta, int flag)
 {
 	int	nb_pipe;
 
@@ -76,7 +76,7 @@ void	kill_last_process(t_data *dta, int flag)
 	while (nb_pipe >= 0)
 	{
 		waitpid(-1, &dta->status, 0);
-		if (WIFEXITED(dta->status))
+		if (g_exit_status != 130 && g_exit_status != 131)
 			g_exit_status = WEXITSTATUS(dta->status);
 		nb_pipe--;
 	}
@@ -86,13 +86,17 @@ void	kill_last_process(t_data *dta, int flag)
 
 void	run_cmd_whith_pipe(t_data *dta)
 {
-	int	i;
-	int	arg;
-	int	flag;
+	int					i;
+	int					arg;
+	int					flag;
+	struct sigaction	sa;
 
 	i = 0;
 	arg = -1;
 	flag = 0;
+	sa.sa_sigaction = handle_sig_alt;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGINT, &sa, NULL);
 	while (dta->p[++arg] && WIFEXITED(dta->status))
 	{
 		if (pipe(dta->fd[i % 2]) == -1)
@@ -101,5 +105,5 @@ void	run_cmd_whith_pipe(t_data *dta)
 		run_cmd_whith_pipe_2(dta, i, &flag, arg);
 		i++;
 	}
-	kill_last_process(dta, flag);
+	wait_fork(dta, flag);
 }
