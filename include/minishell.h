@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:29:28 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:47:04 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int		is_wspace(char c);
 int		is_sep(char c);
 int		is_to_space(char c);
 int		is_redirect(char c);
+void	replace_tab(t_data *dta);
 void	space_spe_char(t_data *dta);
 size_t	nb_charinstr(char *str, char c);
 int		check_equal(t_data *dta);
@@ -126,7 +127,6 @@ void	replace_special_char_in_arg(t_data *dta);
 void	replace_not_in_db(t_data *dta, size_t len);
 void	replace_existing_arg(t_data *dta);
 void	remove_quote(t_data *dta);
-void	replace_tab(t_data *dta);
 void	add_historic(t_data *dta);
 void	print_historic(t_data *dta);
 void	print_arg(t_data *dta);

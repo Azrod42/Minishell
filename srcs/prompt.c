@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:21:59 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:45:17 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,10 @@ int	get_prompt_t(t_data *dta)
 	if (nb_charinstr(dta->prompt_t, '|') != 0)
 		space_spe_char(dta);
 	if (dta->exit_actual == 0)
-	check_is_hdoc(dta, -1);
-	if (dta->keys != NULL && dta->exit_actual == 0 && nb_charinstr(dta->prompt_t, '|') !=0)
+		check_is_hdoc(dta, -1);
+	if (dta->keys != NULL && dta->exit_actual == 0
+		&& nb_charinstr(dta->prompt_t, '|') != 0)
 		reconstruct_prompt(dta, -1, 0);
-	if (dta->prompt_t[0] && check_only_space(dta))
-		add_historic(dta);
-	replace_in_quote(dta);
 	if (geprompt_2(dta) == 1)
 		return (1);
 	return (0);
@@ -54,21 +52,18 @@ int	get_prompt_t(t_data *dta)
 
 int	geprompt_2(t_data *dta)
 {
-	int i = 0;
+	if (dta->prompt_t[0] && check_only_space(dta))
+		add_historic(dta);
+	replace_in_quote(dta);
 	replace_in_simple_quote(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (nb_charinstr(dta->prompt_t, '\"') != 0
 		|| nb_charinstr(dta->prompt_t, '\'') != 0)
 		remove_quote(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
 	replace_existing_arg(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_not_in_db(dta, 0);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_arg(dta);
-	printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')
