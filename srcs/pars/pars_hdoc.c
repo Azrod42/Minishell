@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 22:21:29 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 09:14:59 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,14 @@ void	store_key(t_data *dta, char *key)
 	{
 		dta->keys = malloc(sizeof(char *) * 2);
 		dta->keys[0] = key;
+		dta->keys[1] = NULL;
 	}
 	else
 	{
 		while (dta->keys[++i])
 		{
-			if (!ft_strncmp(dta->keys[i], key, 1000))
-			{
+			if (!ft_strncmp(dta->keys[i], key, 1024))
 				return ;
-			}
 		}
 		tmp = malloc(sizeof(char *) * (i + 2));
 		i = -1;
@@ -131,6 +130,12 @@ char	*get_prompt_hdoc(char *key)
 				exit = 1;
 			else
 			{
+				if (tmp[0] == '\0')
+				{
+					t = tmp;
+					tmp = ft_strjoin(tmp, " ");
+					free(t);
+				}
 				if (tmp != NULL && tmp[0] != '\0')
 				{
 					t = tmp;

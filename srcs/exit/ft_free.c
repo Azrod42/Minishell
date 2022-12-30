@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/29 12:02:56 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 09:09:05 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	free_keys(t_data *dta)
 	int	i;
 
 	i = -1;
-	while (dta->keys[++i])
+	while (dta->keys[++i] != NULL)
 	{
 		if (dta->keys[i] != NULL)
 		{
@@ -95,5 +95,6 @@ void	free_keys(t_data *dta)
 			free(dta->keys[i]);
 		}
 	}
-	free(dta->keys);
+	if (dta->keys != NULL)
+		free(dta->keys);
 }
