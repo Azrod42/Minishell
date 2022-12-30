@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 16:37:12 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 17:35:21 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,5 @@ void	run_cmd_whith_pipe(t_data *dta)
 		i++;
 	}
 	wait_fork(dta, flag);
+	wait(&dta->status);
 }

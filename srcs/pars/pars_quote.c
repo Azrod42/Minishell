@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 20:04:19 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 17:14:37 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void	remove_quote(t_data *dta)
 				new[k++] = dta->prompt_t[i];
 		if (dta->prompt_t[i] == '\'' || dta->prompt_t[i] == '\"')
 			i++;
-		new[k++] = dta->prompt_t[i];
+		if (dta->prompt_t[i] != '\'' && dta->prompt_t[i] != '\"')
+			new[k++] = dta->prompt_t[i];
 	}
 	new[k] = '\0';
 	free(dta->prompt_t);
