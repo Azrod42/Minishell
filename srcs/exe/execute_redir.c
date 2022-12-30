@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 19:58:06 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	exec_absolute(t_data *dta)
 	DIR	*dir;
 
 	if ((access(dta->actual[0], F_OK)) != 0)
-		mess_error(1, "No such file or directory", "");
+		mess_error(dta, 1, "No such file or directory", "");
 	else
 	{		
 		dir = opendir(dta->actual[0]);
 		if (dir)
 		{
-			mess_error(-1, "is a directory", "");
+			mess_error(dta, -1, "is a directory", "");
 			closedir(dir);
 		}
 		else
@@ -31,7 +31,7 @@ void	exec_absolute(t_data *dta)
 			if ((access(dta->actual[0], X_OK)) == 0)
 				execve(dta->actual[0], dta->actual, dta->dup_env);
 			else
-				mess_error(1, "Permission denied", "");
+				mess_error(dta, 1, "Permission denied", "");
 		}
 	}
 }

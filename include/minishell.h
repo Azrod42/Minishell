@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/29 13:49:10 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:29:28 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_data
 	int		fd_out;
 	char	**actual;
 	char	**keys;
+	int		key_done;
 	int		is_hdoc;
 	char	**dup_env;
 	t_list	**env_list;
@@ -113,7 +114,7 @@ size_t	nb_charinstr(char *str, char c);
 int		check_equal(t_data *dta);
 void	check_end_pipe(t_data *dta);
 int		check_last_char(char *str, char c);
-void	check_is_hdoc(t_data *dta);
+void	check_is_hdoc(t_data *dta, int i);
 int		check_only_space(t_data *dta);
 void	replace_pipe(t_data *dta);
 void	addtab_arg(t_data *dta, t_lst *lst);
@@ -130,10 +131,15 @@ void	add_historic(t_data *dta);
 void	print_historic(t_data *dta);
 void	print_arg(t_data *dta);
 t_lst	**pars_equal(t_data *dta);
+void	put_str_in_new_file(char *str, char *key, t_data *dta);
+void	store_key(t_data *dta, char *key);
+void	reconstruct_prompt(t_data *dta, int i, int j);
+void	reconstruct_prompt_2(t_data *dta, int *i, int *j, char *new);
+void	set_arg(t_data *dta, int *arg);
 void	redirect(t_data *dta);
 char	*ft_strnstr_len(const char *big, const char *little, size_t len);
 void	init_env_list(t_data *dta, t_list **envp, char **env);
-void	reconstruct_prompt(t_data *dta, int i, int j, int arg);
+void	reconstruct_prompt(t_data *dta, int i, int j);
 char	**list_to_tab(t_list *lst);
 void	ft_lst_free(t_list *lst);
 char	*ft_getenv(const char *str, t_data *dta);
@@ -161,7 +167,7 @@ void	handle_sig(int signum, siginfo_t *info, void *ptr);
 //execut
 void	update_env_var(t_data *dta, char *var, char *value);
 void	run_cmd_whith_pipe(t_data *dta);
-int		mess_error(int err, char *s1, char *s2);
+int		mess_error(t_data *dta, int err, char *s1, char *s2);
 void	r_redirection(t_data *dta, int i);		
 void	check_redirs(t_data *dta);
 int		get_cmd_path(t_data *dta);

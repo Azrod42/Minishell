@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 17:00:50 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	env(t_data *dta, int is_export)
 
 	if (dta->actual[1] != NULL)
 	{
-		mess_error(1, "No such file or directory", "");
+		mess_error(dta, 1, "No such file or directory", "");
 		return ;
 	}
 	if (is_export)

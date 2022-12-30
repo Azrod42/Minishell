@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 17:02:15 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	outfile_actual(t_data *dta)
 	if (!dta->is_out)
 		dta->back_stdout = dup(STDOUT_FILENO);
 	if (dup2(dta->fd_out, STDOUT_FILENO) == -1)
-		mess_error(-1, "Dup error", "");
+		mess_error(dta, -1, "Dup error", "");
 	close(dta->fd_out);
 	dta->is_out = 1;
 }
@@ -27,7 +27,7 @@ void	infile_actual(t_data *dta)
 	if (!is_builtin(dta))
 	{
 		if (dup2(dta->fd_in, STDIN_FILENO) == -1)
-			mess_error(-1, "Dup error", "");
+			mess_error(dta, -1, "Dup error", "");
 	}
 	close(dta->fd_in);
 	dta->is_in = 1;
@@ -54,9 +54,9 @@ int	outfile(t_data *dta, int i)
 	else
 	{
 		if (errno == EACCES)
-			mess_error(1, "Permission denied", "");
+			mess_error(dta, 1, "Permission denied", "");
 		else
-			mess_error(-1, "here_doc:", "could not find here_doc file");
+			mess_error(dta, -1, "here_doc:", "could not find here_doc file");
 		return (1);
 	}
 	return (0);
@@ -71,11 +71,11 @@ int	infile(t_data *dta, int i)
 	if (dta->fd_in == -1)
 	{
 		if (errno == EACCES)
-			mess_error(1, "Permission denied", "");
+			mess_error(dta, 1, "Permission denied", "");
 		else if (!(ft_strncmp(dta->actual[i], "<<", 3)) && errno == 2)
-			mess_error(-1, "here_doc:", "could not find here_doc file");
+			mess_error(dta, -1, "here_doc:", "could not find here_doc file");
 		else
-			mess_error(1, "No such file or directory", "");
+			mess_error(dta, 1, "No such file or directory", "");
 		return (1);
 	}
 	else

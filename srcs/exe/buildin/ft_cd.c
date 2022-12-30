@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/29 13:51:48 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,18 @@ void	cd(t_data *dta)
 	if (!dta->actual[1] || !(ft_strncmp(dta->actual[1], "~", 2)))
 	{
 		if (chdir(home_path) == -1)
-			mess_error(-1, "HOME not set", "");
+			mess_error(dta, -1, "HOME not set", "");
 	}
 	else if (!ft_strncmp(dta->actual[1], "-", 2))
 		old_print_pwd(dta);
 	else if (chdir(dta->actual[1]) == -1)
 	{
 		if (errno == EACCES)
-			mess_error(1, "Permission denied", "");
+			mess_error(dta, 1, "Permission denied", "");
 		if (errno == ENAMETOOLONG)
-			mess_error(-1, "File name too long", "");
+			mess_error(dta, -1, "File name too long", "");
 		else
-			mess_error(1, "No such file or directory", "");
+			mess_error(dta, 1, "No such file or directory", "");
 	}
 	if (!dta->actual[1] || ft_strncmp(dta->actual[1], "-", 2))
 		cd_actual(dta, &pwd);

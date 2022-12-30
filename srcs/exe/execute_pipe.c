@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 21:07:43 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	kill_last_process(t_data *dta, int flag)
 
 	nb_pipe = dta->nb_cmd_p - 1;
 	if (flag)
-		mess_error(-1, "Fork error", "");
+		mess_error(dta, -1, "Fork error", "");
 	while (nb_pipe >= 0)
 	{
 		waitpid(-1, &dta->status, 0);
@@ -96,7 +96,7 @@ void	run_cmd_whith_pipe(t_data *dta)
 	while (dta->p[++arg] && WIFEXITED(dta->status))
 	{
 		if (pipe(dta->fd[i % 2]) == -1)
-			mess_error(-1, "Pipe ", "error");
+			mess_error(dta, -1, "Pipe ", "error");
 		dta->actual = dta->p[arg];
 		run_cmd_whith_pipe_2(dta, i, &flag, arg);
 		take_sig_if_alt(dta);

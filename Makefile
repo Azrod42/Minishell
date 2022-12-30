@@ -24,6 +24,8 @@ SRCS = srcs/main.c \
 		srcs/pars/pars_pipe.c \
 		srcs/pars/pars_getenv.c \
 		srcs/pars/pars_hdoc.c \
+		srcs/pars/pars_hdoc_2.c \
+		srcs/pars/pars_hdoc_3.c \
 		srcs/pars/pars_lst_to_tab.c \
 		srcs/pars/pars_existing_arg.c \
 		srcs/pars/pars_historic.c \

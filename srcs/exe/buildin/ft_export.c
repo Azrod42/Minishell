@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/29 14:12:05 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	export_actual(t_data *dta, char **actual, int j)
 	char	*var;
 
 	if (!valid_id(actual[0]))
-		mess_error(-1, "not a valid identifier", "");
+		mess_error(dta, -1, "not a valid identifier", "");
 	else
 	{
 		env_value = ft_getenv(actual[0], dta);
@@ -89,7 +89,7 @@ void	export(t_data *dta)
 			free_tab(actual);
 		}
 		else
-			mess_error(-1, "not a valid identifier", "");
+			mess_error(dta, -1, "not a valid identifier", "");
 		j++;
 	}
 	free_tab(dta->dup_env);

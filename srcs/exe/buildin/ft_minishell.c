@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 16:59:58 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	run_minishell(t_data *dta)
 	}
 	new_env = dup_new_env(dta->dup_env, size);
 	if (execve(dta->actual[0], dta->actual, new_env) == -1)
-		mess_error(127, "command not found :", dta->actual[0]);
+		mess_error(dta, 127, "command not found :", dta->actual[0]);
 	free_tab(new_env);
 }
 
@@ -67,8 +67,8 @@ void	exec_cmd(t_data *dta)
 	else
 	{
 		if (dta->path_ok == 0)
-			mess_error(127, "command not found :", dta->actual[0]);
+			mess_error(dta, 127, "command not found :", dta->actual[0]);
 		else
-			mess_error(1, "No such file or directory", "");
+			mess_error(dta, 1, "No such file or directory", "");
 	}
 }

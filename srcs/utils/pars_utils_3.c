@@ -6,14 +6,16 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 23:14:22 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:25:50 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-int	mess_error(int err, char *s1, char *s2)
+int	mess_error(t_data *dta, int err, char *s1, char *s2)
 {
+	if (dta->exit_actual != 0)
+		return (0);
 	if (err != -1)
 		g_exit_status = err;
 	else

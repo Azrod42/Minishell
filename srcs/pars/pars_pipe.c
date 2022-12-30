@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/13 20:42:08 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:10:09 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	check_end_pipe(t_data *dta)
 {
 	dta->nb_pipe = 0;
 	dta->exit_multi_pipe = 0;
-	if (dta->prompt_t[0] == '\0' || !check_first_c_pipe(dta->prompt_t))
+	if (dta->prompt_t[0] == '\0' || !check_first_c_pipe(dta->prompt_t)
+		|| nb_charinstr(dta->prompt_t, '|') == 0)
 		return ;
 	while (check_last_char(dta->prompt_t, '|') && dta->exit_multi_pipe != 2)
 		add_after_pipe(dta);

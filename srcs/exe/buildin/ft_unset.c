@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 17:11:03 by tsorabel         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	unset(t_data *dta, int j)
 	while (dta->actual[j])
 	{
 		if (!is_valid_id(dta->actual[j]))
-			mess_error(-1, "not a valid identifier", "");
+			mess_error(dta, -1, "not a valid identifier", "");
 		else
 		{
 			var = ft_strdup(dta->actual[j]);
