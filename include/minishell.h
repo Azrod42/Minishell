@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 16:28:56 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:12:54 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_data
 	int		is_hdoc;
 	char	**dup_env;
 	t_list	**env_list;
+	t_list	*key_to_free;
 	int		path_ok;
 	char	**path_split;
 	char	*cmd_path;

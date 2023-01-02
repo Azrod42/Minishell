@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:38:15 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/02 19:55:56 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ void	store_key(t_data *dta, char *key)
 	else
 	{
 		while (dta->keys[++i])
-		{
 			if (!ft_strncmp(dta->keys[i], key, 1024))
 				return ;
-		}
 		tmp = malloc(sizeof(char *) * (i + 2));
 		i = -1;
 		while (dta->keys[++i])

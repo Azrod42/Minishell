@@ -6,20 +6,22 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:28:08 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:16:39 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-char	*get_key(char *str)
+char	*get_key(char *str, t_data *dta)
 {
 	int		i;
 	int		j;
 	char	*ret;
+	t_list	*new;
 
 	i = -1;
 	j = -1;
+	new = malloc(sizeof(t_list) * 1);
 	while (is_sep(str[++j]) && str[i])
 		;
 	while (!is_sep(str[++i + j]) && str[i])
@@ -29,6 +31,9 @@ char	*get_key(char *str)
 	while (!is_wspace(str[++i + j]) && str[i])
 		ret[i] = str[i + j];
 	ret[i] = '\0';
+	new->content = ft_strjoin(".", ret);
+	new->next = NULL;
+	ft_lstadd_back(&dta->key_to_free, new);
 	return (ret);
 }
 
@@ -104,7 +109,7 @@ void	check_is_hdoc(t_data *dta, int i)
 			if (!is_redirect(dta->prompt_t[i]) && (ft_isalpha(dta
 						->prompt_t[i]) || dta->prompt_t[i] == '_'))
 			{
-				key = get_key(&dta->prompt_t[i]);
+				key = get_key(&dta->prompt_t[i], dta);
 				prompt = get_prompt_hdoc(key);
 				put_str_in_new_file(prompt, key, dta);
 			}
