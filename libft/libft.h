@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:46:40 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/22 12:27:10 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:06:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_list				*ft_lstlast(t_list *lst);
 void				ft_lst_sort(t_list **lst, int (*cmp)());
 void				ft_lstadd_back(t_list **lst, t_list *news);
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
-t_list				*ft_lstdup(t_list *aux);
+t_list				*ft_dup_lst(t_list *aux);
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 int					ft_lstsize(t_list *lst);

@@ -100,7 +100,7 @@ norm:
 
 git_add:
 	${_STATUS7}	
-	@git add ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile misc/*
+	@git add ${SRCS} ${INCLUDE} ${LIBFTPATH}*.c ${LIBFTPATH}*.h ${LIBFTPATH}Makefile Makefile
 	${_DONE}
 	@git status | grep modif
 

@@ -54,7 +54,7 @@ SRCS	=	ft_atoi.c \
 			ft_lstadd_front.c \
 			ft_lst_sort.c \
 			ft_lstclear.c \
-			ft_lstdup.c \
+			ft_dup_lst.c \
 			ft_new_node.c \
 			ft_lstdelone.c \
 			ft_lstiter.c \

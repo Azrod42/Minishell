@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 17:37:59 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:06:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	env(t_data *dta, int is_export)
 	}
 	if (is_export)
 	{
-		actual = ft_lstdup(*dta->env_list);
+		actual = ft_dup_lst(*dta->env_list);
 		ft_lst_sort(&actual, ft_strcmp);
 		print_export(&actual, is_export);
 		ft_lst_free(actual);
