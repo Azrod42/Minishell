@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 16:28:44 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:38:15 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,3 @@ void	init_signal(t_data *dta, struct sigaction *sa, struct termios *terminal)
 	terminal->c_lflag ^= ECHOCTL;
 	tcsetattr(STDOUT_FILENO, TCSAFLUSH, terminal);
 }
-
-//echo "'$USER'"
-//echo "$USER"'$tt'

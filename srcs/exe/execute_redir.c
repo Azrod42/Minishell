@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:32:43 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,3 @@ void	ft_lst_free(t_list *lst)
 		free(tempo);
 	}
 }
-
-	// else if (!(ft_strncmp(dta->actual[0], "./minishell", 12)))
-		// run_minishell(dta);
