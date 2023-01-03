@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 15:05:07 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:30:04 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,3 @@ int	main(int argc, char **argv, char **env)
 	ft_exit(&dta);
 	return (0);
 }
-
-// print_t_tab(dta.p);

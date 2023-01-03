@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/26 13:13:04 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:31:18 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,3 @@ int	check_equal(t_data *dta)
 	}
 	return (0);
 }
-
-//gerer le cas de + de 1 = ext ARG===test >>>> test not foud

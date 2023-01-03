@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/02 20:25:27 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:31:55 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	ft_exit(t_data *dta)
 	if (dta->nb_arg_hist)
 		free_tab(dta->historique);
 	free(dta->nickname);
-	system("leaks minishell");
 	close(0);
 	close(1);
 	close(2);
 	exit(0);
 }
+	// system("leaks minishell");

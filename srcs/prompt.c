@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 17:45:40 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:30:20 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,3 @@ int	geprompt_2(t_data *dta)
 
 // int i = 0;
 // printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
-
-	//print_historic(dta);
-	//replace_special_char_in_arg(dta);
