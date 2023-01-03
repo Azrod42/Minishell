@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 16:36:10 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:14:16 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ void	redirect(t_data *dta)
 			run_cmd_whith_pipe(dta);
 	}
 }
-			// hub_exec(dta);

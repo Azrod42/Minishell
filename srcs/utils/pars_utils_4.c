@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 15:01:52 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:14:51 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@ void	replace_tab(t_data *dta)
 			dta->prompt_t[i] = ' ';
 	t = dta->prompt_t;
 	dta->prompt_t = ft_strjoin(dta->prompt_t, "     ");
+	free(t);
+	t = dta->prompt_t;
+	dta->prompt_t = ft_strjoin(" ", dta->prompt_t);
 	free(t);
 }

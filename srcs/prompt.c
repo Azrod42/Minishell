@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 11:30:20 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:44:11 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	get_prompt_t(t_data *dta)
 	dta->prompt_t = readline(dta->nickname);
 	if (dta->prompt_t == NULL)
 		ft_exit(dta);
+	add_history(dta->prompt_t);
 	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
 	replace_tab(dta);
 	if (dta->prompt_t[0] && check_only_space(dta))
@@ -44,9 +45,6 @@ int	get_prompt_t(t_data *dta)
 		space_spe_char(dta);
 	if (dta->exit_actual == 0)
 		check_is_hdoc(dta, -1);
-	if (dta->keys != NULL && dta->exit_actual == 0
-		&& nb_charinstr(dta->prompt_t, '|') != 0)
-		reconstruct_prompt(dta, -1, 0);
 	if (geprompt_2(dta) == 1)
 		return (1);
 	return (0);
@@ -54,6 +52,9 @@ int	get_prompt_t(t_data *dta)
 
 int	geprompt_2(t_data *dta)
 {
+	if (dta->keys != NULL && dta->exit_actual == 0
+		&& nb_charinstr(dta->prompt_t, '|') != 0)
+		reconstruct_prompt(dta, -1, 0);
 	replace_in_quote(dta);
 	replace_in_simple_quote(dta);
 	if (nb_charinstr(dta->prompt_t, '\"') != 0

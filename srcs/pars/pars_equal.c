@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 11:31:18 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:38:02 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,34 @@ void	add_list(t_data *dta, int i)
 	while (dta->prompt_t[i + j] != ' ' && dta->prompt_t[i + j])
 		j++;
 	lst->data = malloc(sizeof(char) * j + 1);
-	ft_memcpy(lst->data, &dta->prompt_t[i], j + 1);
+	ft_memcpy(lst->data, &dta->prompt_t[i], j);
+	lst->data[j] = '\0';
 	j = 0;
 	i -= 2;
-	while (dta->prompt_t[i - j] != ' ' && i - j >= 0)
+	while (dta->prompt_t[i - j] != ' ' && i - j >= 0 && dta->prompt_t[i - j])
 		j++;
 	lst->flag = malloc(sizeof(char) * j + 1);
 	ft_strlcat(lst->flag, &dta->prompt_t[i - j + 1], j + 1);
+	lst->flag[j + 1] = '\0';
 	addtab_arg(dta, lst);
 	ft_memset(dta->prompt_t, ' ', ft_strlen(lst->data)
-		+ ft_strlen(lst->flag) + 1);
+		+ ft_strlen(lst->flag) + 2);
+}
+
+int	is_not_arg(t_data *dta)
+{
+	int	i;
+
+	i = 0;
+	while (dta->prompt_t[i] == ' ' && dta->prompt_t[i])
+		i++;
+	while (dta->prompt_t[i] != ' ' && dta->prompt_t[i])
+	{
+		if (dta->prompt_t[i] == '=')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 t_lst	**pars_equal(t_data *dta)
@@ -69,6 +87,8 @@ t_lst	**pars_equal(t_data *dta)
 	char	*tempo;
 
 	i = 0;
+	if (!is_not_arg(dta))
+		return (dta->d_arg);
 	while (dta->prompt_t[i] != '=')
 		i++;
 	if (ft_strlen(&dta->prompt_t[i]) > 0)
@@ -96,6 +116,8 @@ int	check_equal(t_data *dta)
 	i = -1;
 	while (dta->prompt_t[++i])
 	{
+		while (is_sep(dta->prompt_t[i]))
+			i++;
 		if (is_sep(dta->prompt_t[i]))
 			return (0);
 		if (dta->prompt_t[i] == '=')

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 11:38:28 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:06:15 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ void	replace_not_in_db(t_data *dta, size_t len)
 		else if (dta->prompt_t[j] == '$')
 		{
 			i = -1;
-			len = 0;
+			len = -1;
 			j++;
-			while (!is_sep(dta->prompt_t[j + len]) && !is_sep(dta->prompt_t
-					[j + len] * -1) && dta->prompt_t[j + len])
-				len++;
+			while (!is_sep(dta->prompt_t[j + ++len]) && !is_sep(dta->prompt_t
+					[j + len] * -1) && dta->prompt_t[j + len]);
 			if (dta->nb_arg == 0)
 				dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
 			else
@@ -71,9 +70,9 @@ size_t	replace_arg_2(t_data *dta, size_t i, size_t *m)
 
 	k = -1;
 	j = 0;
-	while (!is_sep(dta->prompt_t[i + j + 1] * -1)
-		&& !is_sep(dta->prompt_t[i + j + 1]) && dta->prompt_t
-		[i + j + 1] != '$' && dta->prompt_t[i + j + 1])
+	while (!is_sep(dta->prompt_t[i + j + 1] * -1) && !is_sep(dta
+			->prompt_t[i + j + 1]) && dta->prompt_t[i + j + 1] != '$'
+		&& dta->prompt_t[i + j + 1] && dta->prompt_t[i + j + 1] > 0)
 		j++;
 	while (++k < dta->nb_arg)
 	{
