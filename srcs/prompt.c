@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 18:44:11 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:35:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	geprompt_2(t_data *dta)
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
 	replace_existing_arg(dta);
-	replace_not_in_db(dta, 0);
+	replace_not_in_db(dta, 0, -1);
 	replace_arg(dta);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';

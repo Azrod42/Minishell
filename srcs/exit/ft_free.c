@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 18:00:29 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:29:52 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	free_tab_len(char **str, size_t nb_arg)
 			if (str[i] != NULL)
 				free(str[i]);
 	}
-	free(str);
+	if (str != NULL)
+		free(str);
 }
 
 void	free_lst(t_lst **lst, t_data *dta)
@@ -96,7 +97,8 @@ void	free_keys(t_data *dta)
 		if (dta->keys[i] != NULL)
 		{
 			unlink(dta->keys[i]);
-			free(dta->keys[i]);
+			if (dta->keys[i] != NULL)
+				free(dta->keys[i]);
 		}
 	}
 	if (dta->keys != NULL)
