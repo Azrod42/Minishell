@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 11:41:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:33:29 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	cd(t_data *dta)
 
 	home_path = ft_getenv("HOME", dta);
 	pwd = getcwd(NULL, 0);
+	g_exit_status = 0;
 	if (!dta->actual[1] || !(ft_strncmp(dta->actual[1], "~", 2)))
 	{
 		if (chdir(home_path) == -1)

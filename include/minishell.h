@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 10:14:19 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:28:56 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	pwd(t_data *dta);
 void	unset(t_data *dta, int j);
 void	export(t_data *dta);
 void	env(t_data *dta, int is_export);
-void	echo(t_data *dta);
+void	echo(t_data *dta, int i);
 void	cd(t_data *dta);
 void	run_minishell(t_data *dta);
 void	exec_cmd(t_data *dta);

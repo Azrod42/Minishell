@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:27:00 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	export(t_data *dta)
 	char	**actual;
 	int		j;
 
+	g_exit_status = 0;
 	if (dta->actual[1] == NULL)
 	{
 		env(dta, 1);

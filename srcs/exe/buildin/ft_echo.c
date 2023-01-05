@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 17:01:05 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:28:17 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,9 @@ void	is_multiple_n(t_data *dta, int i)
 	print_echo(dta, i);
 }
 
-void	echo(t_data *dta)
+void	echo(t_data *dta, int i)
 {
-	int	i;
-
-	i = 0;
+	g_exit_status = 0;
 	if (dta->actual[1] == NULL)
 		write(1, "\n", 1);
 	else if (!(ft_strncmp(dta->actual[1], "-n", 3)))

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 08:53:11 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:26:03 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	unset(t_data *dta, int j)
 	char	*var;
 	char	*tempo_env;
 
+	g_exit_status = 0;
 	if (dta->actual[1] == NULL)
 		return ;
 	while (dta->actual[j])

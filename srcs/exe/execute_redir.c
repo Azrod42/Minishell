@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 11:32:43 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:29:04 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	execute_cmd(t_data *dta)
 	else if (!(ft_strncmp(dta->actual[0], "env", 4)))
 		env(dta, 0);
 	else if (!(ft_strncmp(dta->actual[0], "echo", 5)))
-		echo(dta);
+		echo(dta, 0);
 	else if (!(ft_strncmp(dta->actual[0], "export", 7)))
 		export(dta);
 	else if (!(ft_strncmp(dta->actual[0], "unset", 6)))
