@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 18:38:02 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:43:39 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_lst	**pars_equal(t_data *dta)
 			while (is_sep(dta->prompt_t[i]))
 				i++;
 			tempo = dta->prompt_t;
-			dta->prompt_t = ft_strjoin("", &dta->prompt_t[i]);
+			dta->prompt_t = ft_strdup(&dta->prompt_t[i]);
 			free(tempo);
 		}
 	}

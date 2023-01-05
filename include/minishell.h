@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 14:28:56 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:54:37 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	print_arg(t_data *dta);
 t_lst	**pars_equal(t_data *dta);
 void	put_str_in_new_file(char *str, char *key, t_data *dta);
 void	store_key(t_data *dta, char *key);
+void	stop_handle(t_data *dta, int i);
 void	reconstruct_prompt(t_data *dta, int i, int j);
 void	reconstruct_prompt_2(t_data *dta, int *i, int *j, char *new);
 void	set_arg(t_data *dta, int *arg);
@@ -148,7 +149,9 @@ char	*ft_getenv(const char *str, t_data *dta);
 char	*strstr_el(const char *big, const char *little,
 			size_t len, size_t ilen);
 int		hub_env(t_data *dta, char **env_brut);
+void	handle_in_quote(t_data *dta, int i);
 int		tab_len(char **tab);
+void	replace_special_char_ac(t_data *dta);
 
 //exit
 void	ft_exit(t_data *dta);

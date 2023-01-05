@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/14 15:34:54 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:12:51 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@ void	replace_special_char_in_arg(t_data *dta)
 }
 
 void	replace_special_char(t_data *dta)
+{
+	size_t	i;
+	size_t	arg;
+
+	arg = -1;
+	while (dta->prompt[++arg] != NULL)
+	{
+		i = -1;
+		while (dta->prompt[arg][++i])
+			if (dta->prompt[arg][i] < 0 && is_to_space(dta->prompt[arg][i]))
+				dta->prompt[arg][i] = dta->prompt[arg][i] * -1;
+	}
+}
+
+void	replace_special_char_ac(t_data *dta)
 {
 	size_t	i;
 	size_t	arg;

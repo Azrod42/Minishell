@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 11:24:16 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:56:22 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int	get_prompt_t(t_data *dta)
 		add_history(dta->prompt_t);
 	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
 	replace_tab(dta);
-	if (dta->prompt_t[0] && check_only_space(dta))
-		add_historic(dta);
 	space_spe_char(dta);
 	check_is_hdoc(dta, -1);
 	if (dta->keys != NULL && dta->exit_actual == 0)
@@ -80,3 +78,5 @@ int	geprompt_2(t_data *dta)
 
 // int i = 0;
 // printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
+	// if (dta->prompt_t[0] && check_only_space(dta))
+	// 	add_historic(dta);

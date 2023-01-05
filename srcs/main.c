@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 17:14:58 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:58:09 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,5 @@ int	main(int argc, char **argv, char **env)
 	ft_exit(&dta);
 	return (0);
 }
+
+// ENTRE le 4 et le 5 

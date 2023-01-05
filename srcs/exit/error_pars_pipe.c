@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:47:48 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:52:45 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:08:36 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_first_pipe(t_data *dta)
 	i = -1;
 	if (dta->prompt_t[0] == '\0')
 		return (1);
-	while (is_sep(dta->prompt[0][++i]))
+	while (dta->prompt[0][++i] && is_sep(dta->prompt[0][i]))
 		;
 	if (dta->prompt[0][i] == '|' && dta->exit_actual == 0)
 	{
@@ -41,13 +41,13 @@ void	check_err_pipe(t_data *dta)
 	while (dta->prompt[++arg])
 	{
 		i = -1;
-		while (is_sep(dta->prompt[arg][++i]))
+		while (dta->prompt[arg][++i] && is_sep(dta->prompt[arg][i]))
 			;
 		if (dta->prompt[arg][i] == '|')
 		{
 			i = -1;
 			arg++;
-			while (is_sep(dta->prompt[arg][++i]))
+			while (dta->prompt[arg][++i] && is_sep(dta->prompt[arg][i]))
 				;
 			if (dta->prompt[arg][i] == '|' && dta->exit_actual == 0)
 			{

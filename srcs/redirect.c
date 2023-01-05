@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 14:12:05 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:57:35 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,23 @@ void	redirect(t_data *dta)
 			triger_exit(dta, 0);
 			dta->exit = 1;
 		}
-		else if (!(ft_strncmp(dta->actual[0], "history", 8)))
-			print_historic(dta);
 		else if (!(ft_strncmp(dta->actual[0], "export", 7)))
 			export(dta);
 		else if (!(ft_strncmp(dta->actual[0], "unset", 5)))
 			unset(dta, 1);
 		else if (!(ft_strncmp(dta->actual[0], "cd", 3)))
+		{
+			g_exit_status = 0;
 			cd(dta);
-		else if (!(ft_strncmp(dta->actual[0], "parg", 5)))
-			print_arg(dta);
+		}
 		else if (dta->nb_cmd_p == 1)
 			run_cmd_no_pipe(dta);
 		else if (dta->nb_cmd_p > 1)
 			run_cmd_whith_pipe(dta);
 	}
 }
+
+		// else if (!(ft_strncmp(dta->actual[0], "history", 8)))
+		// 	print_historic(dta);
+		// else if (!(ft_strncmp(dta->actual[0], "parg", 5)))
+		// 	print_arg(dta);

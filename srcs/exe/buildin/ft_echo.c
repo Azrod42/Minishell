@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 14:28:17 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:36:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 void	print_echo(t_data *dta, int i)
 {
+	int	j;
+
 	while (dta->actual[i])
 	{
+		j = -1;
+		while (dta->actual[i][++j])
+			if (dta->actual[i][j] < 0)
+				dta->actual[i][j] = (dta->actual[i][j] * -1);
 		if (dta->actual[i + 1] != NULL)
 		{
 			write(1, dta->actual[i], ft_strlen(dta->actual[i]));

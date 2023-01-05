@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:37:38 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:47:12 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	space_spe_char(t_data *dta)
 	j = 0;
 	if (dta->exit_actual != 0)
 		return ;
+	handle_in_quote(dta, -1);
 	n = malloc(sizeof(char) * (nb_char_to_add(dta) + ft_strlen(dta->prompt_t)));
 	while (dta->prompt_t[++i])
 	{
