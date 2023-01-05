@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 11:51:16 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,10 @@ int	infile(t_data *dta, int i)
 {
 	if (!(ft_strncmp(dta->actual[i], "<", 2)))
 		dta->fd_in = open(dta->actual[i + 1], O_RDONLY);
-	if (!(ft_strncmp(dta->actual[i], "<<", 3)))
-		dta->fd_in = open(".hd_tempo", O_RDONLY);
 	if (dta->fd_in == -1)
 	{
 		if (errno == EACCES)
 			mess_error(dta, 1, "Permission denied", "");
-		else if (!(ft_strncmp(dta->actual[i], "<<", 3)) && errno == 2)
-			mess_error(dta, -1, "here_doc:", "could not find here_doc file");
 		else
 			mess_error(dta, 1, "No such file or directory", "");
 		return (1);

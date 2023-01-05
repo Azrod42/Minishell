@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 08:45:31 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 11:41:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	old_print_pwd(t_data *dta)
 			while (pwd[++i] != '=')
 				;
 			i += 1;
-			printf("%s\n", &pwd[i]);
+			ft_printf("%s\n", &pwd[i]);
 			return ;
 		}
 		aux = aux->next;

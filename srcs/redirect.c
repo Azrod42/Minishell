@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 10:01:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 11:49:48 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	run_cmd_no_pipe(t_data *dta)
 	sa.sa_flags = SA_SIGINFO;
 	sigaction(SIGINT, &sa, NULL);
 	pid = fork();
-	if (pid == 0)
+	if (!pid)
 	{
 		check_redirs(dta);
 		execute_cmd(dta);
