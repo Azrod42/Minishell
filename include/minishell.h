@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 08:34:46 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:14:19 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,10 @@ void	echo(t_data *dta);
 void	cd(t_data *dta);
 void	run_minishell(t_data *dta);
 void	exec_cmd(t_data *dta);
-void	unset_from_list(t_data *dta, char **var, int size_var);
+void	unset_from_list(t_data *dta, char **var, int len);
 
 //pars
+void	init_historic(t_data *dta, char *new);
 int		is_wspace(char c);
 int		is_sep(char c);
 int		is_to_space(char c);

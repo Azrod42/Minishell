@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 17:14:16 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:01:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,33 @@ void	run_cmd_no_pipe(t_data *dta)
 	}
 }
 
+void	triger_exit(t_data *dta, long long number)
+{
+	int			i;
+
+	i = -1;
+	if (dta->p[0][1])
+	{
+		if (dta->p[0][1][0] == '+' || dta->p[0][1][0] == '-')
+			i++;
+		while (dta->p[0][1][++i])
+		{
+			if (!ft_isdigit(dta->p[0][1][i]))
+			{
+				mess_error(dta, 255, "numeric argument required", "");
+				g_exit_status = 255;
+				return ;
+			}
+		}
+		number = ft_atoi_long(dta->p[0][1]);
+		while (number > 256)
+			number -= 256;
+		g_exit_status = number;
+		return ;
+	}
+	g_exit_status = 0;
+}
+
 void	redirect(t_data *dta)
 {
 	if (g_exit_status == 130 || g_exit_status == 131)
@@ -47,7 +74,10 @@ void	redirect(t_data *dta)
 	{
 		dta->actual = dta->p[0];
 		if (!(ft_strncmp(dta->actual[0], "exit", 5)))
+		{
+			triger_exit(dta, 0);
 			dta->exit = 1;
+		}
 		else if (!(ft_strncmp(dta->actual[0], "history", 8)))
 			print_historic(dta);
 		else if (!(ft_strncmp(dta->actual[0], "export", 7)))

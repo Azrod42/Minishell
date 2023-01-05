@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 08:45:31 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	cd(t_data *dta)
 	{
 		if (errno == EACCES)
 			mess_error(dta, 1, "Permission denied", "");
-		if (errno == ENAMETOOLONG)
+		else if (errno == ENAMETOOLONG)
 			mess_error(dta, -1, "File name too long", "");
 		else
 			mess_error(dta, 1, "No such file or directory", "");

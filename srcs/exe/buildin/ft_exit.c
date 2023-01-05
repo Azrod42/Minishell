@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/04 15:03:21 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:43:38 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ void	reset_data(t_data *dta)
 
 void	ft_exit(t_data *dta)
 {
+	(void)dta;
 	if (dta->d_arg != NULL)
 		free_lst(dta->d_arg, dta);
-	if (dta->historique != NULL)
+	if (dta->nb_arg_hist > 0)
 		free_tab(dta->historique);
 	if (dta->nickname != NULL)
 		free(dta->nickname);
@@ -47,5 +48,5 @@ void	ft_exit(t_data *dta)
 	close(0);
 	close(1);
 	close(2);
-	exit(0);
+	exit(g_exit_status);
 }

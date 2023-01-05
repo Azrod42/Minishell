@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 14:24:53 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 08:53:11 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	delete_head(t_data *dta)
 	ft_lstdelone(tempo, free);
 }
 
-void	unset_from_list(t_data *dta, char **var, int size_var)
+void	unset_from_list(t_data *dta, char **var, int len)
 {
 	t_list	*actual;
 	t_list	*tempo;
@@ -29,7 +29,7 @@ void	unset_from_list(t_data *dta, char **var, int size_var)
 
 	actual = *dta->env_list;
 	str = (char *)actual->content;
-	if (!(ft_strncmp((*var), str, size_var)) && str[size_var] == '=')
+	if (!(ft_strncmp((*var), str, len)) && str[len] == '=')
 		delete_head(dta);
 	else
 	{
@@ -37,7 +37,7 @@ void	unset_from_list(t_data *dta, char **var, int size_var)
 		{
 			if (actual->next != NULL)
 				str = (char *)actual->next->content;
-			if (!(ft_strncmp((*var), str, size_var)) && str[size_var] == '=')
+			if (!(ft_strncmp((*var), str, len)) && str[len] == '=')
 			{
 				tempo = actual->next;
 				actual->next = actual->next->next;
@@ -65,11 +65,11 @@ int	is_valid_id(char *str)
 
 void	unset_actual2(t_data *dta, char *var)
 {
-	int		size_var;
+	int		len;
 
-	size_var = ft_strlen(var);
-	unset_from_list(dta, &var, size_var);
-	if (!(ft_strncmp(var, "PATH=", size_var)))
+	len = ft_strlen(var);
+	unset_from_list(dta, &var, len);
+	if (!(ft_strncmp(var, "PATH=", len)))
 		dta->path_ok = 1;
 	free_tab(dta->dup_env);
 	dta->dup_env = list_to_tab(*dta->env_list);

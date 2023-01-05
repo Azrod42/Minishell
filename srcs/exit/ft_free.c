@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/04 11:29:52 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:07:11 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_tab(char **str)
 	i = -1;
 	if (str)
 	{
-		while (str[++i])
+		while (str[++i] != NULL)
 			if (str[i] != NULL)
 				free(str[i]);
 	}
