@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 16:10:51 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:55:11 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	mess_error(t_data *dta, int err, char *s1, char *s2)
 	else
 		g_exit_status = 1;
 	printf("\033[0;31m Error: %s \033[0;33m%s\n\033[0;37m", s1, s2);
+	dta->exit_actual = 1;
 	return (0);
 }
 
