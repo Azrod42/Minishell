@@ -6,15 +6,14 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 17:06:15 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:38:01 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-void	replace_not_in_db(t_data *dta, size_t len)
+void	replace_not_in_db(t_data *dta, size_t len, size_t i)
 {
-	size_t	i;
 	size_t	j;
 
 	j = -1;
@@ -28,7 +27,8 @@ void	replace_not_in_db(t_data *dta, size_t len)
 			len = -1;
 			j++;
 			while (!is_sep(dta->prompt_t[j + ++len]) && !is_sep(dta->prompt_t
-					[j + len] * -1) && dta->prompt_t[j + len]);
+					[j + len] * -1) && dta->prompt_t[j + len]
+				&& ft_isalpha(dta->prompt_t[j + len]));
 			if (dta->nb_arg == 0)
 				dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
 			else
@@ -69,11 +69,11 @@ size_t	replace_arg_2(t_data *dta, size_t i, size_t *m)
 	size_t	j;
 
 	k = -1;
-	j = 0;
-	while (!is_sep(dta->prompt_t[i + j + 1] * -1) && !is_sep(dta
+	j = -1;
+	while (!is_sep(dta->prompt_t[i + ++j + 1] * -1) && !is_sep(dta
 			->prompt_t[i + j + 1]) && dta->prompt_t[i + j + 1] != '$'
-		&& dta->prompt_t[i + j + 1] && dta->prompt_t[i + j + 1] > 0)
-		j++;
+		&& dta->prompt_t[i + j + 1] && dta->prompt_t[i + j + 1] > 0
+		&& ft_isalpha(dta->prompt_t[i + j + 1]));
 	while (++k < dta->nb_arg)
 	{
 		l = -1;

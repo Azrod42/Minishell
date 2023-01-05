@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:34:13 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 17:14:29 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:03:21 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ void	reset_data(t_data *dta)
 
 void	ft_exit(t_data *dta)
 {
-	free_lst(dta->d_arg, dta);
-	if (dta->nb_arg_hist)
+	if (dta->d_arg != NULL)
+		free_lst(dta->d_arg, dta);
+	if (dta->historique != NULL)
 		free_tab(dta->historique);
-	free(dta->nickname);
-	system("leaks minishell");
+	if (dta->nickname != NULL)
+		free(dta->nickname);
+	// system("leaks minishell");
 	close(0);
 	close(1);
 	close(2);
