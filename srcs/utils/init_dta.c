@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 18:20:01 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:12:47 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_dta(t_data *dta, char **env, int argc, char **argv)
 	(void)argv;
 	dta->exit = 0;
 	dta->nb_arg = 0;
+	dta->st = 1;
 	dta->status = 0;
 	dta->actual = NULL;
 	dta->nb_arg_hist = 0;
@@ -31,7 +32,7 @@ void	init_dta(t_data *dta, char **env, int argc, char **argv)
 	get_nickname(dta, env);
 	g_exit_status = 0;
 	dta->prompt_t = ft_strdup("defaultminishell=defaultminishell");
-	dta->d_arg = pars_equal(dta);
+	// dta->d_arg = pars_equal(dta);
 	free(dta->prompt_t);
 }
 
@@ -88,7 +89,6 @@ void	replace_existing_arg_for_env(t_data *dta, t_lst *lst)
 {
 	int	i;
 
-	printf("DEBUG[inside]: %s\n", dta->prompt_t);
 	i = -1;
 	i = dta->nb_arg ;
 	while (--i >= 0)

@@ -6,11 +6,36 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 13:33:54 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:15:54 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
+
+void	addin_env(t_data *dta, t_lst *lst)
+{
+	t_list	*actual;
+	char	*str;
+	char	*new;
+	char	*tmp;
+
+	actual = *dta->env_list;
+	printf("merde\n");
+	while (actual != NULL)
+	{
+		str = (char *)actual->content;
+		if (ft_strnstr(str, lst->flag, ft_strlen(lst->flag) + 1))
+		{
+			new = ft_strjoin(lst->flag, "=");
+			tmp = new;
+			new = ft_strjoin(new, lst->data);
+			free(tmp);
+			free(actual->content);
+			actual->content = new;
+		}
+		actual = actual->next;
+	}
+}
 
 void	addtab_arg(t_data *dta, t_lst *lst)
 {
@@ -62,6 +87,7 @@ void	add_list(t_data *dta, int i)
 	ft_strlcat(lst->flag, &dta->prompt_t[i - j + 1], j + 1);
 	lst->flag[j + 1] = '\0';
 	addtab_arg(dta, lst);
+	addin_env(dta, lst);
 	ft_memset(dta->prompt_t, ' ', ft_strlen(lst->data)
 		+ ft_strlen(lst->flag) + 2);
 }

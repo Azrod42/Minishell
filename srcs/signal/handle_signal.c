@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 14:12:09 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:06:22 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	init_signal(t_data *dta, struct sigaction *sa, struct termios *terminal)
 	sa->sa_flags = SA_SIGINFO;
 	dta->keys = NULL;
 	dta->key_done = 0;
+	dta->st = 0;
 	sigaction(SIGINT, sa, NULL);
 	signal(SIGQUIT, SIG_IGN);
 	tcgetattr(STDOUT_FILENO, terminal);

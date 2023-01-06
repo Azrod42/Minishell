@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 18:24:35 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:05:45 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_data
 	t_list	**env_list;
 	t_list	*key_to_free;
 	int		path_ok;
+	int		st;
 	char	**path_split;
 	char	*cmd_path;
 	int		back_stdout;
