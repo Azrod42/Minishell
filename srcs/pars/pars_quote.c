@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 17:14:37 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:17:59 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,15 @@ void	remove_quote(t_data *dta)
 
 	i = -1;
 	k = 0;
-	new = malloc(sizeof(char) * (ft_strlen(dta->prompt_t)
-				- get_len_remove_quote(dta)));
+	new = malloc(sizeof(char) * (ft_strlen(dta->prompt_t)));
+	ft_bzero(new, ft_strlen(dta->prompt_t));
 	while (dta->prompt_t[++i])
 	{
 		if (dta->prompt_t[i] == '\'')
-			while (dta->prompt_t[++i] != '\'' && dta->prompt_t[i])
+			while (dta->prompt_t[++i] && dta->prompt_t[i] != '\'')
 				new[k++] = dta->prompt_t[i];
 		else if (dta->prompt_t[i] == '\"')
-			while (dta->prompt_t[++i] != '\"' && dta->prompt_t[i])
+			while (dta->prompt_t[++i] && dta->prompt_t[i] != '\"')
 				new[k++] = dta->prompt_t[i];
 		if (dta->prompt_t[i] == '\'' || dta->prompt_t[i] == '\"')
 			i++;

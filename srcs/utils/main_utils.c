@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/27 18:35:54 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:19:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,26 @@ void	update_shlvl(t_data *dta)
 	number = ft_itoa(lvl);
 	update_env_var(dta, "SHLVL=", number);
 	free(number);
+}
+
+void	put_env_in_arg_2(t_data *dta)
+{
+	t_lst	*new;
+	t_list	*lst;
+
+	lst = *dta->env_list;
+	while (lst)
+	{
+		new = malloc(sizeof(t_lst) * 1);
+		if (size_to_char(lst->content, '=') != -1)
+			new->flag = malloc(sizeof(char)
+					* (size_to_char(lst->content, '=') + 2));
+		ft_strlcpy(new->flag, lst->content,
+			size_to_char(lst->content, '=') + 1);
+		new->flag[size_to_char(lst->content, '=')] = '\0';
+		new->data = ft_strdup(&lst->content
+			[size_to_char(lst->content, '=') + 1]);
+		replace_existing_arg_for_env(dta, new);
+		lst = lst->next;
+	}
 }

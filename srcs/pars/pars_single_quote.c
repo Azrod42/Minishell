@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:12:51 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 16:27:04 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,3 +80,6 @@ void	replace_special_char_ac(t_data *dta)
 				dta->prompt[arg][i] = dta->prompt[arg][i] * -1;
 	}
 }
+
+	// if (!ft_strnstr(dta->prompt[0], "echo", 5))
+	// {

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 13:30:26 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/30 15:02:00 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:02:02 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	rm_pipe_t_tab(char ***tab)
 		j = -1;
 		while (tab[i][++j])
 		{
-			if (tab[i][j][0] == '|')
+			if (tab[i][j][0] == '|' && tab[i][j][1] != '|')
 			{
 				free(tab[i][j]);
 				tab[i][j] = NULL;

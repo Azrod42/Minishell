@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:59:40 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/03 18:23:29 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:17:03 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	replace_existing_arg(t_data *dta)
 	int	i;
 	int	j;
 
+	i = -1;
 	i = dta->nb_arg - 1;
+	printf("%zu", dta->nb_arg);
 	if (dta->nb_arg < 2)
 		return ;
 	while (i > 0)
@@ -35,8 +37,8 @@ void	replace_existing_arg(t_data *dta)
 		j = i;
 		while (--j >= 0)
 		{
-			if (ft_memcmp(dta->d_arg[i]->flag,
-					dta->d_arg[j]->flag, ft_strlen(dta->d_arg[i]->flag)) == 0)
+			if (ft_strncmp(dta->d_arg[i]->flag, dta->d_arg[j]->flag,
+					ft_strlen(dta->d_arg[i]->flag) + 1) == 0)
 			{
 				if (dta->d_arg[j]->data)
 					free(dta->d_arg[j]->data);

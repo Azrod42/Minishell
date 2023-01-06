@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/28 23:38:32 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:20:01 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_dta(t_data *dta, char **env, int argc, char **argv)
 	dta->actual = NULL;
 	dta->nb_arg_hist = 0;
 	dta->path_ok = 0;
+	dta->nb_arg = 0;
 	dta->pipe_str = ft_strdup("init");
 	dta->empty = ft_strdup("E");
 	dta->empty[0] = dta->empty[0] * -1;
@@ -83,24 +84,24 @@ int	size_to_char(char *str, char c)
 	return (i);
 }
 
-void	put_env_in_arg(t_data *dta)
+void	replace_existing_arg_for_env(t_data *dta, t_lst *lst)
 {
-	t_lst	*new;
-	t_list	*lst;
+	int	i;
 
-	lst = *dta->env_list;
-	while (lst)
+	printf("DEBUG[inside]: %s\n", dta->prompt_t);
+	i = -1;
+	i = dta->nb_arg ;
+	while (--i >= 0)
 	{
-		new = malloc(sizeof(t_lst) * 1);
-		if (size_to_char(lst->content, '=') != -1)
-			new->flag = malloc(sizeof(char)
-					* (size_to_char(lst->content, '=') + 1));
-		ft_strlcpy(new->flag, lst->content,
-			size_to_char(lst->content, '=') + 1);
-		new->flag[size_to_char(lst->content, '=')] = '\0';
-		new->data = ft_strdup(&lst->content
-			[size_to_char(lst->content, '=') + 1]);
-		addtab_arg(dta, new);
-		lst = lst->next;
+		if (ft_memcmp(dta->d_arg[i]->flag,
+				lst->flag, ft_strlen(dta->d_arg[i]->flag) + 1) == 0)
+		{
+			free(dta->d_arg[i]->data);
+			free(dta->d_arg[i]->flag);
+			free(dta->d_arg[i]);
+			dta->d_arg[i] = lst;
+			return ;
+		}
 	}
+	addtab_arg(dta, lst);
 }

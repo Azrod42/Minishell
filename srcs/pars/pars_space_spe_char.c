@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:47:12 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 16:17:58 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,15 @@ void	space_spe_char(t_data *dta)
 	int		i;
 	int		j;
 	char	*n;
+	char	*tmp;
 
 	i = -1;
 	j = 0;
 	if (dta->exit_actual != 0)
 		return ;
 	handle_in_quote(dta, -1);
-	n = malloc(sizeof(char) * (nb_char_to_add(dta) + ft_strlen(dta->prompt_t)));
+	n = malloc(sizeof(char) * (nb_char_to_add(dta)
+				+ ft_strlen(dta->prompt_t) + 1));
 	while (dta->prompt_t[++i])
 	{
 		if (is_to_space(dta->prompt_t[i]))
@@ -79,7 +81,7 @@ void	space_spe_char(t_data *dta)
 	}
 	n[j] = '\0';
 	dta->secure_len = ft_strlen(dta->prompt_t);
-	free(dta->prompt_t);
-	dta->prompt_t = ft_substr(n, 0, j);
-	free(n);
+	tmp = dta->prompt_t;
+	dta->prompt_t = n;
+	free(tmp);
 }

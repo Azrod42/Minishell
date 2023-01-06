@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:43:39 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 13:33:54 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	addtab_arg(t_data *dta, t_lst *lst)
 			i++;
 		}
 		n_lst[i] = lst;
+		n_lst[i + 1] = NULL;
 		free(dta->d_arg);
 		dta->d_arg = n_lst;
 		dta->nb_arg += 1;

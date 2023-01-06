@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 14:26:03 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 13:24:23 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	unset(t_data *dta, int j)
 			if (tempo_env)
 			{
 				unset_actual2(dta, var);
+				remove_from_arglst(dta, var);
 				free(tempo_env);
 			}
 			free(var);

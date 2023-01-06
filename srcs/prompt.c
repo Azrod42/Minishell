@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:56:22 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:11:06 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int	get_prompt_t(t_data *dta)
 		space_spe_char(dta);
 	if (dta->exit_actual == 0)
 		check_is_hdoc(dta, -1);
-	if (geprompt_2(dta) == 1)
+	if (geprompt_2(dta, NULL) == 1)
 		return (1);
 	return (0);
 }
 
-int	geprompt_2(t_data *dta)
+int	geprompt_2(t_data *dta, char *tmp)
 {
 	if (dta->keys != NULL && dta->exit_actual == 0
 		&& nb_charinstr(dta->prompt_t, '|') != 0)
@@ -61,9 +61,10 @@ int	geprompt_2(t_data *dta)
 		remove_quote(dta);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
-	replace_existing_arg(dta);
 	replace_not_in_db(dta, 0, -1);
-	replace_arg(dta);
+	tmp = dta->prompt_t;
+	dta->prompt_t = replace_arg(dta);
+	free(tmp);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')

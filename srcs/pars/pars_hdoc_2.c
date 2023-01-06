@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:27:37 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/02 19:55:56 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 15:31:06 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 void	reconstruct_prompt(t_data *dta, int i, int j)
 {
 	char	*new;
+	char	*tmp;
 
 	new = malloc(sizeof(char) * (ft_strlen(dta->prompt_t) + 3));
-	ft_bzero(new, (ft_strlen(dta->prompt_t) + 2));
+	ft_bzero(new, (ft_strlen(dta->prompt_t) + 3));
 	while (dta->prompt_t[++i])
 	{
 		if (dta->prompt_t[i] == '<' && dta->prompt_t[i + 1] == '<')
@@ -35,8 +36,9 @@ void	reconstruct_prompt(t_data *dta, int i, int j)
 	}
 	new[j] = '\0';
 	new[j + 1] = 0;
-	free(dta->prompt_t);
+	tmp = dta->prompt_t;
 	dta->prompt_t = new;
+	free(dta->prompt_t);
 }
 
 void	init_keys(t_data *dta, char *key)

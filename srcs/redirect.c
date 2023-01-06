@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:57:35 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:15:20 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	triger_exit(t_data *dta, long long number)
 	int			i;
 
 	i = -1;
+	dta->exit = 1;
 	if (dta->p[0][1])
 	{
 		if (dta->p[0][1][0] == '+' || dta->p[0][1][0] == '-')
@@ -75,14 +76,13 @@ void	redirect(t_data *dta)
 	{
 		dta->actual = dta->p[0];
 		if (!(ft_strncmp(dta->actual[0], "exit", 5)))
-		{
 			triger_exit(dta, 0);
-			dta->exit = 1;
-		}
 		else if (!(ft_strncmp(dta->actual[0], "export", 7)))
 			export(dta);
 		else if (!(ft_strncmp(dta->actual[0], "unset", 5)))
 			unset(dta, 1);
+		else if (!(ft_strncmp(dta->actual[0], "parg", 5)))
+			print_arg(dta);
 		else if (!(ft_strncmp(dta->actual[0], "cd", 3)))
 		{
 			g_exit_status = 0;
@@ -97,5 +97,3 @@ void	redirect(t_data *dta)
 
 		// else if (!(ft_strncmp(dta->actual[0], "history", 8)))
 		// 	print_historic(dta);
-		// else if (!(ft_strncmp(dta->actual[0], "parg", 5)))
-		// 	print_arg(dta);

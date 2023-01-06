@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:47:23 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:20:08 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,40 @@ void	handle_in_quote(t_data *dta, int i)
 			in2 *= -1;
 		if (is_to_space(dta->prompt_t[i]) && (in == 1 || in2 == 1))
 			dta->prompt_t[i] = dta->prompt_t[i] * -1;
+	}
+}
+
+void	prepare_for_next(t_data*dta)
+{
+	char	**tab;
+
+	tab = malloc(sizeof(char *) * 2);
+	tab[0] = ft_strdup("test");
+	tab[1] = NULL;
+	dta->actual = tab;
+	run_cmd_no_pipe(dta);
+	free(dta->actual[0]);
+	free(dta->actual);
+	g_exit_status = dta->ready_next;
+}
+
+void	remove_from_arglst(t_data *dta, char *str)
+{
+	int	i;
+
+	i = -1;
+	while (dta->d_arg[++i])
+		;
+	while (--i >= 0)
+	{
+		if (ft_memcmp(dta->d_arg[i]->flag,
+				str, ft_strlen(dta->d_arg[i]->flag) + 1) == 0)
+		{
+			free(dta->d_arg[i]->data);
+			dta->d_arg[i]->data = ft_strdup("  ");
+			free(dta->d_arg[i]->flag);
+			dta->d_arg[i]->flag = ft_strdup("*****");
+			return ;
+		}
 	}
 }

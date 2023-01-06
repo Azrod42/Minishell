@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:54:37 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:50:02 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_data
 	char	**prompt;
 	char	***p;
 	int		nb_cmd_p;
+	int		ready_next;
 	char	**historique;
 	size_t	nb_arg_hist;
 	size_t	nb_pipe;
@@ -86,7 +87,7 @@ extern int	g_exit_status;
 //prompt
 void	init_dta(t_data *dta, char **env, int argc, char **argv);
 int		get_prompt_t(t_data *dta);
-int		geprompt_2(t_data *dta);
+int		geprompt_2(t_data *dta, char *tmp);
 void	get_nickname(t_data *dta, char **env);
 void	print_char_tab_t(char **tab);
 void	rl_replace_line(const char *text, int clear_undo);
@@ -121,7 +122,7 @@ void	check_is_hdoc(t_data *dta, int i);
 int		check_only_space(t_data *dta);
 void	replace_pipe(t_data *dta);
 void	addtab_arg(t_data *dta, t_lst *lst);
-void	replace_arg(t_data *dta);
+char	*replace_arg(t_data *dta);
 void	replace_in_quote(t_data *dta);
 void	replace_in_simple_quote(t_data *dta);
 void	replace_special_char(t_data *dta);
@@ -142,8 +143,10 @@ void	set_arg(t_data *dta, int *arg);
 void	redirect(t_data *dta);
 char	*ft_strnstr_len(const char *big, const char *little, size_t len);
 void	init_env_list(t_data *dta, t_list **envp, char **env);
+void	put_env_in_arg_2(t_data *dta);
 void	reconstruct_prompt(t_data *dta, int i, int j);
 char	**list_to_tab(t_list *lst);
+void	prepare_for_next(t_data*dta);
 void	ft_lst_free(t_list *lst);
 char	*ft_getenv(const char *str, t_data *dta);
 char	*strstr_el(const char *big, const char *little,
@@ -151,6 +154,7 @@ char	*strstr_el(const char *big, const char *little,
 int		hub_env(t_data *dta, char **env_brut);
 void	handle_in_quote(t_data *dta, int i);
 int		tab_len(char **tab);
+void	remove_from_arglst(t_data *dta, char *str);
 void	replace_special_char_ac(t_data *dta);
 
 //exit
@@ -180,6 +184,7 @@ int		is_builtin(t_data *dta);
 void	execute_cmd(t_data *dta);
 void	exec_hdoc(t_data *dta);
 int		get_path(t_data *dta);
+void	run_cmd_no_pipe(t_data *dta);
 void	rm_pipe_t_tab(char ***tab);
 //main
 void	check_path(t_data *dta);

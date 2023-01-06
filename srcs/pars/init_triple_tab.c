@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 09:53:58 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/12/21 16:52:14 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:20:21 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_background(char **str)
 	i = -1;
 	ret = 0;
 	while (str[++i])
-		if (str[i][0] == '|')
+		if (str[i][0] == '|' && str[i][1] != '|')
 			ret++;
 	return (ret);
 }
@@ -47,7 +47,7 @@ char	**dup_tab(t_data *dta)
 	new = malloc(sizeof(char *) * (len_tab_bg(dta->prompt) + 2));
 	i = -1;
 	j = 0;
-	while (dta->prompt[++i][0] != '|' && dta->prompt[i])
+	while (dta->prompt[++i] && dta->prompt[i][0] != '|')
 	{
 		if (dta->prompt[i][0] != ('E' * -1))
 		{

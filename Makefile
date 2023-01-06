@@ -51,7 +51,7 @@ INCLUDE = include/minishell.h \
 OBJS		= $(SRCS:.c=.o)
 CC			=gcc 
 DEBUG		=-g -O0
-FLAGS		=-Wall -Werror -Wextra -g
+FLAGS		=-Wall -Werror -Wextra
 LDFLAGS		=-L/Users/$(USER)/.brew/opt/readline/lib
 CPPFLAGS	=-I/Users/$(USER)/.brew/opt/readline/include
 INCS		= .

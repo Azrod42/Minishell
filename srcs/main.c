@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/05 16:58:09 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:10:49 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	g_exit_status;
 void	main_aux(t_data *dta)
 {
 	check_err(dta);
+	replace_special_char_ac(dta);
 	init_triple(dta);
 	rm_pipe_t_tab(dta->p);
 	redirect(dta);
@@ -36,7 +37,7 @@ int	main(int argc, char **argv, char **env)
 	while (!dta.exit)
 	{
 		init_signal(&dta, &sa, &terminal);
-		put_env_in_arg(&dta);
+		put_env_in_arg_2(&dta);
 		get_prompt_t(&dta);
 		if (dta.prompt != NULL)
 			main_aux(&dta);
@@ -46,4 +47,5 @@ int	main(int argc, char **argv, char **env)
 	return (0);
 }
 
-// ENTRE le 4 et le 5 
+// ENTRE le 4 et le 5
+//echo '$USER' 

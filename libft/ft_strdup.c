@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:42:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2022/11/10 09:42:03 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:26:58 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strdup(char const *s)
 {
 	char	*dup;
 
-	dup = malloc((ft_strlen(s) + 1) * 1);
+	dup = malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (!dup)
 		return (NULL);
 	ft_memcpy(dup, s, ft_strlen(s));
