@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 17:50:02 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:24:35 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ void	stop_handle(t_data *dta, int i);
 void	reconstruct_prompt(t_data *dta, int i, int j);
 void	reconstruct_prompt_2(t_data *dta, int *i, int *j, char *new);
 void	set_arg(t_data *dta, int *arg);
+int		size_to_char(char *str, char c);
+void	replace_existing_arg_for_env(t_data *dta, t_lst *lst);
 void	redirect(t_data *dta);
 char	*ft_strnstr_len(const char *big, const char *little, size_t len);
 void	init_env_list(t_data *dta, t_list **envp, char **env);

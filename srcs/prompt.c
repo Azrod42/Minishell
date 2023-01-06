@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 18:11:06 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:22:47 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	get_prompt_t(t_data *dta)
 
 int	geprompt_2(t_data *dta, char *tmp)
 {
+int i = 0;
 	if (dta->keys != NULL && dta->exit_actual == 0
 		&& nb_charinstr(dta->prompt_t, '|') != 0)
 		reconstruct_prompt(dta, -1, 0);
@@ -59,12 +60,16 @@ int	geprompt_2(t_data *dta, char *tmp)
 	if (nb_charinstr(dta->prompt_t, '\"') != 0
 		|| nb_charinstr(dta->prompt_t, '\'') != 0)
 		remove_quote(dta);
+printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (check_equal(dta))
 		dta->d_arg = pars_equal(dta);
+printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	replace_not_in_db(dta, 0, -1);
+printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	tmp = dta->prompt_t;
 	dta->prompt_t = replace_arg(dta);
 	free(tmp);
+printf("DEBUG[%02d]: %s\n", i += 1, dta->prompt_t);
 	if (!check_only_space(dta))
 		dta->prompt_t[0] = '\0';
 	if (dta->prompt_t[0] == '\0')

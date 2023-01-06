@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 16:03:29 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:33:05 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,16 @@ void	replace_not_in_db(t_data *dta, size_t len, size_t i)
 			while (!is_sep(dta->prompt_t[j + ++len]) && !is_sep(dta->prompt_t
 					[j + len] * -1) && dta->prompt_t[j + len]
 				&& ft_isalpha(dta->prompt_t[j + len]));
+			printf("%zu\n", len);
 			if (dta->nb_arg == 0)
 				dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
 			else
 				while (++i < dta->nb_arg)
-					if (strstr_el(&dta->prompt_t[j], dta->d_arg[i]->flag,
-							ft_strlen(dta->d_arg[i]->flag), len) != NULL
-						&& strstr_el(&dta->prompt_t[j], "$?", 1, len) != NULL)
+					if (ft_strnstr(&dta->prompt_t[j], dta->d_arg[i]->flag, j + 1) != NULL
+						&& ft_strnstr(&dta->prompt_t[j], "$?", 3) != NULL)
 						dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
 		}
+		printf("OUI");
 	}
 }
 
