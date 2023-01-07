@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 19:12:47 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:29:51 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	init_dta(t_data *dta, char **env, int argc, char **argv)
 	get_nickname(dta, env);
 	g_exit_status = 0;
 	dta->prompt_t = ft_strdup("defaultminishell=defaultminishell");
-	// dta->d_arg = pars_equal(dta);
 	free(dta->prompt_t);
 }
 

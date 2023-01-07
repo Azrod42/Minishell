@@ -6,13 +6,13 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 19:35:21 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:29:39 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-void	replace_not_in_db(t_data *dta, size_t len, size_t i)
+void	replace_not_in_db(t_data *dta, size_t len, size_t i, int exist)
 {
 	size_t	j;
 
@@ -23,28 +23,20 @@ void	replace_not_in_db(t_data *dta, size_t len, size_t i)
 			mess_error(dta, 1, "syntax error near :", "$");
 		else if (dta->prompt_t[j] == '$')
 		{
-			i = -1;
+			i = 0;
 			len = -1;
 			j++;
 			while (!is_sep(dta->prompt_t[j + ++len]) && !is_sep(dta->prompt_t
 					[j + len] * -1) && dta->prompt_t[j + len]
 				&& ft_isalpha(dta->prompt_t[j + len]));
-			printf("%zu\n", len);
-			printf("%s\n", &dta->prompt_t[j]);
-			if (dta->nb_arg == 0)
+			while (i < dta->nb_arg)
+				if (check_arg(&dta->prompt_t[j],
+						dta->d_arg[i++]->flag) == 1)
+					exist = 1;
+			if (!exist)
 				dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
-			else
-				while (i < dta->nb_arg)
-				{
-					if (strstr_el(&dta->prompt_t[j], dta->d_arg[i]->flag,
-							ft_strlen(dta->d_arg[i]->flag), len) != NULL
-						&& ft_strnstr(&dta->prompt_t[j], "$?", 3) == NULL)
-						dta->prompt_t[j - 1] = dta->prompt_t[j - 1] * -1;
-					i++;
-				}
 		}
 	}
-	printf("HOOOOOO OUI\n");
 }
 
 size_t	get_len_replace(t_data *dta)
@@ -139,3 +131,7 @@ char	*replace_arg(t_data *dta)
 	}
 	return (dta->prompt_t);
 }
+
+					// if (strstr_el(&dta->prompt_t[j], dta->d_arg[i]->flag,
+					// 		ft_strlen(dta->d_arg[i]->flag), len - 1) != NULL
+					// 	&& strstr_el(&dta->prompt_t[j], "$?", 1, len - 1) != NULL)

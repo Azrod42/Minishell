@@ -6,28 +6,28 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 19:05:45 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:20:30 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# define USER "\033[0;36mminishell$> \033[0;37m"
+# define USER "\002\033[0;36mminishell$> \033[0;37m\003"
 # define MAXINT 2147483647
 
 # include"../libft/libft.h"
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <stdio.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <unistd.h>
-# include <signal.h>
-# include <errno.h>
-# include <fcntl.h>
-# include <dirent.h>
-# include <termios.h>
+# include<readline/readline.h>
+# include<readline/history.h>
+# include<stdio.h>
+# include<sys/types.h>
+# include<sys/wait.h>
+# include<unistd.h>
+# include<signal.h>
+# include<errno.h>
+# include<fcntl.h>
+# include<dirent.h>
+# include<termios.h>
 
 typedef struct s_lst
 {
@@ -113,6 +113,7 @@ int		is_wspace(char c);
 int		is_sep(char c);
 int		is_to_space(char c);
 int		is_redirect(char c);
+int		check_equal(t_data *dta);
 void	replace_tab(t_data *dta);
 void	space_spe_char(t_data *dta);
 size_t	nb_charinstr(char *str, char c);
@@ -128,10 +129,11 @@ void	replace_in_quote(t_data *dta);
 void	replace_in_simple_quote(t_data *dta);
 void	replace_special_char(t_data *dta);
 void	replace_special_char_in_arg(t_data *dta);
-void	replace_not_in_db(t_data *dta, size_t len, size_t i);
+void	replace_not_in_db(t_data *dta, size_t len, size_t i, int exist);
 void	replace_existing_arg(t_data *dta);
 void	remove_quote(t_data *dta);
 void	add_historic(t_data *dta);
+int		check_arg(char *l, char *str);
 void	print_historic(t_data *dta);
 void	print_arg(t_data *dta);
 t_lst	**pars_equal(t_data *dta);

@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:59:40 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 18:17:03 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:17:34 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,21 @@ void	replace_existing_arg(t_data *dta)
 		}
 		i--;
 	}
+}
+
+int	check_arg(char *l, char *str)
+{
+	int	i;
+
+	i = -1;
+	if (ft_strlen(l) < ft_strlen(str))
+		return (0);
+	while (str[++i] != '\0')
+	{
+		if (l[i] != str[i])
+			return (0);
+	}
+	if (ft_isalpha(l[i]) || l[i] == '_')
+		return (0);
+	return (1);
 }

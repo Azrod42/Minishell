@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 18:17:59 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:09:46 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,85 +14,47 @@
 
 void	replace_in_quote(t_data *dta)
 {
-	int	nbquote;
 	int	i;
+	int	in1;
+	int	in2;
 
-	nbquote = nb_charinstr(dta->prompt_t, '\"');
-	if (nbquote == 0)
-		return ;
+	in1 = -1;
+	in2 = -1;
 	i = -1;
-	while (dta->prompt_t[++i] && nbquote > 1)
-	{
-		while (dta->prompt_t[i] != '\"'
-			&& dta->prompt_t[i] && dta->prompt_t[i] != '\'')
-			i++;
-		if (dta->prompt_t[i] == '\'')
-		{
-			while (dta->prompt_t[++i] != '\'')
-				if (dta->prompt_t[i] == '\"')
-					nbquote--;
-		}	
-		else
-			while (dta->prompt_t[++i] != '\"' && dta->prompt_t[i])
-				if (is_sep(dta->prompt_t[i]) || dta->prompt_t[i] == '\'')
-					dta->prompt_t[i] = dta->prompt_t[i] * -1;
-		nbquote -= 2;
-	}
-}
-
-size_t	get_len_remove_quote(t_data *dta)
-{
-	size_t	i;
-	size_t	trm;
-
-	i = -1;
-	trm = 0;
 	while (dta->prompt_t[++i])
 	{
-		if (dta->prompt_t[i] == '\'')
-		{
-			while (dta->prompt_t[++i] != '\'' && dta->prompt_t[i])
-				;
-			if (dta->prompt_t[i] == '\'')
-				trm += 2;
-			i++;
-		}
-		else if (dta->prompt_t[i] == '\"')
-		{
-			while (dta->prompt_t[++i] != '\"' && dta->prompt_t[i])
-				;
-			if (dta->prompt_t[i] == '\"')
-				trm += 2;
-			i++;
-		}
+		if (dta->prompt_t[i] == '"' && in2 == -1)
+			in1 *= -1;
+		if (dta->prompt_t[i] == '\'' && in1 == -1)
+			in2 *= -1;
+		if (in1 == 1 && dta->prompt_t[i] == '\'')
+			dta->prompt_t[i] *= -1;
+		if (in2 == 1 && (dta->prompt_t[i] == '"' || dta->prompt_t[i] == '$'))
+			dta->prompt_t[i] *= -1;
 	}
-	return (trm);
 }
 
 void	remove_quote(t_data *dta)
 {
 	int		i;
-	int		k;
+	int		j;
 	char	*new;
 
 	i = -1;
-	k = 0;
-	new = malloc(sizeof(char) * (ft_strlen(dta->prompt_t)));
+	j = 0;
+	new = malloc(sizeof(char) * ft_strlen(dta->prompt_t));
 	ft_bzero(new, ft_strlen(dta->prompt_t));
 	while (dta->prompt_t[++i])
 	{
-		if (dta->prompt_t[i] == '\'')
-			while (dta->prompt_t[++i] && dta->prompt_t[i] != '\'')
-				new[k++] = dta->prompt_t[i];
-		else if (dta->prompt_t[i] == '\"')
-			while (dta->prompt_t[++i] && dta->prompt_t[i] != '\"')
-				new[k++] = dta->prompt_t[i];
-		if (dta->prompt_t[i] == '\'' || dta->prompt_t[i] == '\"')
-			i++;
-		if (dta->prompt_t[i] != '\'' && dta->prompt_t[i] != '\"')
-			new[k++] = dta->prompt_t[i];
+		if (dta->prompt_t[i] == '\'' || dta->prompt_t[i] == '"')
+			;
+		else
+		{
+			new[j] = dta->prompt_t[i];
+			j++;
+		}
 	}
-	new[k] = '\0';
+	new[j] = '\0';
 	free(dta->prompt_t);
 	dta->prompt_t = new;
 }

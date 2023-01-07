@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 19:15:54 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:21:53 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	addin_env(t_data *dta, t_lst *lst)
 	char	*tmp;
 
 	actual = *dta->env_list;
-	printf("merde\n");
 	while (actual != NULL)
 	{
 		str = (char *)actual->content;
@@ -134,21 +133,4 @@ t_lst	**pars_equal(t_data *dta)
 		}
 	}
 	return (dta->d_arg);
-}
-
-int	check_equal(t_data *dta)
-{
-	size_t	i;
-
-	i = -1;
-	while (dta->prompt_t[++i])
-	{
-		while (is_sep(dta->prompt_t[i]))
-			i++;
-		if (is_sep(dta->prompt_t[i]))
-			return (0);
-		if (dta->prompt_t[i] == '=')
-			return (1);
-	}
-	return (0);
 }

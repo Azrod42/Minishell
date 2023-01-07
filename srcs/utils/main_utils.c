@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 18:19:49 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:05:19 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,21 @@ void	put_env_in_arg_2(t_data *dta)
 		replace_existing_arg_for_env(dta, new);
 		lst = lst->next;
 	}
+}
+
+int	check_equal(t_data *dta)
+{
+	size_t	i;
+
+	i = -1;
+	while (dta->prompt_t[++i])
+	{
+		while (is_sep(dta->prompt_t[i]))
+			i++;
+		if (is_sep(dta->prompt_t[i]))
+			return (0);
+		if (dta->prompt_t[i] == '=')
+			return (1);
+	}
+	return (0);
 }
