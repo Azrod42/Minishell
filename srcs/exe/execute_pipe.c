@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:00:29 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 18:07:37 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:38:29 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void	run_cmd_whith_pipe(t_data *dta)
 	}
 	wait_fork(dta, flag);
 	wait(&dta->status);
-	printf("%d\n", g_exit_status);
 	dta->ready_next = g_exit_status;
 	prepare_for_next(dta);
 }
