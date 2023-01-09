@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:31:22 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/07 15:09:46 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:17:07 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void	replace_in_quote(t_data *dta)
 			in1 *= -1;
 		if (dta->prompt_t[i] == '\'' && in1 == -1)
 			in2 *= -1;
-		if (in1 == 1 && dta->prompt_t[i] == '\'')
+		if (in1 == 1 && (dta->prompt_t[i] == '\'' || is_sep(dta->prompt_t[i])))
 			dta->prompt_t[i] *= -1;
-		if (in2 == 1 && (dta->prompt_t[i] == '"' || dta->prompt_t[i] == '$'))
+		if (in2 == 1 && (dta->prompt_t[i] == '"' || dta->prompt_t[i] == '$'
+				|| is_sep(dta->prompt_t[i])))
 			dta->prompt_t[i] *= -1;
 	}
 }

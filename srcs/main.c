@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/09 11:26:21 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:21:42 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	main_aux(t_data *dta)
 	replace_special_char_ac(dta);
 	init_triple(dta);
 	rm_pipe_t_tab(dta->p);
+	print_t_tab(dta->p);
 	redirect(dta);
 }
 
