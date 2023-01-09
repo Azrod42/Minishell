@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/09 13:21:42 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:34:05 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **env)
 	struct sigaction	sa;
 	struct termios		terminal;
 
-	if (argc != 1 && argv[1])
+	if (argc == 0 && argv[1])
 		exit (1);
 	init_dta(&dta, env);
 	init_env_list(&dta, &envl, env);
