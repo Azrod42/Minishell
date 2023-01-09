@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:23:03 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/07 15:10:17 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 10:59:36 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	get_prompt_t(t_data *dta)
 	dta->prompt_t = readline(dta->nickname);
 	if (dta->prompt_t == NULL)
 		ft_exit(dta);
-	if (dta->prompt_t[0] != '\0')
+	if (dta->prompt_t[0] != '\0' && !check_only_space(dta))
 		add_history(dta->prompt_t);
 	dta->prompt_t[ft_strlen(dta->prompt_t)] = '\0';
 	replace_tab(dta);

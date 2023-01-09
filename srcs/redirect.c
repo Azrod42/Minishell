@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:44:54 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/06 18:15:20 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:36:19 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	redirect(t_data *dta)
 			export(dta);
 		else if (!(ft_strncmp(dta->actual[0], "unset", 5)))
 			unset(dta, 1);
-		else if (!(ft_strncmp(dta->actual[0], "parg", 5)))
-			print_arg(dta);
 		else if (!(ft_strncmp(dta->actual[0], "cd", 3)))
 		{
 			g_exit_status = 0;
@@ -97,3 +95,5 @@ void	redirect(t_data *dta)
 
 		// else if (!(ft_strncmp(dta->actual[0], "history", 8)))
 		// 	print_historic(dta);
+		// else if (!(ft_strncmp(dta->actual[0], "parg", 5)))
+		// 	print_arg(dta);

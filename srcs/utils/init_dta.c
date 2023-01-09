@@ -6,16 +6,14 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:33:01 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/07 14:29:51 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:30:15 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-void	init_dta(t_data *dta, char **env, int argc, char **argv)
+void	init_dta(t_data *dta, char **env)
 {
-	(void)argc;
-	(void)argv;
 	dta->exit = 0;
 	dta->nb_arg = 0;
 	dta->st = 1;

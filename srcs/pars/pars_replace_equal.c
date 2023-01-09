@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:15:46 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/07 14:29:39 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:31:03 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	replace_not_in_db(t_data *dta, size_t len, size_t i, int exist)
 	{
 		if (dta->prompt_t[j] == '$' && dta->prompt_t[j + 1] == '$')
 			mess_error(dta, 1, "syntax error near :", "$");
+		else if (dta->prompt_t[j] == '$' && dta->prompt_t[j + 1] == '?')
+			return ;
 		else if (dta->prompt_t[j] == '$')
 		{
 			i = 0;

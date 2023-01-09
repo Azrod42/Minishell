@@ -6,7 +6,7 @@
 /*   By: tsorabel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:46:02 by tsorabel          #+#    #+#             */
-/*   Updated: 2023/01/07 14:20:30 by tsorabel         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:24:30 by tsorabel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_data
 extern int	g_exit_status;
 
 //prompt
-void	init_dta(t_data *dta, char **env, int argc, char **argv);
+void	init_dta(t_data *dta, char **env);
 int		get_prompt_t(t_data *dta);
 int		geprompt_2(t_data *dta, char *tmp);
 void	get_nickname(t_data *dta, char **env);
